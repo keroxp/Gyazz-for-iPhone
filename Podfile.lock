@@ -1,0 +1,20 @@
+
+PODS:
+- AFNetworking (1.1.0)
+- BlocksKit (1.8.1):
+  - libffi
+- JSONKit (1.5pre)
+- libffi (3.0.11)
+
+DEPENDENCIES:
+- AFNetworking
+- BlocksKit
+- JSONKit
+
+SPEC CHECKSUMS:
+  AFNetworking: 761a418233d280c1e0580bcb76ff9cb4c3073d17
+  BlocksKit: 18102744fd7c44b54f1e54ce6ffe9258bcb5df81
+  JSONKit: 3d4708953ea7ae399a49777372d8b060a43ddd27
+  libffi: 8a1d9ba43c0c84b546b42c6f742714e73aa07ae1
+
+COCOAPODS: 0.16.4

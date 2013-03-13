@@ -1,0 +1,11 @@
+/:name/__list
+/__modify
+/__access
+/text
+/json
+/related
+
+・API要求
+
+レスポンスにRepresentation画像URLを含める
+そもそもtext,relatedを含める

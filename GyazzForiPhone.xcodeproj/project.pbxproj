@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		970CD674E001424BA7CE26C1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1DBB50177945F689F9346F /* libPods.a */; };
 		A68F3FA716F0A597007690E9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F3FA616F0A597007690E9 /* UIKit.framework */; };
 		A68F3FA916F0A597007690E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F3FA816F0A597007690E9 /* Foundation.framework */; };
 		A68F3FAB16F0A597007690E9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F3FAA16F0A597007690E9 /* CoreGraphics.framework */; };
@@ -17,15 +18,29 @@
 		A68F3FBB16F0A597007690E9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A68F3FBA16F0A597007690E9 /* Default@2x.png */; };
 		A68F3FBD16F0A597007690E9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A68F3FBC16F0A597007690E9 /* Default-568h@2x.png */; };
 		A68F3FC016F0A597007690E9 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A68F3FBE16F0A597007690E9 /* MainStoryboard.storyboard */; };
-		A68F3FC316F0A597007690E9 /* GYZFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FC216F0A597007690E9 /* GYZFirstViewController.m */; };
 		A68F3FC516F0A597007690E9 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = A68F3FC416F0A597007690E9 /* first.png */; };
 		A68F3FC716F0A597007690E9 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A68F3FC616F0A597007690E9 /* first@2x.png */; };
-		A68F3FCA16F0A597007690E9 /* GYZSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FC916F0A597007690E9 /* GYZSecondViewController.m */; };
 		A68F3FCC16F0A597007690E9 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = A68F3FCB16F0A597007690E9 /* second.png */; };
 		A68F3FCE16F0A597007690E9 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A68F3FCD16F0A597007690E9 /* second@2x.png */; };
+		A68F3FD716F0A608007690E9 /* GYZListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FD616F0A608007690E9 /* GYZListViewController.m */; };
+		A68F3FDA16F0A625007690E9 /* GYZWatcingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FD916F0A625007690E9 /* GYZWatcingViewController.m */; };
+		A68F3FDD16F0A815007690E9 /* GYZGyazzListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FDC16F0A815007690E9 /* GYZGyazzListViewController.m */; };
+		A68F3FE116F0A85D007690E9 /* GYZGyazzEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FE016F0A85D007690E9 /* GYZGyazzEditViewController.m */; };
+		A68F3FE716F0A9CB007690E9 /* GYZTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FE616F0A9CB007690E9 /* GYZTabBarController.m */; };
+		A68F3FEB16F0AA25007690E9 /* GYZGyazz.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FEA16F0AA25007690E9 /* GYZGyazz.m */; };
+		A68F3FEF16F0B07B007690E9 /* GYZPage.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FEE16F0B07B007690E9 /* GYZPage.m */; };
+		A68F3FF316F0B55C007690E9 /* GYZPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FF116F0B55C007690E9 /* GYZPageViewController.m */; };
+		A68F3FF416F0B55C007690E9 /* GYZPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A68F3FF216F0B55C007690E9 /* GYZPageViewController.xib */; };
+		A68F3FF716F0B77E007690E9 /* GYZUserData.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FF616F0B77E007690E9 /* GYZUserData.m */; };
+		A68F3FFA16F0CA86007690E9 /* GYZTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FF916F0CA86007690E9 /* GYZTableViewController.m */; };
+		A68F3FFF16F0CC4A007690E9 /* GYZTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FFE16F0CC4A007690E9 /* GYZTextFieldCell.m */; };
+		A68F400616F0DE9D007690E9 /* sonamonohanai.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A68F400516F0DE9D007690E9 /* sonamonohanai.jpg */; };
+		A68F400916F0E074007690E9 /* NSMutableArray+ReArrage.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F400816F0E073007690E9 /* NSMutableArray+ReArrage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		368692A77B7F4E3E9A69222B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		5C1DBB50177945F689F9346F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68F3FA316F0A597007690E9 /* GyazzForiPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GyazzForiPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68F3FA616F0A597007690E9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A68F3FA816F0A597007690E9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -40,14 +55,36 @@
 		A68F3FBA16F0A597007690E9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		A68F3FBC16F0A597007690E9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A68F3FBF16F0A597007690E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		A68F3FC116F0A597007690E9 /* GYZFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GYZFirstViewController.h; sourceTree = "<group>"; };
-		A68F3FC216F0A597007690E9 /* GYZFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GYZFirstViewController.m; sourceTree = "<group>"; };
 		A68F3FC416F0A597007690E9 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		A68F3FC616F0A597007690E9 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		A68F3FC816F0A597007690E9 /* GYZSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GYZSecondViewController.h; sourceTree = "<group>"; };
-		A68F3FC916F0A597007690E9 /* GYZSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GYZSecondViewController.m; sourceTree = "<group>"; };
 		A68F3FCB16F0A597007690E9 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		A68F3FCD16F0A597007690E9 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		A68F3FD516F0A608007690E9 /* GYZListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZListViewController.h; sourceTree = "<group>"; };
+		A68F3FD616F0A608007690E9 /* GYZListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZListViewController.m; sourceTree = "<group>"; };
+		A68F3FD816F0A625007690E9 /* GYZWatcingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZWatcingViewController.h; sourceTree = "<group>"; };
+		A68F3FD916F0A625007690E9 /* GYZWatcingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZWatcingViewController.m; sourceTree = "<group>"; };
+		A68F3FDB16F0A815007690E9 /* GYZGyazzListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZGyazzListViewController.h; sourceTree = "<group>"; };
+		A68F3FDC16F0A815007690E9 /* GYZGyazzListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZGyazzListViewController.m; sourceTree = "<group>"; };
+		A68F3FDF16F0A85D007690E9 /* GYZGyazzEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZGyazzEditViewController.h; sourceTree = "<group>"; };
+		A68F3FE016F0A85D007690E9 /* GYZGyazzEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZGyazzEditViewController.m; sourceTree = "<group>"; };
+		A68F3FE516F0A9CB007690E9 /* GYZTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZTabBarController.h; sourceTree = "<group>"; };
+		A68F3FE616F0A9CB007690E9 /* GYZTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZTabBarController.m; sourceTree = "<group>"; };
+		A68F3FE916F0AA25007690E9 /* GYZGyazz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZGyazz.h; sourceTree = "<group>"; };
+		A68F3FEA16F0AA25007690E9 /* GYZGyazz.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZGyazz.m; sourceTree = "<group>"; };
+		A68F3FED16F0B07B007690E9 /* GYZPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZPage.h; sourceTree = "<group>"; };
+		A68F3FEE16F0B07B007690E9 /* GYZPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZPage.m; sourceTree = "<group>"; };
+		A68F3FF016F0B55C007690E9 /* GYZPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZPageViewController.h; sourceTree = "<group>"; };
+		A68F3FF116F0B55C007690E9 /* GYZPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZPageViewController.m; sourceTree = "<group>"; };
+		A68F3FF216F0B55C007690E9 /* GYZPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GYZPageViewController.xib; sourceTree = "<group>"; };
+		A68F3FF516F0B77E007690E9 /* GYZUserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZUserData.h; sourceTree = "<group>"; };
+		A68F3FF616F0B77E007690E9 /* GYZUserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZUserData.m; sourceTree = "<group>"; };
+		A68F3FF816F0CA86007690E9 /* GYZTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZTableViewController.h; sourceTree = "<group>"; };
+		A68F3FF916F0CA86007690E9 /* GYZTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZTableViewController.m; sourceTree = "<group>"; };
+		A68F3FFD16F0CC4A007690E9 /* GYZTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZTextFieldCell.h; sourceTree = "<group>"; };
+		A68F3FFE16F0CC4A007690E9 /* GYZTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZTextFieldCell.m; sourceTree = "<group>"; };
+		A68F400516F0DE9D007690E9 /* sonamonohanai.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sonamonohanai.jpg; sourceTree = "<group>"; };
+		A68F400716F0E073007690E9 /* NSMutableArray+ReArrage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+ReArrage.h"; sourceTree = "<group>"; };
+		A68F400816F0E073007690E9 /* NSMutableArray+ReArrage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+ReArrage.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +95,7 @@
 				A68F3FA716F0A597007690E9 /* UIKit.framework in Frameworks */,
 				A68F3FA916F0A597007690E9 /* Foundation.framework in Frameworks */,
 				A68F3FAB16F0A597007690E9 /* CoreGraphics.framework in Frameworks */,
+				970CD674E001424BA7CE26C1 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +108,7 @@
 				A68F3FAC16F0A597007690E9 /* GyazzForiPhone */,
 				A68F3FA516F0A597007690E9 /* Frameworks */,
 				A68F3FA416F0A597007690E9 /* Products */,
+				368692A77B7F4E3E9A69222B /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,6 +126,7 @@
 				A68F3FA616F0A597007690E9 /* UIKit.framework */,
 				A68F3FA816F0A597007690E9 /* Foundation.framework */,
 				A68F3FAA16F0A597007690E9 /* CoreGraphics.framework */,
+				5C1DBB50177945F689F9346F /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -94,17 +134,13 @@
 		A68F3FAC16F0A597007690E9 /* GyazzForiPhone */ = {
 			isa = PBXGroup;
 			children = (
-				A68F3FB516F0A597007690E9 /* GYZAppDelegate.h */,
-				A68F3FB616F0A597007690E9 /* GYZAppDelegate.m */,
 				A68F3FBE16F0A597007690E9 /* MainStoryboard.storyboard */,
-				A68F3FC116F0A597007690E9 /* GYZFirstViewController.h */,
-				A68F3FC216F0A597007690E9 /* GYZFirstViewController.m */,
-				A68F3FC416F0A597007690E9 /* first.png */,
-				A68F3FC616F0A597007690E9 /* first@2x.png */,
-				A68F3FC816F0A597007690E9 /* GYZSecondViewController.h */,
-				A68F3FC916F0A597007690E9 /* GYZSecondViewController.m */,
-				A68F3FCB16F0A597007690E9 /* second.png */,
-				A68F3FCD16F0A597007690E9 /* second@2x.png */,
+				A68F3FE816F0A9DD007690E9 /* Singletons */,
+				A68F3FEC16F0AA28007690E9 /* Models */,
+				A68F400016F0CC60007690E9 /* Views */,
+				A68F3FDE16F0A81C007690E9 /* Controllers */,
+				A68F400A16F0E091007690E9 /* Utilities */,
+				A68F3FD416F0A5E4007690E9 /* Resources */,
 				A68F3FAD16F0A597007690E9 /* Supporting Files */,
 			);
 			path = GyazzForiPhone;
@@ -124,6 +160,80 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A68F3FD416F0A5E4007690E9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A68F400516F0DE9D007690E9 /* sonamonohanai.jpg */,
+				A68F3FC416F0A597007690E9 /* first.png */,
+				A68F3FC616F0A597007690E9 /* first@2x.png */,
+				A68F3FCB16F0A597007690E9 /* second.png */,
+				A68F3FCD16F0A597007690E9 /* second@2x.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		A68F3FDE16F0A81C007690E9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A68F3FDB16F0A815007690E9 /* GYZGyazzListViewController.h */,
+				A68F3FDC16F0A815007690E9 /* GYZGyazzListViewController.m */,
+				A68F3FDF16F0A85D007690E9 /* GYZGyazzEditViewController.h */,
+				A68F3FE016F0A85D007690E9 /* GYZGyazzEditViewController.m */,
+				A68F3FF816F0CA86007690E9 /* GYZTableViewController.h */,
+				A68F3FF916F0CA86007690E9 /* GYZTableViewController.m */,
+				A68F3FD516F0A608007690E9 /* GYZListViewController.h */,
+				A68F3FD616F0A608007690E9 /* GYZListViewController.m */,
+				A68F3FD816F0A625007690E9 /* GYZWatcingViewController.h */,
+				A68F3FD916F0A625007690E9 /* GYZWatcingViewController.m */,
+				A68F3FE516F0A9CB007690E9 /* GYZTabBarController.h */,
+				A68F3FE616F0A9CB007690E9 /* GYZTabBarController.m */,
+				A68F3FF016F0B55C007690E9 /* GYZPageViewController.h */,
+				A68F3FF116F0B55C007690E9 /* GYZPageViewController.m */,
+				A68F3FF216F0B55C007690E9 /* GYZPageViewController.xib */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		A68F3FE816F0A9DD007690E9 /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				A68F3FF516F0B77E007690E9 /* GYZUserData.h */,
+				A68F3FF616F0B77E007690E9 /* GYZUserData.m */,
+				A68F3FB516F0A597007690E9 /* GYZAppDelegate.h */,
+				A68F3FB616F0A597007690E9 /* GYZAppDelegate.m */,
+			);
+			name = Singletons;
+			sourceTree = "<group>";
+		};
+		A68F3FEC16F0AA28007690E9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A68F3FE916F0AA25007690E9 /* GYZGyazz.h */,
+				A68F3FEA16F0AA25007690E9 /* GYZGyazz.m */,
+				A68F3FED16F0B07B007690E9 /* GYZPage.h */,
+				A68F3FEE16F0B07B007690E9 /* GYZPage.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		A68F400016F0CC60007690E9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A68F3FFD16F0CC4A007690E9 /* GYZTextFieldCell.h */,
+				A68F3FFE16F0CC4A007690E9 /* GYZTextFieldCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		A68F400A16F0E091007690E9 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A68F400716F0E073007690E9 /* NSMutableArray+ReArrage.h */,
+				A68F400816F0E073007690E9 /* NSMutableArray+ReArrage.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,6 +244,7 @@
 				A68F3F9F16F0A597007690E9 /* Sources */,
 				A68F3FA016F0A597007690E9 /* Frameworks */,
 				A68F3FA116F0A597007690E9 /* Resources */,
+				8B9094B3248A4ED385F7A41B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,7 +263,7 @@
 			attributes = {
 				CLASSPREFIX = GYZ;
 				LastUpgradeCheck = 0460;
-				ORGANIZATIONNAME = "桜井雄介";
+				ORGANIZATIONNAME = "Ê°ú‰∫ïÈõÑ‰ªã";
 			};
 			buildConfigurationList = A68F3F9E16F0A597007690E9 /* Build configuration list for PBXProject "GyazzForiPhone" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -185,10 +296,29 @@
 				A68F3FC716F0A597007690E9 /* first@2x.png in Resources */,
 				A68F3FCC16F0A597007690E9 /* second.png in Resources */,
 				A68F3FCE16F0A597007690E9 /* second@2x.png in Resources */,
+				A68F3FF416F0B55C007690E9 /* GYZPageViewController.xib in Resources */,
+				A68F400616F0DE9D007690E9 /* sonamonohanai.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8B9094B3248A4ED385F7A41B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A68F3F9F16F0A597007690E9 /* Sources */ = {
@@ -197,8 +327,18 @@
 			files = (
 				A68F3FB316F0A597007690E9 /* main.m in Sources */,
 				A68F3FB716F0A597007690E9 /* GYZAppDelegate.m in Sources */,
-				A68F3FC316F0A597007690E9 /* GYZFirstViewController.m in Sources */,
-				A68F3FCA16F0A597007690E9 /* GYZSecondViewController.m in Sources */,
+				A68F3FD716F0A608007690E9 /* GYZListViewController.m in Sources */,
+				A68F3FDA16F0A625007690E9 /* GYZWatcingViewController.m in Sources */,
+				A68F3FDD16F0A815007690E9 /* GYZGyazzListViewController.m in Sources */,
+				A68F3FE116F0A85D007690E9 /* GYZGyazzEditViewController.m in Sources */,
+				A68F3FE716F0A9CB007690E9 /* GYZTabBarController.m in Sources */,
+				A68F3FEB16F0AA25007690E9 /* GYZGyazz.m in Sources */,
+				A68F3FEF16F0B07B007690E9 /* GYZPage.m in Sources */,
+				A68F3FF316F0B55C007690E9 /* GYZPageViewController.m in Sources */,
+				A68F3FF716F0B77E007690E9 /* GYZUserData.m in Sources */,
+				A68F3FFA16F0CA86007690E9 /* GYZTableViewController.m in Sources */,
+				A68F3FFF16F0CC4A007690E9 /* GYZTextFieldCell.m in Sources */,
+				A68F400916F0E074007690E9 /* NSMutableArray+ReArrage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +422,7 @@
 		};
 		A68F3FD216F0A597007690E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 368692A77B7F4E3E9A69222B /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GyazzForiPhone/GyazzForiPhone-Prefix.pch";
@@ -293,6 +434,7 @@
 		};
 		A68F3FD316F0A597007690E9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 368692A77B7F4E3E9A69222B /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GyazzForiPhone/GyazzForiPhone-Prefix.pch";
@@ -321,6 +463,7 @@
 				A68F3FD316F0A597007690E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

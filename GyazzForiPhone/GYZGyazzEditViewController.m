@@ -3,7 +3,7 @@
 //  GyazzForiPhone
 //
 //  Created by 桜井雄介 on 2013/03/13.
-//  Copyright (c) 2013年 Ê°ú‰∫ïÈõÑ‰ªã. All rights reserved.
+//  Copyright (c) 2013年 桜井雄介. All rights reserved.
 //
 
 #import "GYZGyazzEditViewController.h"
@@ -86,6 +86,7 @@
 - (IBAction)handleDone:(id)sender {
     GYZTextFieldCell *tcell = (GYZTextFieldCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     GYZGyazz *newGyazz = [[GYZGyazz alloc] initWithName:tcell.textField.text];
+    __block GYZGyazz *__newGyazz = newGyazz;
     [newGyazz getPageListWithWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *jsonstr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         $(@"%@",jsonstr);
@@ -99,7 +100,7 @@
             }];
         }else{
             // 登録完了
-            [[GYZUserData gyazzList] addObject:newGyazz];
+            [[GYZUserData gyazzList] addObject:__newGyazz];
             [GYZUserData saveGyazzList];
             [self dismissViewControllerAnimated:YES completion:^{
                 

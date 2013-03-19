@@ -3,7 +3,7 @@
 //  GyazzForiPhone
 //
 //  Created by 桜井雄介 on 2013/03/13.
-//  Copyright (c) 2013年 Ê°ú‰∫ïÈõÑ‰ªã. All rights reserved.
+//  Copyright (c) 2013年 桜井雄介. All rights reserved.
 //
 
 #import "GYZGyazzListViewController.h"
@@ -151,9 +151,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    GYZGyazz *g = [[GYZUserData gyazzList] objectAtIndex:indexPath.row];
-    [GYZUserData setCurrentGyazz:g];
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    if (indexPath.section == 0) {
+        GYZGyazz *g = [[GYZUserData gyazzList] objectAtIndex:indexPath.row];
+        [GYZUserData setCurrentGyazz:g];
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }
 }
 
 @end

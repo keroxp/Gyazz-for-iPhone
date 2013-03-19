@@ -3,7 +3,7 @@
 //  GyazzForiPhone
 //
 //  Created by 桜井雄介 on 2013/03/13.
-//  Copyright (c) 2013年 Ê°ú‰∫ïÈõÑ‰ªã. All rights reserved.
+//  Copyright (c) 2013年 桜井雄介. All rights reserved.
 //
 
 #import "GYZTableViewController.h"
@@ -33,7 +33,6 @@
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     NSString *buttontitle = NSLocalizedString(@"リスト",);
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:buttontitle style:UIBarButtonItemStyleBordered handler:^(id sender) {
         [self.tabBarController performSegueWithIdentifier:@"showGyazzList" sender:self];

@@ -62,9 +62,17 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="Txc-ht-MXL">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="eE2-xt-M6c" id="hPa-3f-ec4"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="y5V-d7-PBC">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
@@ -79,8 +87,20 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="VPT-cK-TSJ"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="25r-GI-P5D" id="aV2-TE-DYc"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mdo-Sr-L37" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="25r-GI-P5D">
+                    <connections>
+                        <outlet property="delegate" destination="eE2-xt-M6c" id="doW-Bt-ofc"/>
+                        <outlet property="searchBar" destination="Txc-ht-MXL" id="8UD-WE-7IH"/>
+                        <outlet property="searchContentsController" destination="eE2-xt-M6c" id="bfV-eR-9uE"/>
+                        <outlet property="searchResultsDataSource" destination="eE2-xt-M6c" id="oXB-br-J7l"/>
+                        <outlet property="searchResultsDelegate" destination="eE2-xt-M6c" id="lxf-HF-7iq"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1179" y="-261"/>
         </scene>
@@ -201,11 +221,11 @@
             </objects>
             <point key="canvasLocation" x="1088" y="-1744"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Timeline-->
         <scene sceneID="t3Y-Ta-VjD">
             <objects>
                 <navigationController id="qNl-nK-7ZQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="U5S-JI-6PX"/>
+                    <tabBarItem key="tabBarItem" title="Timeline" id="U5S-JI-6PX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rJI-VV-qVf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -220,11 +240,11 @@
             </objects>
             <point key="canvasLocation" x="653" y="-261"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Watchlist-->
         <scene sceneID="ReP-Ma-B35">
             <objects>
                 <navigationController id="Tpm-dZ-fqb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="3Ju-qU-qX4"/>
+                    <tabBarItem key="tabBarItem" title="Watchlist" id="3Ju-qU-qX4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dCc-mF-luf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

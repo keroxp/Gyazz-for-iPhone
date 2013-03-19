@@ -3,7 +3,7 @@
 //  GyazzForiPhone
 //
 //  Created by 桜井雄介 on 2013/03/14.
-//  Copyright (c) 2013年 Ê°ú‰∫ïÈõÑ‰ªã. All rights reserved.
+//  Copyright (c) 2013年 桜井雄介. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

@@ -3,14 +3,15 @@
 //  GyazzForiPhone
 //
 //  Created by 桜井雄介 on 2013/03/13.
-//  Copyright (c) 2013年 Ê°ú‰∫ïÈõÑ‰ªã. All rights reserved.
+//  Copyright (c) 2013年 桜井雄介. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import "GYZGyazz.h"
 
 @class GYZGyazz;
 
-@interface GYZPage : NSObject
+@interface GYZPage : NSObject <NSCoding>
 
 /* 所属するGyazz */
 @property () GYZGyazz *gyazz;
@@ -29,11 +30,5 @@
 /* コンストラクタ*/
 - (id)initWithGyazz:(GYZGyazz*)gyazz title:(NSString*)title modtime:(NSInteger)modtime;
 
-/* テキストを取得 */
-- (void)getTextWithCompletion:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON))completion
-                      failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON))failure;
-/* 関連を取得 */
-- (void)getRelatedPagesWithCompletion:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON))completion
-                              failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON))failure;
 
 @end

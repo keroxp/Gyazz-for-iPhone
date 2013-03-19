@@ -7,7 +7,8 @@
 //
 
 #import "GYZListViewController.h"
-#import "GYZGyazz.h"
+#import "GYZPageViewController.h"
+#import "GYZPage.h"
 #import "GYZUserData.h"
 #import <JSONKit.h>
 
@@ -223,12 +224,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+    GYZPage *page = [[_pageListDividedByModififedDate objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+     GYZPageViewController *pvc = [[GYZPageViewController alloc] initWithNibName:@"GYZPageViewController" bundle:nil];
+    [pvc setPage:page];
      // ...
      // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    [self.navigationController pushViewController:pvc animated:YES];
 }
 
 @end

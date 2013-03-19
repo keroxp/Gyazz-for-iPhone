@@ -263,7 +263,7 @@
 			attributes = {
 				CLASSPREFIX = GYZ;
 				LastUpgradeCheck = 0460;
-				ORGANIZATIONNAME = "Ê°ú‰∫ïÈõÑ‰ªã";
+				ORGANIZATIONNAME = "Masui Lab";
 			};
 			buildConfigurationList = A68F3F9E16F0A597007690E9 /* Build configuration list for PBXProject "GyazzForiPhone" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -376,6 +376,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yusuke Sakurai (26C9LS9QQ8)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -389,8 +390,9 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "ADD9F2EE-DE45-4D61-8412-7F7859006861";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -407,14 +409,16 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yusuke Sakurai (26C9LS9QQ8)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "ADD9F2EE-DE45-4D61-8412-7F7859006861";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -424,10 +428,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 368692A77B7F4E3E9A69222B /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yusuke Sakurai (26C9LS9QQ8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yusuke Sakurai (26C9LS9QQ8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GyazzForiPhone/GyazzForiPhone-Prefix.pch";
 				INFOPLIST_FILE = "GyazzForiPhone/GyazzForiPhone-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4E7F8ECD-4495-4904-87AB-AC807838188E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4E7F8ECD-4495-4904-87AB-AC807838188E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;

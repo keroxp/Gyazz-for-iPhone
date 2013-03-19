@@ -1,11 +1,27 @@
+◆APIのURL
+
 /:name/__list
 /__modify
-/__access
-/text
-/json
-/related
+/:name/*/__access
+/:name/*/text
+/:name/*/json
+/:name/*/related
 
-・API要求
+◆modtime
+
+UNIXTime
+セクション分け
+5分以内
+15分以内
+30分以内
+1時間以内
+2時間以内
+6時間以内
+12時間以内
+1日以内
+3日以内
+それ以前
+◆API要求
 
 レスポンスにRepresentation画像URLを含める
 そもそもtext,relatedを含める

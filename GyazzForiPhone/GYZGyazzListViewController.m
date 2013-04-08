@@ -87,6 +87,9 @@
             GYZGyazz *g = [[GYZUserData gyazzList] objectAtIndex:indexPath.row];
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             cell.textLabel.text = g.name;
+            if (g == [GYZUserData currentGyazz]) {
+                [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+            }
         }
             break;
         case 1:

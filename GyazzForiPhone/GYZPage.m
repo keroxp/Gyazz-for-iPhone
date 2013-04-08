@@ -36,6 +36,11 @@
     return self;
 }
 
+- (NSString *)absoluteString
+{
+    return [NSString stringWithFormat:@"%@/%@",self.gyazz.absoluteURLPath,self.title];
+}
+
 #pragma mark - NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)aCoder

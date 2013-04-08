@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang=ja>
+    <head>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=2.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+            <script src="zepto.min.js"></script>
+            <style type="text/css">
+                </style>
+            <title>Gyazz-Page</title>
+            <script type="text/javascript">
+                var $content;
+                $(document).ready(function(){
+                    $content = $("#content");
+                });
+                function append(domstr){
+                    try{
+                        console.log(domstr);
+                        $content.append($(domstr));
+                    }catch(e){
+                        console.log(e);
+                    }
+                }
+            </script>
+    </head>
+    <body>
+        <div id="content">%@</div>
+    </body>
+</html>

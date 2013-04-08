@@ -9,6 +9,8 @@
 #import "GYZPageViewController.h"
 #import "GYZPage.h"
 #import <AFNetworking.h>
+#import <BlocksKit.h>
+
 @interface GYZPageViewController ()
 
 @end
@@ -28,26 +30,46 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    NSString *path = [NSString stringWithFormat:@"%@/%@",[self.page.gyazz absoluteURLPath],self.page.title];
-    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:path]];
-    $(@"%@",path);
-    [self.webView loadRequest:req];
-    [self.page.gyazz getTextOfPage:self.page success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSString *s = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        NSString *html = [self parsePageText:s];
-        $(@"%@",html);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        ;
+    UIRefreshControl *rc = [[UIRefreshControl alloc] init];
+    [rc addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.webView.scrollView addSubview:rc];
+    [self.webView setDelegate:self];
+    [self refresh:nil];
+    self.title = self.page.title;
+    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd handler:^(id sender) {
+        UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"ウォッチリストに追加", )];
+        [as addButtonWithTitle:NSLocalizedString(@"追加する", ) handler:^{
+            
+        }];
+        [as setCancelButtonWithTitle:NSLocalizedString(@"やめる", ) handler:^{
+            
+        }];
+        [as setCancelButtonIndex:1];
+        [as showInView:self.view];
     }];
-    path = @"http://gyazz.com/Gyazz/Wiki%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%AE%E7%B7%A8%E9%9B%86%E6%96%B9%E6%B3%95/text";
-    req = [NSURLRequest requestWithURL:[NSURL URLWithString:path]];
-    AFHTTPRequestOperation *ro = [[AFHTTPRequestOperation alloc] initWithRequest:req];
-    [ro setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        abort();
+}
+
+- (void)refresh:(UIRefreshControl*)sender
+{
+    [sender endRefreshing];
+    
+    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:[self.page.absoluteString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    AFHTTPRequestOperation *opr = [[AFHTTPRequestOperation alloc] initWithRequest:req];
+    [opr setAuthenticationChallengeBlock:^(NSURLConnection *connection, NSURLAuthenticationChallenge *challenge) {
+        NSURLCredential *cr = [NSURLCredential credentialWithUser:self.page.gyazz.username
+                                                         password:self.page.gyazz.password
+                                                      persistence:NSURLCredentialPersistenceNone];
+        [[challenge sender] useCredential:cr forAuthenticationChallenge:challenge];
     }];
-    [[NSOperationQueue mainQueue] addOperation:ro];
+    [opr setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",str);
+        [self.webView loadHTMLString:str baseURL:[NSURL URLWithString:self.page.absoluteString]];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        $(@"%@",error);
+    }];
+    [[NSOperationQueue mainQueue] addOperation:opr];
+
 }
 
 /* 
@@ -81,10 +103,12 @@
         NSString *line = [lines objectAtIndex:i];
         line = [line stringByReplacingOccurrencesOfString:@"[[[" withString:@"<b>"];
         line = [line stringByReplacingOccurrencesOfString:@"]]]" withString:@"</b>"];
+        NSError *e = nil;
+        
         NSLog(@"brefore : %@",line);
         
         NSString *linkPattern = @"\\[\\[(.+)\\]\\]";
-        NSError *e = nil;
+        e = nil;
         NSRegularExpression *reg = [NSRegularExpression regularExpressionWithPattern:linkPattern
                                                                              options:0
                                                                                error:&e];
@@ -98,7 +122,6 @@
         for (NSTextCheckingResult *tcr in matches) {
             
             // マッチから[[と]]を覗いた範囲
-//            $(@"number of ranges : %i",tcr.numberOfRanges);
             NSRange range = [tcr rangeAtIndex:1];
             NSString *replace = @"";
             // innerだけにトリミング
@@ -162,7 +185,7 @@
         }
         line = [NSString stringWithFormat:@"<div id=\"line-%i\" class=\"line\">%@</div>",i,line];
         NSLog(@"after : %@",line);
-        [html appendFormat:@"%@\n",line];
+        [html appendFormat:@"%@",line];
     }
     return html;
 }
@@ -173,14 +196,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
-{
-    NSURLCredential *credential = [NSURLCredential credentialWithUser:self.page.gyazz.username
-                                                             password:self.page.gyazz.password
-                                                          persistence:NSURLCredentialPersistenceNone];
-    [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
-}
-
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     $(@"%@",error);
@@ -188,6 +203,21 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
+    NSString *urlstr = [request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    if ([urlstr rangeOfString:self.page.gyazz.absoluteURLPath].location != NSNotFound) {
+        NSString *pat = [NSString stringWithFormat:@"%@/(.+)",self.page.gyazz.absoluteURLPath];
+        NSRegularExpression *reg = [NSRegularExpression regularExpressionWithPattern:pat options:0 error:nil];
+        NSTextCheckingResult *tr = [reg firstMatchInString:urlstr
+                                                   options:0
+                                                     range:NSMakeRange(0,urlstr.length)];
+        NSRange r = [tr rangeAtIndex:1];
+        NSString *title = [urlstr substringWithRange:r];;
+        GYZPageViewController *pvc = [[GYZPageViewController alloc] initWithNibName:@"GYZPageViewController" bundle:nil];
+        GYZPage *page = [[GYZPage alloc] initWithGyazz:self.page.gyazz title:title modtime:0];
+        [pvc setPage:page];
+        [self.navigationController pushViewController:pvc animated:YES];
+        return NO;
+    }
     return YES;
 }
 

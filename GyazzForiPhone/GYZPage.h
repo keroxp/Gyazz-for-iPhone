@@ -23,6 +23,8 @@
 @property (readonly) NSString *text;
 /* テキストのHTML出力。あれば */
 @property (readonly) NSString *htmlText;
+/* URL */
+@property (readonly) NSString *absoluteString;
 
 /* JSONArrayからページリストを作る */
 + (NSArray*)pagesFromJSONArray:(NSArray*)JSONArray ofGyazz:(GYZGyazz*)gyazz;

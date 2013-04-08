@@ -9,6 +9,7 @@ PODS:
 DEPENDENCIES:
 - AFNetworking
 - BlocksKit
+- BlocksKit
 - JSONKit
 
 SPEC CHECKSUMS:

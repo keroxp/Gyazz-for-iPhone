@@ -13,7 +13,6 @@
 #import <JSONKit.h>
 #import <BlocksKit.h>
 
-#define kAPIURL @"http://gyazz.com"
 
 @interface GYZGyazz ()
 
@@ -85,7 +84,7 @@
 
 - (NSString *)absoluteURLPath
 {
-    return [NSString stringWithFormat:@"%@/%@",kAPIURL,_name];
+    return [NSString stringWithFormat:@"http://gyazz.com/%@",_name];
 }
 
 - (void)save

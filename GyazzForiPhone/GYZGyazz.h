@@ -18,8 +18,6 @@
 @property () NSString *username;
 /* Basic認証用のパスワード */
 @property () NSString *password;
-/* ウォッチリスト */
-@property (readonly) NSMutableArray *watchList;
 
 /* コンストラクタ */
 - (id)initWithName:(NSString*)name;

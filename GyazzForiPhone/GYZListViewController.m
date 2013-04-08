@@ -22,6 +22,8 @@
     NSArray *_sectionNames;
     /* りふれっしゅ */
     UIRefreshControl *_refreshControl;
+    /* フィルタ */
+    NSMutableArray *_filterdContents;
 }
 
 @property () GYZGyazz *gyazz;
@@ -51,6 +53,7 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    _filterdContents = [NSMutableArray array];
     _sectionNames = @[@"5分以内",@"15分以内",@"30分以内",@"1時間以内",@"2時間以内",@"6時間以内",@"12時間以内",@"1日以内",@"3日以内",@"4日以前"];
     UIRefreshControl *rc = [[UIRefreshControl alloc] init];
     [rc addTarget:self action:@selector(refreshList:) forControlEvents:UIControlEventValueChanged];
@@ -146,25 +149,39 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // ソートされていない場合はここで
-    return _sectionNames.count;
+    if (tableView == self.tableView) {
+        return _sectionNames.count;
+    }else{
+        return 1;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    if (_pageListDividedByModififedDate) {
-        int cnt = [[_pageListDividedByModififedDate objectAtIndex:section] count];
-        return cnt;
+    if (tableView == self.tableView) {
+        if (_pageListDividedByModififedDate) {
+            int cnt = [[_pageListDividedByModififedDate objectAtIndex:section] count];
+            return cnt;
+        }
+        return 0;
+    }else{
+        return _filterdContents.count;
     }
-    return 0;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    GYZPage *page = [[_pageListDividedByModififedDate objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    GYZPage *page = nil;
+    if (tableView == self.tableView) {
+        page = [[_pageListDividedByModififedDate objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    }else{
+        page = [_filterdContents objectAtIndex:indexPath.row];
+    }
+
     cell.textLabel.text = [page title];
     
     // Configure the cell...
@@ -181,56 +198,46 @@
     return nil;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
-    GYZPage *page = [[_pageListDividedByModififedDate objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    GYZPage *page = nil;
+    if (tableView == self.tableView) {
+        page = [[_pageListDividedByModififedDate objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    }else{
+        page = [_filterdContents objectAtIndex:indexPath.row];
+    }
+
     GYZPageViewController *pvc = [[GYZPageViewController alloc] initWithNibName:@"GYZPageViewController" bundle:nil];
     [pvc setPage:page];
-     // ...
-     // Pass the selected object to the new view controller.
     [self.navigationController pushViewController:pvc animated:YES];
+}
+
+#pragma mark - UISearchDisplayDelegate
+
+- (void)filterContentForSearchText:(NSString*)searchText
+{
+    [_filterdContents removeAllObjects]; // First clear the filtered array.    
+    for (GYZPage *page in _pageList){
+        NSComparisonResult result = [page.title compare:searchText
+                                                options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch)
+                                                  range:NSMakeRange(0, [searchText length])];
+        if (result == NSOrderedSame){
+            [_filterdContents addObject:page];
+        }
+    }
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    if (searchString.length > 0) {
+        [self filterContentForSearchText:searchString];
+        return YES;
+    }
+    return NO;
 }
 
 @end

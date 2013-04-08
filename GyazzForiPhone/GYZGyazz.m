@@ -29,7 +29,6 @@
 {
     if (self = [super init]) {
         _name = name;
-        _watchList = [NSMutableArray array];
     }
     return self;
 }
@@ -39,8 +38,6 @@
     [aCoder encodeObject:_name forKey:@"name"];
     [aCoder encodeObject:_username forKey:@"username"];
     [aCoder encodeObject:_password forKey:@"password"];
-    NSData *d = [NSKeyedArchiver archivedDataWithRootObject:_watchList];
-    [aCoder encodeObject:d forKey:@"watchlist"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -50,9 +47,6 @@
         _name = [aDecoder decodeObjectForKey:@"name"];
         _username = [aDecoder decodeObjectForKey:@"username"];
         _password = [aDecoder decodeObjectForKey:@"password"];
-        NSData *d = [aDecoder decodeObjectForKey:@"watchlist"];
-        NSArray *a = [NSKeyedUnarchiver unarchiveObjectWithData:d];
-        _watchList = [a mutableCopy];
     }
     return self;
 }

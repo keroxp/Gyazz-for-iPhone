@@ -8,6 +8,6 @@
 
 #import "GYZTableViewController.h"
 
-@interface GYZListViewController : GYZTableViewController
+@interface GYZListViewController : GYZTableViewController <UISearchDisplayDelegate>
 
 @end

@@ -1,0 +1,4 @@
+Gyazz-for-iPhone
+================
+
+GyazzのiOSインターフェース

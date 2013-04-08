@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SVWebViewController.h>
 
 @class GYZPage;
 
@@ -15,6 +16,7 @@
 
 /* WevView */
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+
 /* 表示するページ */
 @property () GYZPage *page;
 

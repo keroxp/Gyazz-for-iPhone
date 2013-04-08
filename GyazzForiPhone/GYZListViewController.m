@@ -51,7 +51,7 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    _sectionNames = @[@"5分以内",@"15分以内",@"30分以内",@"1時間以内",@"2時間以内",@"6時間以内",@"12時間以内",@"1日以内",@"3日以内",@"それ以前"];
+    _sectionNames = @[@"5分以内",@"15分以内",@"30分以内",@"1時間以内",@"2時間以内",@"6時間以内",@"12時間以内",@"1日以内",@"3日以内",@"4日以前"];
     UIRefreshControl *rc = [[UIRefreshControl alloc] init];
     [rc addTarget:self action:@selector(refreshList:) forControlEvents:UIControlEventValueChanged];
     [self setRefreshControl:rc];
@@ -225,7 +225,8 @@
 {
     // Navigation logic may go here. Create and push another view controller.
     GYZPage *page = [[_pageListDividedByModififedDate objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-     GYZPageViewController *pvc = [[GYZPageViewController alloc] initWithNibName:@"GYZPageViewController" bundle:nil];
+    GYZPageViewController *pvc = [[GYZPageViewController alloc] initWithNibName:@"GYZPageViewController" bundle:nil];
+    [pvc setHidesBottomBarWhenPushed:YES];
     [pvc setPage:page];
      // ...
      // Pass the selected object to the new view controller.

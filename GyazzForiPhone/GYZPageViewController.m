@@ -33,7 +33,6 @@
     UIRefreshControl *rc = [[UIRefreshControl alloc] init];
     [rc addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.webView.scrollView addSubview:rc];
-    [self.webView setDelegate:self];
     [self refresh:nil];
     self.title = self.page.title;
     UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd handler:^(id sender) {
@@ -47,6 +46,12 @@
         [as setCancelButtonIndex:1];
         [as showInView:self.view];
     }];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.webView setDelegate:self];
 }
 
 - (void)refresh:(UIRefreshControl*)sender
@@ -203,20 +208,33 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    NSString *urlstr = [request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    if ([urlstr rangeOfString:self.page.gyazz.absoluteURLPath].location != NSNotFound) {
-        NSString *pat = [NSString stringWithFormat:@"%@/(.+)",self.page.gyazz.absoluteURLPath];
-        NSRegularExpression *reg = [NSRegularExpression regularExpressionWithPattern:pat options:0 error:nil];
-        NSTextCheckingResult *tr = [reg firstMatchInString:urlstr
-                                                   options:0
-                                                     range:NSMakeRange(0,urlstr.length)];
-        NSRange r = [tr rangeAtIndex:1];
-        NSString *title = [urlstr substringWithRange:r];;
-        GYZPageViewController *pvc = [[GYZPageViewController alloc] initWithNibName:@"GYZPageViewController" bundle:nil];
-        GYZPage *page = [[GYZPage alloc] initWithGyazz:self.page.gyazz title:title modtime:0];
-        [pvc setPage:page];
-        [self.navigationController pushViewController:pvc animated:YES];
-        return NO;
+    switch (navigationType) {
+        case UIWebViewNavigationTypeLinkClicked: {
+            NSString *urlstr = [request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            if ([urlstr rangeOfString:self.page.gyazz.absoluteURLPath].location != NSNotFound) {
+                NSString *pat = [NSString stringWithFormat:@"%@/(.+)",self.page.gyazz.absoluteURLPath];
+                NSRegularExpression *reg = [NSRegularExpression regularExpressionWithPattern:pat options:0 error:nil];
+                NSTextCheckingResult *tr = [reg firstMatchInString:urlstr
+                                                           options:0
+                                                             range:NSMakeRange(0,urlstr.length)];
+                NSRange r = [tr rangeAtIndex:1];
+                NSString *title = [urlstr substringWithRange:r];;
+                GYZPageViewController *pvc = [[GYZPageViewController alloc] initWithNibName:@"GYZPageViewController" bundle:nil];
+                GYZPage *page = [[GYZPage alloc] initWithGyazz:self.page.gyazz title:title modtime:0];
+                [pvc setPage:page];
+                [self.navigationController pushViewController:pvc animated:YES];
+                return NO;
+            }else if ([urlstr rangeOfString:@"twitter://"].location != NSNotFound){
+                [[UIApplication sharedApplication] openURL:request.URL];
+            }else{
+                SVWebViewController *web = [[SVWebViewController alloc] initWithURL:request.URL];
+                [self.navigationController pushViewController:web animated:YES];
+            }
+        }
+            break;
+            
+        default:
+            break;
     }
     return YES;
 }

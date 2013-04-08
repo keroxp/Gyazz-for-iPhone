@@ -248,7 +248,6 @@
                 GYZPage *page = [[GYZPage alloc] initWithGyazz:self.page.gyazz title:title modtime:0];
                 [pvc setPage:page];
                 [self.navigationController pushViewController:pvc animated:YES];
-                return NO;
             }else if ([urlstr rangeOfString:@"twitter://"].location != NSNotFound){
                 // Twitterのリンクならアプリでひらく
                 [[UIApplication sharedApplication] openURL:request.URL];
@@ -259,6 +258,7 @@
                 [self.navigationController pushViewController:web animated:YES];
             }
         }
+            return NO;
             break;
             
         default:

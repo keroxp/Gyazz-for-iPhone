@@ -71,12 +71,22 @@
         [[challenge sender] useCredential:cr forAuthenticationChallenge:challenge];
     }];
     [opr setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [SVProgressHUD dismiss];
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSLog(@"%@",str);
         [self.webView loadHTMLString:str baseURL:[NSURL URLWithString:self.page.absoluteString]];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [SVProgressHUD dismiss];
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"エラー", )
+                                                     message:[error localizedDescription]
+                           delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", ) otherButtonTitles:nil, nil];
+        [av  show];
         $(@"%@",error);
     }];
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"読込中...", )];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     [[NSOperationQueue mainQueue] addOperation:opr];
 
 }

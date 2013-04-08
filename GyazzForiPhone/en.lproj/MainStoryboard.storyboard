@@ -24,10 +24,10 @@
             </objects>
             <point key="canvasLocation" x="132" y="180"/>
         </scene>
-        <!--Watcing View Controller-->
+        <!--Watch List View Controller-->
         <scene sceneID="KrN-Ga-tK8">
             <objects>
-                <tableViewController id="heE-Mt-Ofm" customClass="GYZWatcingViewController" sceneMemberID="viewController">
+                <tableViewController id="heE-Mt-Ofm" customClass="GYZWatchListViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="OLn-io-hh3">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -221,11 +221,11 @@
             </objects>
             <point key="canvasLocation" x="1088" y="-1744"/>
         </scene>
-        <!--Navigation Controller - Timeline-->
+        <!--Navigation Controller - タイムライン-->
         <scene sceneID="t3Y-Ta-VjD">
             <objects>
                 <navigationController id="qNl-nK-7ZQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Timeline" id="U5S-JI-6PX"/>
+                    <tabBarItem key="tabBarItem" title="タイムライン" id="U5S-JI-6PX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rJI-VV-qVf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -240,11 +240,11 @@
             </objects>
             <point key="canvasLocation" x="653" y="-261"/>
         </scene>
-        <!--Navigation Controller - Watchlist-->
+        <!--Navigation Controller - ウォッチリスト-->
         <scene sceneID="ReP-Ma-B35">
             <objects>
                 <navigationController id="Tpm-dZ-fqb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Watchlist" id="3Ju-qU-qX4"/>
+                    <tabBarItem key="tabBarItem" title="ウォッチリスト" id="3Ju-qU-qX4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dCc-mF-luf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

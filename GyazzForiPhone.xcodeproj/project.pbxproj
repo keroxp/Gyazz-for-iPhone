@@ -10,7 +10,6 @@
 		970CD674E001424BA7CE26C1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1DBB50177945F689F9346F /* libPods.a */; };
 		A63543E916FD69B500C50ED0 /* page.html in Resources */ = {isa = PBXBuildFile; fileRef = A63543E816FD69B500C50ED0 /* page.html */; };
 		A63543EB16FD6B5500C50ED0 /* zepto.min.js in Resources */ = {isa = PBXBuildFile; fileRef = A63543EA16FD6B5500C50ED0 /* zepto.min.js */; };
-		A637D4EE171255D500991E7D /* GYZRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A637D4ED171255D500991E7D /* GYZRequestOperation.m */; };
 		A68F3FA716F0A597007690E9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F3FA616F0A597007690E9 /* UIKit.framework */; };
 		A68F3FA916F0A597007690E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F3FA816F0A597007690E9 /* Foundation.framework */; };
 		A68F3FAB16F0A597007690E9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F3FAA16F0A597007690E9 /* CoreGraphics.framework */; };
@@ -26,7 +25,7 @@
 		A68F3FCC16F0A597007690E9 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = A68F3FCB16F0A597007690E9 /* second.png */; };
 		A68F3FCE16F0A597007690E9 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A68F3FCD16F0A597007690E9 /* second@2x.png */; };
 		A68F3FD716F0A608007690E9 /* GYZListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FD616F0A608007690E9 /* GYZListViewController.m */; };
-		A68F3FDA16F0A625007690E9 /* GYZWatcingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FD916F0A625007690E9 /* GYZWatcingViewController.m */; };
+		A68F3FDA16F0A625007690E9 /* GYZWatchListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FD916F0A625007690E9 /* GYZWatchListViewController.m */; };
 		A68F3FDD16F0A815007690E9 /* GYZGyazzListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FDC16F0A815007690E9 /* GYZGyazzListViewController.m */; };
 		A68F3FE116F0A85D007690E9 /* GYZGyazzEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FE016F0A85D007690E9 /* GYZGyazzEditViewController.m */; };
 		A68F3FE716F0A9CB007690E9 /* GYZTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FE616F0A9CB007690E9 /* GYZTabBarController.m */; };
@@ -46,8 +45,6 @@
 		5C1DBB50177945F689F9346F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A63543E816FD69B500C50ED0 /* page.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = page.html; sourceTree = "<group>"; };
 		A63543EA16FD6B5500C50ED0 /* zepto.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = zepto.min.js; sourceTree = "<group>"; };
-		A637D4EC171255D500991E7D /* GYZRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZRequestOperation.h; sourceTree = "<group>"; };
-		A637D4ED171255D500991E7D /* GYZRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZRequestOperation.m; sourceTree = "<group>"; };
 		A68F3FA316F0A597007690E9 /* GyazzForiPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GyazzForiPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68F3FA616F0A597007690E9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A68F3FA816F0A597007690E9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -68,8 +65,8 @@
 		A68F3FCD16F0A597007690E9 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		A68F3FD516F0A608007690E9 /* GYZListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZListViewController.h; sourceTree = "<group>"; };
 		A68F3FD616F0A608007690E9 /* GYZListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZListViewController.m; sourceTree = "<group>"; };
-		A68F3FD816F0A625007690E9 /* GYZWatcingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZWatcingViewController.h; sourceTree = "<group>"; };
-		A68F3FD916F0A625007690E9 /* GYZWatcingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZWatcingViewController.m; sourceTree = "<group>"; };
+		A68F3FD816F0A625007690E9 /* GYZWatchListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZWatchListViewController.h; sourceTree = "<group>"; };
+		A68F3FD916F0A625007690E9 /* GYZWatchListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZWatchListViewController.m; sourceTree = "<group>"; };
 		A68F3FDB16F0A815007690E9 /* GYZGyazzListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZGyazzListViewController.h; sourceTree = "<group>"; };
 		A68F3FDC16F0A815007690E9 /* GYZGyazzListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZGyazzListViewController.m; sourceTree = "<group>"; };
 		A68F3FDF16F0A85D007690E9 /* GYZGyazzEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZGyazzEditViewController.h; sourceTree = "<group>"; };
@@ -192,8 +189,8 @@
 				A68F3FF916F0CA86007690E9 /* GYZTableViewController.m */,
 				A68F3FD516F0A608007690E9 /* GYZListViewController.h */,
 				A68F3FD616F0A608007690E9 /* GYZListViewController.m */,
-				A68F3FD816F0A625007690E9 /* GYZWatcingViewController.h */,
-				A68F3FD916F0A625007690E9 /* GYZWatcingViewController.m */,
+				A68F3FD816F0A625007690E9 /* GYZWatchListViewController.h */,
+				A68F3FD916F0A625007690E9 /* GYZWatchListViewController.m */,
 				A68F3FE516F0A9CB007690E9 /* GYZTabBarController.h */,
 				A68F3FE616F0A9CB007690E9 /* GYZTabBarController.m */,
 				A68F3FF016F0B55C007690E9 /* GYZPageViewController.h */,
@@ -221,8 +218,6 @@
 				A68F3FEA16F0AA25007690E9 /* GYZGyazz.m */,
 				A68F3FED16F0B07B007690E9 /* GYZPage.h */,
 				A68F3FEE16F0B07B007690E9 /* GYZPage.m */,
-				A637D4EC171255D500991E7D /* GYZRequestOperation.h */,
-				A637D4ED171255D500991E7D /* GYZRequestOperation.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -341,7 +336,7 @@
 				A68F3FB316F0A597007690E9 /* main.m in Sources */,
 				A68F3FB716F0A597007690E9 /* GYZAppDelegate.m in Sources */,
 				A68F3FD716F0A608007690E9 /* GYZListViewController.m in Sources */,
-				A68F3FDA16F0A625007690E9 /* GYZWatcingViewController.m in Sources */,
+				A68F3FDA16F0A625007690E9 /* GYZWatchListViewController.m in Sources */,
 				A68F3FDD16F0A815007690E9 /* GYZGyazzListViewController.m in Sources */,
 				A68F3FE116F0A85D007690E9 /* GYZGyazzEditViewController.m in Sources */,
 				A68F3FE716F0A9CB007690E9 /* GYZTabBarController.m in Sources */,
@@ -352,7 +347,6 @@
 				A68F3FFA16F0CA86007690E9 /* GYZTableViewController.m in Sources */,
 				A68F3FFF16F0CC4A007690E9 /* GYZTextFieldCell.m in Sources */,
 				A68F400916F0E074007690E9 /* NSMutableArray+ReArrage.m in Sources */,
-				A637D4EE171255D500991E7D /* GYZRequestOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

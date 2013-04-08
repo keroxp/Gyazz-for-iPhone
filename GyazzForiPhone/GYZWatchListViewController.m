@@ -6,13 +6,17 @@
 //  Copyright (c) 2013年 桜井雄介. All rights reserved.
 //
 
-#import "GYZWatcingViewController.h"
+#import "GYZWatchListViewController.h"
+#import "GYZUserData.h"
+#import "GYZPage.h"
+#import "GYZPageViewController.h"
+#import "NSMutableArray+ReArrage.h"
 
-@interface GYZWatcingViewController ()
+@interface GYZWatchListViewController ()
 
 @end
 
-@implementation GYZWatcingViewController
+@implementation GYZWatchListViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,6 +31,8 @@
 {
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.title = NSLocalizedString(@"ウォッチリスト", );
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -40,82 +46,97 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [[GYZUserData watchList] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    GYZPage *p = [[GYZUserData watchList] objectAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@/%@",p.gyazz.name,p.title];
     
     // Configure the cell...
     
     return cell;
 }
 
-/*
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if ([[GYZUserData watchList] count] == 0) {
+        return @"登録されているページがありません。タイムライン→ページからページをウォッチリストに登録しましょう。";
+    }
+    return nil;
+}
+
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
+
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        [[GYZUserData watchList] removeObjectAtIndex:indexPath.row];
+        [GYZUserData saveWatchList];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
 
-/*
+
+
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
+    [[GYZUserData watchList] moveObjectFromIndex:fromIndexPath.row toIndex:toIndexPath.row];
+    [GYZUserData saveWatchList];
 }
-*/
-
-/*
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the item to be re-orderable.
     return YES;
 }
-*/
+
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    GYZPage *page = [[GYZUserData watchList] objectAtIndex:indexPath.row];
+    GYZPageViewController *pvc = [[GYZPageViewController alloc] initWithNibName:@"GYZPageViewController" bundle:nil];
+    [pvc setPage:page];
+    // ...
+    // Pass the selected object to the new view controller.
+    [self.navigationController pushViewController:pvc animated:YES];
 }
 
 @end

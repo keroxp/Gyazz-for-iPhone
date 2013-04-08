@@ -4,6 +4,7 @@ PODS:
 - BlocksKit (1.8.1):
   - libffi
 - JSONKit (1.5pre)
+- SVProgressHUD (0.9)
 - SVWebViewController (0.1)
 - libffi (3.0.11)
 
@@ -11,12 +12,14 @@ DEPENDENCIES:
 - AFNetworking
 - BlocksKit
 - JSONKit
+- SVProgressHUD
 - SVWebViewController
 
 SPEC CHECKSUMS:
   AFNetworking: 761a418233d280c1e0580bcb76ff9cb4c3073d17
   BlocksKit: 18102744fd7c44b54f1e54ce6ffe9258bcb5df81
   JSONKit: 409734ab3407fce90ef7eaa95d7168f38d9a6601
+  SVProgressHUD: 03d4845ec8e64591726428a08236c6a5489d45f8
   SVWebViewController: 2e3a367237bb7072e54e05c6eaa82d21a12ba676
   libffi: 8a1d9ba43c0c84b546b42c6f742714e73aa07ae1
 

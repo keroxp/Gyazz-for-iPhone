@@ -8,6 +8,6 @@
 
 #import "GYZTableViewController.h"
 
-@interface GYZWatcingViewController : GYZTableViewController
+@interface GYZWatchListViewController : GYZTableViewController
 
 @end

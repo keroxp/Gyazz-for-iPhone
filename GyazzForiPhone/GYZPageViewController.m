@@ -8,8 +8,10 @@
 
 #import "GYZPageViewController.h"
 #import "GYZPage.h"
+#import "GYZUserData.h"
 #import <AFNetworking.h>
 #import <BlocksKit.h>
+#import <SVProgressHUD.h>
 
 @interface GYZPageViewController ()
 
@@ -38,14 +40,16 @@
     UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd handler:^(id sender) {
         UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"ウォッチリストに追加", )];
         [as addButtonWithTitle:NSLocalizedString(@"追加する", ) handler:^{
-            
+            [[GYZUserData watchList] addObject:self.page];
+            [GYZUserData saveWatchList];
+            NSString *m = [NSString stringWithFormat:@"%@\nを追加しました",self.page.title];
+            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(m, )];
         }];
-        [as setCancelButtonWithTitle:NSLocalizedString(@"やめる", ) handler:^{
-            
-        }];
+        [as setCancelButtonWithTitle:NSLocalizedString(@"やめる", ) handler:NULL];
         [as setCancelButtonIndex:1];
         [as showInView:self.view];
     }];
+    [self.navigationItem setRightBarButtonItem:add];    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -228,6 +232,7 @@
                 [[UIApplication sharedApplication] openURL:request.URL];
             }else{
                 SVWebViewController *web = [[SVWebViewController alloc] initWithURL:request.URL];
+                [web setHidesBottomBarWhenPushed:YES];
                 [self.navigationController pushViewController:web animated:YES];
             }
         }

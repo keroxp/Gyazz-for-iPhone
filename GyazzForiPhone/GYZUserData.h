@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class GYZGyazz;
+@class GYZGyazz,GYZPage;
 @interface GYZUserData : NSObject
 
 /* 登録中のGyazzListを保存 */
@@ -19,5 +19,9 @@
 + (void)setCurrentGyazz:(GYZGyazz*)gyazz;
 /* 現在表示中のGyazz */
 + (GYZGyazz*)currentGyazz;
+/* ウォッチリスト */
++ (NSMutableArray*)watchList;
+/* ウォッチリストを保存 */
++ (void)saveWatchList;
 
 @end

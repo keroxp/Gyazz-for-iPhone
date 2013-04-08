@@ -7,8 +7,11 @@
 //
 
 #import "GYZUserData.h"
+#define kKeyForGyazzList @"GYAZZ_LIST"
+#define kKeyForWatchList @"WATCH_LIST"
 
 static NSMutableArray *gyazzList;
+static NSMutableArray *watchList;
 static GYZGyazz *currentGyazz;
 
 @implementation GYZUserData
@@ -30,26 +33,51 @@ static GYZGyazz *currentGyazz;
     currentGyazz = gyazz;
 }
 
-+ (void)saveGyazzList
++ (void)saveObject:(id)obj forKey:(NSString*)key
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSData *d = [NSKeyedArchiver archivedDataWithRootObject:gyazzList];
-    [defaults setObject:d forKey:@"list"];
+    NSData *d = [NSKeyedArchiver archivedDataWithRootObject:obj];
+    [defaults setObject:d forKey:key];    
+}
+
++ (NSMutableArray*)getDataForKey:(NSString*)key
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *d = [defaults objectForKey:key];
+    if (d) {
+        NSArray *a = [NSKeyedUnarchiver unarchiveObjectWithData:d];
+        return [a mutableCopy];
+    }else {
+        return [NSMutableArray array];
+    }
+}
+
++ (void)saveGyazzList
+{
+    [self saveObject:[self gyazzList] forKey:kKeyForGyazzList];
 }
 
 + (NSMutableArray *)gyazzList
 {
     if (!gyazzList) {
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSData *d = [defaults objectForKey:@"list"];
-        NSArray *a = [NSKeyedUnarchiver unarchiveObjectWithData:d];
-        gyazzList = [a mutableCopy];
-        if (!gyazzList) {
-            gyazzList = [NSMutableArray array];
-            [self saveGyazzList];
-        }
+        gyazzList = [self getDataForKey:kKeyForGyazzList];
+        [self saveGyazzList];
     }
     return gyazzList;
 }
 
++ (void)saveWatchList
+{
+    [self saveObject:[self watchList] forKey:kKeyForWatchList];
+}
+
+
++ (NSMutableArray *)watchList
+{
+    if (!watchList) {
+        watchList = [self getDataForKey:kKeyForWatchList];
+        [self saveWatchList];
+    }
+    return watchList;
+}
 @end

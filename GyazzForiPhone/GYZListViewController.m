@@ -84,6 +84,7 @@
     if (gyazz && gyazz != _gyazz) {
         [self setGyazz:gyazz];
     }
+    self.navigationItem.title = self.gyazz.name;
 }
 
 - (void)didReceiveMemoryWarning
@@ -226,7 +227,6 @@
     // Navigation logic may go here. Create and push another view controller.
     GYZPage *page = [[_pageListDividedByModififedDate objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     GYZPageViewController *pvc = [[GYZPageViewController alloc] initWithNibName:@"GYZPageViewController" bundle:nil];
-    [pvc setHidesBottomBarWhenPushed:YES];
     [pvc setPage:page];
      // ...
      // Pass the selected object to the new view controller.

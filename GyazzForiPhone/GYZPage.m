@@ -41,6 +41,19 @@
     return [NSString stringWithFormat:@"%@/%@",self.gyazz.absoluteURLPath,self.title];
 }
 
+
+- (BOOL)isEqual:(id)object
+{
+    if (object == self) {
+        return YES;
+    }else if ([object isKindOfClass:[GYZPage class]]){
+        if ([[(GYZPage*)object title] isEqualToString:self.title]) {
+            return YES;
+        }
+    }
+    return [super isEqual:object];
+}
+
 #pragma mark - NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)aCoder

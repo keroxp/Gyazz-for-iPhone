@@ -31,12 +31,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    // タイトルを設定
+    self.title = self.page.title;
+    // リフレッシュを追加
     UIRefreshControl *rc = [[UIRefreshControl alloc] init];
     [rc addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.webView.scrollView addSubview:rc];
+    // デリゲートを設定
+    [self.webView setDelegate:self];
+    // 影を消す
+    for(UIView *wview in [[[self.webView subviews] objectAtIndex:0] subviews]) {
+        if([wview isKindOfClass:[UIImageView class]]) { wview.hidden = YES; }
+    }
+    // 読み込み
     [self refresh:nil];
-    self.title = self.page.title;
+    
+    // ウォッチリストに追加ボタンを追加
     UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd handler:^(id sender) {
         UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"ウォッチリストに追加", )];
         [as addButtonWithTitle:NSLocalizedString(@"追加する", ) handler:^{
@@ -50,12 +60,6 @@
         [as showInView:self.view];
     }];
     [self.navigationItem setRightBarButtonItem:add];    
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    [self.webView setDelegate:self];
 }
 
 - (void)refresh:(UIRefreshControl*)sender
@@ -74,7 +78,7 @@
         [SVProgressHUD dismiss];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        NSLog(@"%@",str);
+//        $(@"%@",str);
         [self.webView loadHTMLString:str baseURL:[NSURL URLWithString:self.page.absoluteString]];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [SVProgressHUD dismiss];
@@ -124,7 +128,7 @@
         line = [line stringByReplacingOccurrencesOfString:@"]]]" withString:@"</b>"];
         NSError *e = nil;
         
-        NSLog(@"brefore : %@",line);
+//        $(@"brefore : %@",line);
         
         NSString *linkPattern = @"\\[\\[(.+)\\]\\]";
         e = nil;
@@ -137,7 +141,7 @@
         
         NSArray *matches = [reg matchesInString:line options:0 range:NSMakeRange(0, line.length)];
         
-        $(@"matches : %i",matches.count);
+//        $(@"matches : %i",matches.count);
         for (NSTextCheckingResult *tcr in matches) {
             
             // マッチから[[と]]を覗いた範囲
@@ -146,7 +150,7 @@
             // innerだけにトリミング
             NSString *link = [line substringWithRange:range];
             NSString *linkText = [link copy];
-            $(@"link text : %@",linkText);
+//            $(@"link text : %@",linkText);
             // URLリンク
             NSString *urlLinkPat = @"http:\\/\\/.+";
             // Gyazz内部リンク
@@ -199,11 +203,11 @@
                 NSString *a = [NSString stringWithFormat:@"<a href=\"%@\">%@</a>",link,linkText];
                 replace = a;
             }
-            $(@"replace : %@",replace);
+//            $(@"replace : %@",replace);
             line = [line stringByReplacingCharactersInRange:NSMakeRange(range.location-2, range.length+4) withString:replace];
         }
         line = [NSString stringWithFormat:@"<div id=\"line-%i\" class=\"line\">%@</div>",i,line];
-        NSLog(@"after : %@",line);
+//        $(@"after : %@",line);
         [html appendFormat:@"%@",line];
     }
     return html;
@@ -224,8 +228,11 @@
 {
     switch (navigationType) {
         case UIWebViewNavigationTypeLinkClicked: {
+            // URLをデコード
             NSString *urlstr = [request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            // 同じGyazzの中への遷移か？
             if ([urlstr rangeOfString:self.page.gyazz.absoluteURLPath].location != NSNotFound) {
+                // ページのタイトルを取得
                 NSString *pat = [NSString stringWithFormat:@"%@/(.+)",self.page.gyazz.absoluteURLPath];
                 NSRegularExpression *reg = [NSRegularExpression regularExpressionWithPattern:pat options:0 error:nil];
                 NSTextCheckingResult *tr = [reg firstMatchInString:urlstr
@@ -233,14 +240,17 @@
                                                              range:NSMakeRange(0,urlstr.length)];
                 NSRange r = [tr rangeAtIndex:1];
                 NSString *title = [urlstr substringWithRange:r];;
+                // ナビゲーションを進める
                 GYZPageViewController *pvc = [[GYZPageViewController alloc] initWithNibName:@"GYZPageViewController" bundle:nil];
                 GYZPage *page = [[GYZPage alloc] initWithGyazz:self.page.gyazz title:title modtime:0];
                 [pvc setPage:page];
                 [self.navigationController pushViewController:pvc animated:YES];
                 return NO;
             }else if ([urlstr rangeOfString:@"twitter://"].location != NSNotFound){
+                // Twitterのリンクならアプリでひらく
                 [[UIApplication sharedApplication] openURL:request.URL];
             }else{
+                // 通常のwebページなら別のViewControllerで遷移
                 SVWebViewController *web = [[SVWebViewController alloc] initWithURL:request.URL];
                 [web setHidesBottomBarWhenPushed:YES];
                 [self.navigationController pushViewController:web animated:YES];

@@ -14,8 +14,6 @@
 
 @interface GYZGyazzListViewController ()
 
-- (IBAction)handleAdd:(id)sender;
-
 @end
 
 @implementation GYZGyazzListViewController

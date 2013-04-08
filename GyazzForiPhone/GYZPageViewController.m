@@ -59,6 +59,9 @@
         [as setCancelButtonIndex:1];
         [as showInView:self.view];
     }];
+    if ([[GYZUserData watchList] containsObject:self.page]) {
+        [add setEnabled:YES];
+    }
     [self.navigationItem setRightBarButtonItem:add];    
 }
 

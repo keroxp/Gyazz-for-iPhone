@@ -34,7 +34,7 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     NSString *buttontitle = NSLocalizedString(@"リスト",);
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:buttontitle style:UIBarButtonItemStyleBordered handler:^(id sender) {
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:buttontitle style:UIBarButtonItemStyleBordered handler:^(id sender) {
         [self.tabBarController performSegueWithIdentifier:@"showGyazzList" sender:self];
     }];
 }

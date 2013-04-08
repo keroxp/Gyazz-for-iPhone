@@ -11,7 +11,7 @@
 #import "GYZPage.h"
 #import "GYZUserData.h"
 #import <JSONKit.h>
-
+#import <SVProgressHUD.h>
 @interface GYZListViewController ()
 {
     /* ページリスト。 */
@@ -98,7 +98,9 @@
 
 - (void)refreshList:(UIRefreshControl *)sender
 {
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"読込中...", )];
     [_gyazz getPageListWithWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [SVProgressHUD dismiss];
         [sender endRefreshing];
         NSString *jsonstr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSError *e = nil;
@@ -140,6 +142,7 @@
         _pageListDividedByModififedDate = ma;
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [SVProgressHUD dismiss];
         [sender endRefreshing];
     }];
 }

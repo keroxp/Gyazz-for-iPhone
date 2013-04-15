@@ -14,7 +14,9 @@
 #import "GYZNavigationStackViewController.h"
 
 @interface GYZPageViewController ()
-
+{
+    NSURL *_URLToMove;
+}
 @end
 
 @implementation GYZPageViewController
@@ -46,7 +48,7 @@
     // 読み込み
     [self refresh:nil];
     
-    // ウォッチリストに追加ボタンを追加
+    // チェックリストに追加ボタンを追加
     UIButton *add = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 38, 31)];
     if ([[GYZUserData watchList] containsObject:self.page]) {
         [add setImage:[UIImage imageNamed:@"addicon_selected"] forState:UIControlStateNormal];
@@ -110,6 +112,7 @@
         [[challenge sender] useCredential:cr forAuthenticationChallenge:challenge];
     }];
     [opr setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [SVProgressHUD dismiss];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
 //        $(@"%@",str);
@@ -154,7 +157,7 @@
 - (NSString*)parsePageText:(NSString*)text
 {
     // 改行で分割
-    NSMutableString *html = [NSMutableString string];
+    NSMutableString *html = [NSMutableString string];    
     NSArray *lines = [text componentsSeparatedByString:@"\n"];
     for (int i = 0, max = lines.count ; i < max ; i++) {
         NSString *line = [lines objectAtIndex:i];
@@ -253,15 +256,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    [SVProgressHUD dismiss];
-}
-
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     $(@"%@",error);
-    [SVProgressHUD dismiss];
+    [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"読み込みエラー", )];
 
 }
 
@@ -269,6 +267,7 @@
 {
     switch (navigationType) {
         case UIWebViewNavigationTypeLinkClicked: {
+            _URLToMove = [request URL];
             // URLをデコード
             NSString *urlstr = [request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             // 同じGyazzの中への遷移か？
@@ -292,9 +291,8 @@
                 [[UIApplication sharedApplication] openURL:request.URL];
             }else{
                 // 通常のwebページなら別のViewControllerで遷移
-                SVWebViewController *web = [[SVWebViewController alloc] initWithURL:request.URL];
-                [web setHidesBottomBarWhenPushed:YES];
-                [self.navigationController pushViewController:web animated:YES];
+                SVModalWebViewController *web = [[SVModalWebViewController alloc] initWithURL:request.URL];
+                [self presentViewController:web animated:YES completion:NULL];
             }
         }
             return NO;

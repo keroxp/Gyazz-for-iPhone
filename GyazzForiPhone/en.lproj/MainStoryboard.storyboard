@@ -61,7 +61,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="Txc-ht-MXL">
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="ページを検索" id="Txc-ht-MXL">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
@@ -208,11 +208,11 @@
             </objects>
             <point key="canvasLocation" x="650" y="-261"/>
         </scene>
-        <!--Navigation Controller - ウォッチリスト-->
+        <!--Navigation Controller - チェックリスト-->
         <scene sceneID="ReP-Ma-B35">
             <objects>
                 <navigationController id="Tpm-dZ-fqb" customClass="GYZNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="ウォッチリスト" id="3Ju-qU-qX4"/>
+                    <tabBarItem key="tabBarItem" title="チェックリスト" id="3Ju-qU-qX4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dCc-mF-luf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

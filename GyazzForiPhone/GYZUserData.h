@@ -19,9 +19,9 @@
 + (void)setCurrentGyazz:(GYZGyazz*)gyazz;
 /* 現在表示中のGyazz */
 + (GYZGyazz*)currentGyazz;
-/* ウォッチリスト */
+/* チェックリスト */
 + (NSMutableArray*)watchList;
-/* ウォッチリストを保存 */
+/* チェックリストを保存 */
 + (void)saveWatchList;
 
 @end

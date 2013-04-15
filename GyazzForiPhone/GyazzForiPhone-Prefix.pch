@@ -22,5 +22,7 @@
 #import <SVModalWebViewController.h>
 #import <FPPopoverController.h>
 #import <SVProgressHUD.h>
+#import <SVWebViewController.h>
+#import <SVModalWebViewController.h>
 
 #endif

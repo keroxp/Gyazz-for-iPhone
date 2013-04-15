@@ -63,6 +63,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     _filterdContents = [NSMutableArray array];
     _sectionNames = @[@"5分以内",@"15分以内",@"30分以内",@"1時間以内",@"2時間以内",@"6時間以内",@"12時間以内",@"1日以内",@"3日以内",@"4日以前"];
+    
     UIRefreshControl *rc = [[UIRefreshControl alloc] init];
     [rc addTarget:self action:@selector(refreshList:) forControlEvents:UIControlEventValueChanged];
     [self setRefreshControl:rc];
@@ -105,6 +106,17 @@
     }
     [_titleButton setTitle:gyazz.name forState:UIControlStateNormal];
 }
+
+//- (void)viewDidAppear:(BOOL)animated
+//{
+//    [super viewDidAppear:animated];
+//    [self.navigationItem setTitleView:nil];
+//    for (UITabBarItem *item in self.tabBarController.tabBar.items) {
+//        [item setFinishedSelectedImage:nil withFinishedUnselectedImage:nil];
+//        [item setTitle:nil];
+//    }
+//    NSLog(@"hoge");
+//}
 
 - (void)didReceiveMemoryWarning
 {

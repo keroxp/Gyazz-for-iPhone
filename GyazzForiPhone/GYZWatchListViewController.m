@@ -31,7 +31,7 @@
 {
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.title = NSLocalizedString(@"ウォッチリスト", );
+    self.title = NSLocalizedString(@"チェックリスト", );
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -81,7 +81,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if ([[GYZUserData watchList] count] == 0) {
-        return @"登録されているページがありません。タイムライン→ページからページをウォッチリストに登録しましょう。";
+        return @"登録されているページがありません。タイムライン→ページからページをチェックリストに登録しましょう。";
     }
     return nil;
 }

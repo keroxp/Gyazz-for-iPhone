@@ -105,16 +105,21 @@
     [_titleButton setTitle:gyazz.name forState:UIControlStateNormal];
 }
 
-//- (void)viewDidAppear:(BOOL)animated
-//{
-//    [super viewDidAppear:animated];
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    // なければ登録させる
+    
 //    [self.navigationItem setTitleView:nil];
 //    for (UITabBarItem *item in self.tabBarController.tabBar.items) {
 //        [item setFinishedSelectedImage:nil withFinishedUnselectedImage:nil];
 //        [item setTitle:nil];
 //    }
-//    NSLog(@"hoge");
-//}
+    
+    if ([[GYZUserData gyazzList] count] == 0) {
+        [self performSegueWithIdentifier:@"showGyazzList" sender:self];
+    }
+}
 
 - (void)didReceiveMemoryWarning
 {

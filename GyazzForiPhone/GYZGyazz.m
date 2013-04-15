@@ -118,7 +118,7 @@
             failure(operation,error);
         }
     }];
-    // Basic認証用のコールバックブロック
+    // Basic認証用のコールバックブロック    
     [op setAuthenticationChallengeBlock:^(NSURLConnection *connection, NSURLAuthenticationChallenge *challenge) {
         
         if ([challenge proposedCredential]) {
@@ -127,6 +127,12 @@
             [connection cancel];
             [self setUsername:nil];
             [self setPassword:nil];
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ユーザ名もしくはパスワードが違います", ) message:nil];
+            [av setCancelButtonWithTitle:@"OK" handler:^{
+                [self _accessToURL:URL success:success failure:failure];
+                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+            }];
+            [av show];
         } else {
             if (self.username.length && self.password.length) {
                 $(@"id pass あり");

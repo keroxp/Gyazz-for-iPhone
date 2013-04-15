@@ -54,6 +54,8 @@
     for(UIView *wview in [[[self.webView subviews] objectAtIndex:0] subviews]) {
         if([wview isKindOfClass:[UIImageView class]]) { wview.hidden = YES; }
     }
+    // スクロール速度を上げる
+    [self.webView.scrollView setDecelerationRate:UIScrollViewDecelerationRateNormal];
     // 読み込み
     [self refresh:nil];
     

@@ -37,15 +37,6 @@
     
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    // なければ登録させる
-    if ([[GYZUserData gyazzList] count] == 0) {
-        [self performSegueWithIdentifier:@"showGyazzList" sender:self];
-    }
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

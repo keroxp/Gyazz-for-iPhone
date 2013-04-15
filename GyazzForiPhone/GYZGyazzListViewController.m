@@ -143,12 +143,22 @@
     return cell;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if (section == 0 && [[GYZUserData gyazzList] count] == 0) {
-        return NSLocalizedString(@"登録してあるGyazzがありません。下の追加ボタンからGyazzを追加しましょう。", );
+        return NSLocalizedString(@"登録してあるGyazzがありません。", );
     }
     return nil;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
+{
+    if (section == 2) {
+        // バージョン
+        NSString *v =  [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleVersion"];
+        return [NSString stringWithFormat:@"Gyazz for iPhone ver %@\n© Yusuke Sakurai & Keio University Masui Toshiyuki Laboratory All Rights Reserved.",v];
+    }
+    return [super tableView:tableView titleForFooterInSection:section];
 }
 
 

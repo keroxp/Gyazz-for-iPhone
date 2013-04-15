@@ -6,12 +6,12 @@
 //  Copyright (c) 2013年 桜井雄介. All rights reserved.
 //
 
+#import <SVProgressHUD.h>
 #import "GYZPageViewController.h"
 #import "GYZPage.h"
 #import "GYZUserData.h"
-#import <AFNetworking.h>
-#import <BlocksKit.h>
-#import <SVProgressHUD.h>
+#import "GYZNavigationTitleView.h"
+#import "GYZNavigationStackViewController.h"
 
 @interface GYZPageViewController ()
 
@@ -82,6 +82,19 @@
     } forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *item_ = [[UIBarButtonItem alloc] initWithCustomView:b];
     [self.navigationItem setLeftBarButtonItem:item_];
+    
+    // 履歴
+    GYZNavigationTitleView *title = [[GYZNavigationTitleView alloc] initWithTitle:self.page.title];
+    [title addEventHandler:^(id sender) {
+        [self performSegueWithIdentifier:@"showStack" sender:self];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [self.navigationItem setTitleView:title];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    GYZNavigationStackViewController *vc = (GYZNavigationStackViewController*)[[segue destinationViewController] topViewController];
+    [vc setController:self.navigationController];
 }
 
 - (void)refresh:(UIRefreshControl*)sender
@@ -269,7 +282,8 @@
                 NSRange r = [tr rangeAtIndex:1];
                 NSString *title = [urlstr substringWithRange:r];;
                 // ナビゲーションを進める
-                GYZPageViewController *pvc = [[GYZPageViewController alloc] initWithNibName:@"GYZPageViewController" bundle:nil];
+                UIStoryboard *st = [UIStoryboard storyboardWithName:@"PageStoryboard" bundle:[NSBundle mainBundle]];
+                GYZPageViewController *pvc = [st instantiateInitialViewController];
                 GYZPage *page = [[GYZPage alloc] initWithGyazz:self.page.gyazz title:title modtime:0];
                 [pvc setPage:page];
                 [self.navigationController pushViewController:pvc animated:YES];

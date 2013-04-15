@@ -132,7 +132,8 @@
 {
     // Navigation logic may go here. Create and push another view controller.
     GYZPage *page = [[GYZUserData watchList] objectAtIndex:indexPath.row];
-    GYZPageViewController *pvc = [[GYZPageViewController alloc] initWithNibName:@"GYZPageViewController" bundle:nil];
+    UIStoryboard *st = [UIStoryboard storyboardWithName:@"PageStoryboard" bundle:[NSBundle mainBundle]];
+    GYZPageViewController *pvc = [st instantiateInitialViewController];
     [pvc setPage:page];
     [pvc setHidesBottomBarWhenPushed:YES];
     // ...

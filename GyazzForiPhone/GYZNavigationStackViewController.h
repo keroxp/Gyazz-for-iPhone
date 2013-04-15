@@ -10,8 +10,8 @@
 
 @interface GYZNavigationStackViewController : UITableViewController
 
-@property ()  NSArray *viewControllers;
+@property () UINavigationController *controller;
 
-- (id)initWithStyle:(UITableViewStyle)style viewControllerStack:(NSArray*)stack;
+- (id)initWithStyle:(UITableViewStyle)style navigationController:(UINavigationController*)controller;
 
 @end

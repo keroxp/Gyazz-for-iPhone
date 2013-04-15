@@ -21,4 +21,6 @@
 #import <AFNetworking.h>
 #import <SVModalWebViewController.h>
 #import <FPPopoverController.h>
+#import <SVProgressHUD.h>
+
 #endif

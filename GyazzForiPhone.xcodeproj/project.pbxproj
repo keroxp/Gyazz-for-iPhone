@@ -30,6 +30,7 @@
 		A6699BFC171BF3590013B8CE /* GYZNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6699BFB171BF3590013B8CE /* GYZNavigationTitleView.m */; };
 		A6699C00171BF9450013B8CE /* addicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6699BFE171BF9450013B8CE /* addicon@2x.png */; };
 		A6699C02171BFBBC0013B8CE /* addicon_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6699C01171BFBBC0013B8CE /* addicon_selected@2x.png */; };
+		A6699C04171C02AC0013B8CE /* PageStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6699C03171C02AC0013B8CE /* PageStoryboard.storyboard */; };
 		A68F3FA716F0A597007690E9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F3FA616F0A597007690E9 /* UIKit.framework */; };
 		A68F3FA916F0A597007690E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F3FA816F0A597007690E9 /* Foundation.framework */; };
 		A68F3FAB16F0A597007690E9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F3FAA16F0A597007690E9 /* CoreGraphics.framework */; };
@@ -48,7 +49,6 @@
 		A68F3FEB16F0AA25007690E9 /* GYZGyazz.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FEA16F0AA25007690E9 /* GYZGyazz.m */; };
 		A68F3FEF16F0B07B007690E9 /* GYZPage.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FEE16F0B07B007690E9 /* GYZPage.m */; };
 		A68F3FF316F0B55C007690E9 /* GYZPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FF116F0B55C007690E9 /* GYZPageViewController.m */; };
-		A68F3FF416F0B55C007690E9 /* GYZPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A68F3FF216F0B55C007690E9 /* GYZPageViewController.xib */; };
 		A68F3FF716F0B77E007690E9 /* GYZUserData.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FF616F0B77E007690E9 /* GYZUserData.m */; };
 		A68F3FFA16F0CA86007690E9 /* GYZTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FF916F0CA86007690E9 /* GYZTableViewController.m */; };
 		A68F3FFF16F0CC4A007690E9 /* GYZTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FFE16F0CC4A007690E9 /* GYZTextFieldCell.m */; };
@@ -86,6 +86,7 @@
 		A6699BFB171BF3590013B8CE /* GYZNavigationTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZNavigationTitleView.m; sourceTree = "<group>"; };
 		A6699BFE171BF9450013B8CE /* addicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addicon@2x.png"; sourceTree = "<group>"; };
 		A6699C01171BFBBC0013B8CE /* addicon_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addicon_selected@2x.png"; sourceTree = "<group>"; };
+		A6699C03171C02AC0013B8CE /* PageStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PageStoryboard.storyboard; sourceTree = "<group>"; };
 		A68F3FA316F0A597007690E9 /* GyazzForiPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GyazzForiPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68F3FA616F0A597007690E9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A68F3FA816F0A597007690E9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -116,7 +117,6 @@
 		A68F3FEE16F0B07B007690E9 /* GYZPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZPage.m; sourceTree = "<group>"; };
 		A68F3FF016F0B55C007690E9 /* GYZPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZPageViewController.h; sourceTree = "<group>"; };
 		A68F3FF116F0B55C007690E9 /* GYZPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZPageViewController.m; sourceTree = "<group>"; };
-		A68F3FF216F0B55C007690E9 /* GYZPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GYZPageViewController.xib; sourceTree = "<group>"; };
 		A68F3FF516F0B77E007690E9 /* GYZUserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZUserData.h; sourceTree = "<group>"; };
 		A68F3FF616F0B77E007690E9 /* GYZUserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZUserData.m; sourceTree = "<group>"; };
 		A68F3FF816F0CA86007690E9 /* GYZTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZTableViewController.h; sourceTree = "<group>"; };
@@ -176,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				A68F3FBE16F0A597007690E9 /* MainStoryboard.storyboard */,
+				A6699C03171C02AC0013B8CE /* PageStoryboard.storyboard */,
 				A68F3FE816F0A9DD007690E9 /* Singletons */,
 				A68F3FEC16F0AA28007690E9 /* Models */,
 				A68F400016F0CC60007690E9 /* Views */,
@@ -244,7 +245,6 @@
 				A68F3FF116F0B55C007690E9 /* GYZPageViewController.m */,
 				A6699BF7171BF2760013B8CE /* GYZNavigationStackViewController.h */,
 				A6699BF8171BF2770013B8CE /* GYZNavigationStackViewController.m */,
-				A68F3FF216F0B55C007690E9 /* GYZPageViewController.xib */,
 				A649657F171A2F6100D95608 /* GYZPageEditViewController.h */,
 				A6496580171A2F6100D95608 /* GYZPageEditViewController.m */,
 				A6496581171A2F6100D95608 /* GYZPageEditViewController.xib */,
@@ -357,7 +357,6 @@
 				A68F3FBB16F0A597007690E9 /* Default@2x.png in Resources */,
 				A68F3FBD16F0A597007690E9 /* Default-568h@2x.png in Resources */,
 				A68F3FC016F0A597007690E9 /* MainStoryboard.storyboard in Resources */,
-				A68F3FF416F0B55C007690E9 /* GYZPageViewController.xib in Resources */,
 				A68F400616F0DE9D007690E9 /* sonamonohanai.jpg in Resources */,
 				A63543E916FD69B500C50ED0 /* page.html in Resources */,
 				A6496583171A2F6100D95608 /* GYZPageEditViewController.xib in Resources */,
@@ -375,6 +374,7 @@
 				A6699BF6171BEEAE0013B8CE /* backicon@2x.png in Resources */,
 				A6699C00171BF9450013B8CE /* addicon@2x.png in Resources */,
 				A6699C02171BFBBC0013B8CE /* addicon_selected@2x.png in Resources */,
+				A6699C04171C02AC0013B8CE /* PageStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -231,7 +231,8 @@
         page = [_filterdContents objectAtIndex:indexPath.row];
     }
 
-    GYZPageViewController *pvc = [[GYZPageViewController alloc] initWithNibName:@"GYZPageViewController" bundle:nil];
+    UIStoryboard *st = [UIStoryboard storyboardWithName:@"PageStoryboard" bundle:[NSBundle mainBundle]];
+    GYZPageViewController *pvc = [st instantiateInitialViewController];
     [pvc setPage:page];
     [pvc setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:pvc animated:YES];

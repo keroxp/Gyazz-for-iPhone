@@ -9,6 +9,9 @@
 #import "GYZNavigationStackViewController.h"
 
 @interface GYZNavigationStackViewController ()
+{
+    UINavigationController *_controller;
+}
 
 @end
 
@@ -23,10 +26,10 @@
     return self;
 }
 
-- (id)initWithStyle:(UITableViewStyle)style viewControllerStack:(NSArray *)stack
+- (id)initWithStyle:(UITableViewStyle)style navigationController:(UINavigationController *)controller
 {
     if (self = [super initWithStyle:style]) {
-        
+        _controller = controller;
     }
     return self;
 }
@@ -40,6 +43,7 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.title = NSLocalizedString(@"ページ履歴", );
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,26 +57,30 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.viewControllers.count;
+    if (section == 0) {
+        return 1;
+    }else{
+        return _controller.viewControllers.count - 1;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (indexPath.section == 0) {
+        cell.textLabel.text = NSLocalizedString(@"トップヘ戻る", );
+    }else{
+        UIViewController *vc = [_controller.viewControllers objectAtIndex:indexPath.row + 1];
+        cell.textLabel.text = vc.title;   
     }
-    
-    UIViewController *vc = [self.viewControllers objectAtIndex:indexPath.row];
-    cell.textLabel.text = vc.title;
-    
     // Configure the cell...
     
     return cell;
@@ -121,13 +129,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    if (indexPath.section == 0) {
+        [_controller popToRootViewControllerAnimated:YES];
+    }else{
+        UIViewController *vc = [_controller.viewControllers objectAtIndex:indexPath.row + 1];
+        [_controller popToViewController:vc animated:YES];
+    }
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
+- (IBAction)handleCancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
 @end

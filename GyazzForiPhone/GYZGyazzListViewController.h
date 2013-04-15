@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GYZGyazzListViewController : UITableViewController
+@interface GYZGyazzListViewController : UITableViewController <MFMailComposeViewControllerDelegate>
 
 @end

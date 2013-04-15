@@ -16,7 +16,6 @@
 @interface GYZTableViewController ()
 {
     UIImageView *_sectionbg;
-    FPPopoverController *_popover;
 }
 @end
 

@@ -81,7 +81,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if ([[GYZUserData watchList] count] == 0) {
-        return @"登録されているページがありません。タイムライン→ページからページをチェックリストに登録しましょう。";
+        return @"登録されているページがありません。";
     }
     return nil;
 }
@@ -132,9 +132,7 @@
 {
     // Navigation logic may go here. Create and push another view controller.
     GYZPage *page = [[GYZUserData watchList] objectAtIndex:indexPath.row];
-    UIStoryboard *st = [UIStoryboard storyboardWithName:@"PageStoryboard" bundle:[NSBundle mainBundle]];
-    GYZPageViewController *pvc = [st instantiateInitialViewController];
-    [pvc setPage:page];
+    GYZPageViewController *pvc = [GYZPageViewController pageViewControllerWithPage:page enableCheckButton:YES];
     [pvc setHidesBottomBarWhenPushed:YES];
     // ...
     // Pass the selected object to the new view controller.

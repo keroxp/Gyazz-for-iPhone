@@ -21,6 +21,15 @@
 
 @implementation GYZPageViewController
 
++ (GYZPageViewController *)pageViewControllerWithPage:(GYZPage *)page enableCheckButton:(BOOL)checkButton
+{
+    UIStoryboard *s = [UIStoryboard storyboardWithName:@"PageStoryboard" bundle:[NSBundle mainBundle]];
+    GYZPageViewController *p = [s instantiateInitialViewController];
+    [p setPage:page];
+    [p setCheckButtonEnabled:checkButton];
+    return p;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -48,31 +57,34 @@
     // 読み込み
     [self refresh:nil];
     
-    // チェックリストに追加ボタンを追加
-    UIButton *add = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 38, 31)];
-    if ([[GYZUserData watchList] containsObject:self.page]) {
-        [add setImage:[UIImage imageNamed:@"addicon_selected"] forState:UIControlStateNormal];
-    }else{
-        [add setImage:[UIImage imageNamed:@"addicon"] forState:UIControlStateNormal];
-    }
-    [add addEventHandler:^(id sender) {
+    if (self.isCheckButtonEnabled) {
+        // チェックリストに追加ボタンを追加
+        UIButton *add = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 38, 31)];
+        __block UIButton *__add = add;
         if ([[GYZUserData watchList] containsObject:self.page]) {
-            NSString *m = [NSString stringWithFormat:@"%@\nチェックリストから削除しました",self.page.title];
-            [[GYZUserData watchList] removeObject:self.page];
-            [GYZUserData saveWatchList];
-            [SVProgressHUD showErrorWithStatus:NSLocalizedString(m, )];
-            [add setImage:[UIImage imageNamed:@"addicon"] forState:UIControlStateNormal];
-        }else{
-            NSString *m = [NSString stringWithFormat:@"%@\nチェックリストに追加しました",self.page.title];
-            [[GYZUserData watchList] addObject:self.page];
-            [GYZUserData saveWatchList];
-            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(m, )];
             [add setImage:[UIImage imageNamed:@"addicon_selected"] forState:UIControlStateNormal];
+        }else{
+            [add setImage:[UIImage imageNamed:@"addicon"] forState:UIControlStateNormal];
         }
-    } forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:add];
-    [self.navigationItem setRightBarButtonItem:item];
+        [add addEventHandler:^(id sender) {
+            if ([[GYZUserData watchList] containsObject:self.page]) {
+                NSString *m = [NSString stringWithFormat:@"%@\nチェックリストから削除しました",self.page.title];
+                [[GYZUserData watchList] removeObject:self.page];
+                [GYZUserData saveWatchList];
+                [SVProgressHUD showErrorWithStatus:NSLocalizedString(m, )];
+                [__add setImage:[UIImage imageNamed:@"addicon"] forState:UIControlStateNormal];
+            }else{
+                NSString *m = [NSString stringWithFormat:@"%@\nチェックリストに追加しました",self.page.title];
+                [[GYZUserData watchList] addObject:self.page];
+                [GYZUserData saveWatchList];
+                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(m, )];
+                [__add setImage:[UIImage imageNamed:@"addicon_selected"] forState:UIControlStateNormal];
+            }
+        } forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:add];
+        [self.navigationItem setRightBarButtonItem:item];
+    }
+
     
     // 戻るボタン
     [self.navigationItem setHidesBackButton:YES];

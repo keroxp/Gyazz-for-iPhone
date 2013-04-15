@@ -14,8 +14,13 @@
 @interface GYZPageViewController : UIViewController
 <UIWebViewDelegate,NSURLConnectionDelegate>
 
+/*  */
++ (GYZPageViewController*)pageViewControllerWithPage:(GYZPage*)page enableCheckButton:(BOOL)checkButton;
+
 /* WevView */
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+/* Chcek Button */
+@property (assign, getter = isCheckButtonEnabled) BOOL checkButtonEnabled;
 
 /* 表示するページ */
 @property () GYZPage *page;

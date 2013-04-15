@@ -20,7 +20,6 @@
 #import <BlocksKit.h>
 #import <AFNetworking.h>
 #import <SVModalWebViewController.h>
-#import <FPPopoverController.h>
 #import <SVProgressHUD.h>
 #import <SVWebViewController.h>
 #import <SVModalWebViewController.h>

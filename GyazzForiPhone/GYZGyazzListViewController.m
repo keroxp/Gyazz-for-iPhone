@@ -9,10 +9,13 @@
 #import "GYZGyazzListViewController.h"
 #import "GYZUserData.h"
 #import "GYZGyazz.h"
+#import "GYZPage.h"
 #import "NSMutableArray+ReArrage.h"
 #import "GYZTabBarController.h"
+#import "GYZPageViewController.h"
 
 @interface GYZGyazzListViewController ()
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 
 @end
 
@@ -43,6 +46,19 @@
 {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
+    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    [self configureButton];
+    
+}
+
+- (void)configureButton
+{
+    // gyazzが0なら消させない
+    if ([[GYZUserData gyazzList] count] == 0) {
+        [self.cancelButton setEnabled:NO];
+    }else{
+        [self.cancelButton setEnabled:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,7 +76,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -73,6 +89,9 @@
         case 1:
             // 追加
             return 1;
+        case 2:
+            // Gyazzとは？ + 著作権情報 + フィードバック
+            return 3;
         default:
             break;
     }
@@ -98,6 +117,23 @@
             cell = [tableView dequeueReusableCellWithIdentifier:SettingCellIdentifier];
             cell.textLabel.text = NSLocalizedString(@"新しいGyazzを追加...", );
             break;
+        case 2:
+            switch (indexPath.row) {
+                case 0:
+                    cell = [tableView dequeueReusableCellWithIdentifier:@"AboutCell"];
+                    cell.textLabel.text = NSLocalizedString(@"Gyazzとは？", );
+                    break;
+                case 1:
+                    cell = [tableView dequeueReusableCellWithIdentifier:@"LicenceCell"];
+                    cell.textLabel.text = NSLocalizedString(@"著作権情報", );
+                    break;
+                case 2:
+                    cell = [tableView dequeueReusableCellWithIdentifier:@"FeedbackCell"];
+                    cell.textLabel.text = NSLocalizedString(@"フィードバック", );
+                    break;
+                default:
+                    break;
+            }
         default:
             break;
     }
@@ -110,7 +146,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
     if (section == 0 && [[GYZUserData gyazzList] count] == 0) {
-        return NSLocalizedString(@"登録してあるGyazzがありません。左上の追加ボタンからGyazzを追加しましょう。", );
+        return NSLocalizedString(@"登録してあるGyazzがありません。下の追加ボタンからGyazzを追加しましょう。", );
     }
     return nil;
 }
@@ -131,6 +167,7 @@
         // Delete the row from the data source
         [[GYZUserData gyazzList] removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self configureButton];
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -160,7 +197,36 @@
         GYZGyazz *g = [[GYZUserData gyazzList] objectAtIndex:indexPath.row];
         [GYZUserData setCurrentGyazz:g];
         [self dismissViewControllerAnimated:YES completion:NULL];
+    }else if(indexPath.section == 2){
+        switch (indexPath.row) {
+            case 0: {
+                // アバウト
+                GYZGyazz *gyazz = [[GYZGyazz alloc] initWithName:@"Gyazz"];
+                GYZPage *page = [[GYZPage alloc] initWithGyazz:gyazz title:@"目次" modtime:0];
+                GYZPageViewController *p = [GYZPageViewController pageViewControllerWithPage:page enableCheckButton:NO];
+                [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbg"] forBarMetrics:UIBarMetricsDefault];
+                [self.navigationController pushViewController:p animated:YES];
+                break;
+            }
+            case 1:
+                // メール
+                if ([MFMailComposeViewController canSendMail]) {
+                    MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+                    [mc setSubject:NSLocalizedString(@"【Gyazz】フィードバック", )];
+                    [mc setMailComposeDelegate:self];
+                    [mc setToRecipients:@[@"kerokerokerop@gmail.com"]];
+                    [self presentViewController:mc animated:YES completion:NULL];
+                }
+                break;
+            default:
+                break;
+        }
     }
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    [controller dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end

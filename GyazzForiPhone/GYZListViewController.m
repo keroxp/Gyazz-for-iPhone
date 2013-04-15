@@ -28,8 +28,6 @@
     UIRefreshControl *_refreshControl;
     /* フィルタ */
     NSMutableArray *_filterdContents;
-    /* Popover */
-    FPPopoverController *_popover;
     /* title */
     UIButton *_titleButton;
 }
@@ -243,9 +241,7 @@
         page = [_filterdContents objectAtIndex:indexPath.row];
     }
 
-    UIStoryboard *st = [UIStoryboard storyboardWithName:@"PageStoryboard" bundle:[NSBundle mainBundle]];
-    GYZPageViewController *pvc = [st instantiateInitialViewController];
-    [pvc setPage:page];
+    GYZPageViewController *pvc = [GYZPageViewController pageViewControllerWithPage:page enableCheckButton:YES];
     [pvc setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:pvc animated:YES];
 }

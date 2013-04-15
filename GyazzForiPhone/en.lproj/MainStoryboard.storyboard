@@ -123,7 +123,7 @@
                                 </view>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AddCell" id="LuV-XH-raH">
-                                <rect key="frame" x="0.0" y="91" width="320" height="45"/>
+                                <rect key="frame" x="0.0" y="91" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
@@ -133,6 +133,36 @@
                                 <connections>
                                     <segue destination="IFL-5w-nwM" kind="push" id="0CG-Vk-eXe"/>
                                 </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AboutCell" id="8J0-wV-Cn8">
+                                <rect key="frame" x="0.0" y="135" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="LicenceCell" id="g2m-Gi-zVK">
+                                <rect key="frame" x="0.0" y="179" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="koG-XO-gWC" kind="push" id="m7C-xl-rnU"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="FeedbackCell" id="7tr-VI-arq">
+                                <rect key="frame" x="0.0" y="223" width="320" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -147,10 +177,42 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="cancelButton" destination="PDL-Mn-u3a" id="rW5-xA-BWW"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5w-TO-sMD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="658" y="-1026"/>
+            <point key="canvasLocation" x="639" y="-1800"/>
+        </scene>
+        <!--License View Controller-->
+        <scene sceneID="EpA-ki-qGI">
+            <objects>
+                <viewController id="koG-XO-gWC" customClass="GYZLicenseViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dBf-mw-xbd">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y24-9m-nmt">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Y24-9m-nmt" firstAttribute="bottom" secondItem="dBf-mw-xbd" secondAttribute="bottom" type="default" id="GkT-X6-4hl"/>
+                            <constraint firstItem="Y24-9m-nmt" firstAttribute="trailing" secondItem="dBf-mw-xbd" secondAttribute="trailing" type="default" id="Iz0-cL-Ul7"/>
+                            <constraint firstItem="Y24-9m-nmt" firstAttribute="leading" secondItem="dBf-mw-xbd" secondAttribute="leading" type="default" id="KW6-sa-w7z"/>
+                            <constraint firstItem="Y24-9m-nmt" firstAttribute="top" secondItem="dBf-mw-xbd" secondAttribute="top" type="default" id="jEv-bE-mcp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="a02-08-r8U"/>
+                    <connections>
+                        <outlet property="webView" destination="Y24-9m-nmt" id="beA-BN-7JX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="16a-ea-gqA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1222" y="-1148"/>
         </scene>
         <!--Gyazz Add View Controller-->
         <scene sceneID="A6p-2P-Vns">
@@ -187,13 +249,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="73u-iO-bfT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1108" y="-1026"/>
+            <point key="canvasLocation" x="1123" y="-2555"/>
         </scene>
-        <!--Navigation Controller - タイムライン-->
+        <!--Navigation Controller - ページリスト-->
         <scene sceneID="t3Y-Ta-VjD">
             <objects>
                 <navigationController storyboardIdentifier="" id="qNl-nK-7ZQ" customClass="GYZNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="タイムライン" id="U5S-JI-6PX"/>
+                    <tabBarItem key="tabBarItem" title="ページリスト" id="U5S-JI-6PX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rJI-VV-qVf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -243,32 +305,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RU8-hC-qBi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="-1026"/>
+            <point key="canvasLocation" x="113" y="-1800"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="GYZGyazzListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYZGyazzListViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="handleCancel:"/>
-            </relationships>
-        </class>
-        <class className="GYZListViewController" superclassName="GYZTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYZListViewController.h"/>
-        </class>
-        <class className="GYZNavigationController" superclassName="UINavigationController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYZNavigationController.h"/>
-        </class>
-        <class className="GYZTabBarController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYZTabBarController.h"/>
-        </class>
-        <class className="GYZTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYZTableViewController.h"/>
-        </class>
-        <class className="GYZWatchListViewController" superclassName="GYZTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYZWatchListViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

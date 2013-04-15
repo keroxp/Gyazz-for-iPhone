@@ -31,6 +31,8 @@
 		A6699C00171BF9450013B8CE /* addicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6699BFE171BF9450013B8CE /* addicon@2x.png */; };
 		A6699C02171BFBBC0013B8CE /* addicon_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6699C01171BFBBC0013B8CE /* addicon_selected@2x.png */; };
 		A6699C04171C02AC0013B8CE /* PageStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6699C03171C02AC0013B8CE /* PageStoryboard.storyboard */; };
+		A6699C0D171C4EEC0013B8CE /* GYZLicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6699C0C171C4EEC0013B8CE /* GYZLicenseViewController.m */; };
+		A6699C0F171C4FF70013B8CE /* licence.html in Resources */ = {isa = PBXBuildFile; fileRef = A6699C0E171C4FF70013B8CE /* licence.html */; };
 		A68F3FA716F0A597007690E9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F3FA616F0A597007690E9 /* UIKit.framework */; };
 		A68F3FA916F0A597007690E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F3FA816F0A597007690E9 /* Foundation.framework */; };
 		A68F3FAB16F0A597007690E9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F3FAA16F0A597007690E9 /* CoreGraphics.framework */; };
@@ -87,6 +89,9 @@
 		A6699BFE171BF9450013B8CE /* addicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addicon@2x.png"; sourceTree = "<group>"; };
 		A6699C01171BFBBC0013B8CE /* addicon_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addicon_selected@2x.png"; sourceTree = "<group>"; };
 		A6699C03171C02AC0013B8CE /* PageStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PageStoryboard.storyboard; sourceTree = "<group>"; };
+		A6699C0B171C4EEC0013B8CE /* GYZLicenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZLicenseViewController.h; sourceTree = "<group>"; };
+		A6699C0C171C4EEC0013B8CE /* GYZLicenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZLicenseViewController.m; sourceTree = "<group>"; };
+		A6699C0E171C4FF70013B8CE /* licence.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = licence.html; sourceTree = "<group>"; };
 		A68F3FA316F0A597007690E9 /* GyazzForiPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GyazzForiPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68F3FA616F0A597007690E9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A68F3FA816F0A597007690E9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -143,6 +148,71 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A6699C05171C4A190013B8CE /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				A68F3FE516F0A9CB007690E9 /* GYZTabBarController.h */,
+				A68F3FE616F0A9CB007690E9 /* GYZTabBarController.m */,
+				A6699BDF171BB7D10013B8CE /* GYZNavigationController.h */,
+				A6699BE0171BB7D10013B8CE /* GYZNavigationController.m */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		A6699C06171C4A270013B8CE /* Abstract */ = {
+			isa = PBXGroup;
+			children = (
+				A68F3FF816F0CA86007690E9 /* GYZTableViewController.h */,
+				A68F3FF916F0CA86007690E9 /* GYZTableViewController.m */,
+			);
+			name = Abstract;
+			sourceTree = "<group>";
+		};
+		A6699C07171C4A400013B8CE /* GyazzList */ = {
+			isa = PBXGroup;
+			children = (
+				A68F3FDB16F0A815007690E9 /* GYZGyazzListViewController.h */,
+				A68F3FDC16F0A815007690E9 /* GYZGyazzListViewController.m */,
+				A68F3FDF16F0A85D007690E9 /* GYZGyazzAddViewController.h */,
+				A68F3FE016F0A85D007690E9 /* GYZGyazzAddViewController.m */,
+			);
+			name = GyazzList;
+			sourceTree = "<group>";
+		};
+		A6699C08171C4A4E0013B8CE /* MainTab */ = {
+			isa = PBXGroup;
+			children = (
+				A68F3FD516F0A608007690E9 /* GYZListViewController.h */,
+				A68F3FD616F0A608007690E9 /* GYZListViewController.m */,
+				A68F3FD816F0A625007690E9 /* GYZWatchListViewController.h */,
+				A68F3FD916F0A625007690E9 /* GYZWatchListViewController.m */,
+			);
+			name = MainTab;
+			sourceTree = "<group>";
+		};
+		A6699C09171C4A600013B8CE /* Page */ = {
+			isa = PBXGroup;
+			children = (
+				A68F3FF016F0B55C007690E9 /* GYZPageViewController.h */,
+				A68F3FF116F0B55C007690E9 /* GYZPageViewController.m */,
+				A6699BF7171BF2760013B8CE /* GYZNavigationStackViewController.h */,
+				A6699BF8171BF2770013B8CE /* GYZNavigationStackViewController.m */,
+				A649657F171A2F6100D95608 /* GYZPageEditViewController.h */,
+				A6496580171A2F6100D95608 /* GYZPageEditViewController.m */,
+				A6496581171A2F6100D95608 /* GYZPageEditViewController.xib */,
+			);
+			name = Page;
+			sourceTree = "<group>";
+		};
+		A6699C0A171C4ECA0013B8CE /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				A6699C0B171C4EEC0013B8CE /* GYZLicenseViewController.h */,
+				A6699C0C171C4EEC0013B8CE /* GYZLicenseViewController.m */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
 		A68F3F9A16F0A597007690E9 = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +292,7 @@
 				A68F400516F0DE9D007690E9 /* sonamonohanai.jpg */,
 				A63543EA16FD6B5500C50ED0 /* zepto.min.js */,
 				A63543E816FD69B500C50ED0 /* page.html */,
+				A6699C0E171C4FF70013B8CE /* licence.html */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -229,27 +300,12 @@
 		A68F3FDE16F0A81C007690E9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A68F3FDB16F0A815007690E9 /* GYZGyazzListViewController.h */,
-				A68F3FDC16F0A815007690E9 /* GYZGyazzListViewController.m */,
-				A68F3FDF16F0A85D007690E9 /* GYZGyazzAddViewController.h */,
-				A68F3FE016F0A85D007690E9 /* GYZGyazzAddViewController.m */,
-				A68F3FF816F0CA86007690E9 /* GYZTableViewController.h */,
-				A68F3FF916F0CA86007690E9 /* GYZTableViewController.m */,
-				A68F3FD516F0A608007690E9 /* GYZListViewController.h */,
-				A68F3FD616F0A608007690E9 /* GYZListViewController.m */,
-				A68F3FD816F0A625007690E9 /* GYZWatchListViewController.h */,
-				A68F3FD916F0A625007690E9 /* GYZWatchListViewController.m */,
-				A68F3FE516F0A9CB007690E9 /* GYZTabBarController.h */,
-				A68F3FE616F0A9CB007690E9 /* GYZTabBarController.m */,
-				A68F3FF016F0B55C007690E9 /* GYZPageViewController.h */,
-				A68F3FF116F0B55C007690E9 /* GYZPageViewController.m */,
-				A6699BF7171BF2760013B8CE /* GYZNavigationStackViewController.h */,
-				A6699BF8171BF2770013B8CE /* GYZNavigationStackViewController.m */,
-				A649657F171A2F6100D95608 /* GYZPageEditViewController.h */,
-				A6496580171A2F6100D95608 /* GYZPageEditViewController.m */,
-				A6496581171A2F6100D95608 /* GYZPageEditViewController.xib */,
-				A6699BDF171BB7D10013B8CE /* GYZNavigationController.h */,
-				A6699BE0171BB7D10013B8CE /* GYZNavigationController.m */,
+				A6699C0A171C4ECA0013B8CE /* Setting */,
+				A6699C06171C4A270013B8CE /* Abstract */,
+				A6699C05171C4A190013B8CE /* Base */,
+				A6699C07171C4A400013B8CE /* GyazzList */,
+				A6699C08171C4A4E0013B8CE /* MainTab */,
+				A6699C09171C4A600013B8CE /* Page */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -375,6 +431,7 @@
 				A6699C00171BF9450013B8CE /* addicon@2x.png in Resources */,
 				A6699C02171BFBBC0013B8CE /* addicon_selected@2x.png in Resources */,
 				A6699C04171C02AC0013B8CE /* PageStoryboard.storyboard in Resources */,
+				A6699C0F171C4FF70013B8CE /* licence.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,6 +478,7 @@
 				A6699BF0171BC1A20013B8CE /* GYZSectionHeaderView.m in Sources */,
 				A6699BF9171BF2770013B8CE /* GYZNavigationStackViewController.m in Sources */,
 				A6699BFC171BF3590013B8CE /* GYZNavigationTitleView.m in Sources */,
+				A6699C0D171C4EEC0013B8CE /* GYZLicenseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

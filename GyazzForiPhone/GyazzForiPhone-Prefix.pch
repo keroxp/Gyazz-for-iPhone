@@ -20,4 +20,5 @@
 #import <BlocksKit.h>
 #import <AFNetworking.h>
 #import <SVModalWebViewController.h>
+#import <FPPopoverController.h>
 #endif

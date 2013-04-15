@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GYZTableViewController : UITableViewController
+@interface GYZTableViewController : UITableViewController<FPPopoverControllerDelegate>
 
 @end

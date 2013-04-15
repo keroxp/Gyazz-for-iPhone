@@ -1,32 +1,32 @@
 //
-//  GYZTableViewController.m
+//  GYZNavigationStackViewController.m
 //  GyazzForiPhone
 //
-//  Created by 桜井雄介 on 2013/03/13.
-//  Copyright (c) 2013年 桜井雄介. All rights reserved.
+//  Created by 桜井雄介 on 2013/04/15.
+//  Copyright (c) 2013年 Masui Lab. All rights reserved.
 //
 
-#import "GYZTableViewController.h"
-#import <BlocksKit.h>
-#import "GYZTabBarController.h"
-#import "GYZSectionHeaderView.h"
-#import "GYZGyazzListViewController.h"
+#import "GYZNavigationStackViewController.h"
 
+@interface GYZNavigationStackViewController ()
 
-@interface GYZTableViewController ()
-{
-    UIImageView *_sectionbg;
-    FPPopoverController *_popover;
-}
 @end
 
-@implementation GYZTableViewController
+@implementation GYZNavigationStackViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+    }
+    return self;
+}
+
+- (id)initWithStyle:(UITableViewStyle)style viewControllerStack:(NSArray *)stack
+{
+    if (self = [super initWithStyle:style]) {
+        
     }
     return self;
 }
@@ -39,11 +39,7 @@
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-//    NSString *buttontitle = NSLocalizedString(@"リスト",);
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:buttontitle style:UIBarButtonItemStyleBordered handler:^(id sender) {
-//        [self.tabBarController performSegueWithIdentifier:@"showGyazzList" sender:self];
-//    }];
-
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,40 +53,29 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 0;
+    return self.viewControllers.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    UIViewController *vc = [self.viewControllers objectAtIndex:indexPath.row];
+    cell.textLabel.text = vc.title;
     
     // Configure the cell...
     
     return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    if([self tableView:tableView titleForHeaderInSection:section] && tableView == self.tableView){
-        return 22.0f;
-    }
-    return [super tableView:tableView heightForHeaderInSection:section];
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    NSString *t = [self tableView:tableView titleForHeaderInSection:section];
-    if (t && tableView == self.tableView) {
-        return [[GYZSectionHeaderView alloc] initWithTitle:t];
-    }
-    return [super tableView:tableView viewForHeaderInSection:section];
 }
 
 /*

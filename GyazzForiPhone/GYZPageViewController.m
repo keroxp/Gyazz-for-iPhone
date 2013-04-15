@@ -47,22 +47,41 @@
     [self refresh:nil];
     
     // ウォッチリストに追加ボタンを追加
-    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd handler:^(id sender) {
-        UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"ウォッチリストに追加", )];
-        [as addButtonWithTitle:NSLocalizedString(@"追加する", ) handler:^{
+    UIButton *add = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 38, 31)];
+    if ([[GYZUserData watchList] containsObject:self.page]) {
+        [add setImage:[UIImage imageNamed:@"addicon_selected"] forState:UIControlStateNormal];
+    }else{
+        [add setImage:[UIImage imageNamed:@"addicon"] forState:UIControlStateNormal];
+    }
+    [add addEventHandler:^(id sender) {
+        if ([[GYZUserData watchList] containsObject:self.page]) {
+            NSString *m = [NSString stringWithFormat:@"%@\nチェックリストから削除しました",self.page.title];
+            [[GYZUserData watchList] removeObject:self.page];
+            [GYZUserData saveWatchList];
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(m, )];
+            [add setImage:[UIImage imageNamed:@"addicon"] forState:UIControlStateNormal];
+        }else{
+            NSString *m = [NSString stringWithFormat:@"%@\nチェックリストに追加しました",self.page.title];
             [[GYZUserData watchList] addObject:self.page];
             [GYZUserData saveWatchList];
-            NSString *m = [NSString stringWithFormat:@"%@\nを追加しました",self.page.title];
             [SVProgressHUD showSuccessWithStatus:NSLocalizedString(m, )];
-        }];
-        [as setCancelButtonWithTitle:NSLocalizedString(@"やめる", ) handler:NULL];
-        [as setCancelButtonIndex:1];
-        [as showInView:self.view];
-    }];
-    if ([[GYZUserData watchList] containsObject:self.page]) {
-        [add setEnabled:YES];
-    }
-    [self.navigationItem setRightBarButtonItem:add];    
+            [add setImage:[UIImage imageNamed:@"addicon_selected"] forState:UIControlStateNormal];
+        }
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:add];
+    [self.navigationItem setRightBarButtonItem:item];
+    
+    // 戻るボタン
+    [self.navigationItem setHidesBackButton:YES];
+    UIImage *bi = [UIImage imageNamed:@"backicon"];
+    UIButton *b = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 35)];
+    [b setImage:bi forState:UIControlStateNormal];
+    [b addEventHandler:^(id sender) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *item_ = [[UIBarButtonItem alloc] initWithCustomView:b];
+    [self.navigationItem setLeftBarButtonItem:item_];
 }
 
 - (void)refresh:(UIRefreshControl*)sender
@@ -78,7 +97,6 @@
         [[challenge sender] useCredential:cr forAuthenticationChallenge:challenge];
     }];
     [opr setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [SVProgressHUD dismiss];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
 //        $(@"%@",str);
@@ -222,9 +240,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [SVProgressHUD dismiss];
+}
+
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     $(@"%@",error);
+    [SVProgressHUD dismiss];
+
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType

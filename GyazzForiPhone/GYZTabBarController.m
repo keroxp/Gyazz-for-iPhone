@@ -27,6 +27,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self.tabBar setBackgroundImage:[UIImage imageNamed:@"tabbg_light"]];
+    [self.tabBar setSelectionIndicatorImage:[UIImage imageNamed:@"tabselectionbg"]];
+
+    UITabBarItem *list = [self.tabBar.items objectAtIndex:0];
+    [list setFinishedSelectedImage:[UIImage imageNamed:@"listicon_selected"] withFinishedUnselectedImage:[UIImage imageNamed:@"listicon"]];
+    UITabBarItem *check = [self.tabBar.items objectAtIndex:1];
+    [check setFinishedSelectedImage:[UIImage imageNamed:@"checkicon_selected"] withFinishedUnselectedImage:[UIImage imageNamed:@"checkicon"]];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated

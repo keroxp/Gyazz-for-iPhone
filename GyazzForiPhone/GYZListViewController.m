@@ -12,6 +12,10 @@
 #import "GYZUserData.h"
 #import <JSONKit.h>
 #import <SVProgressHUD.h>
+#import "GYZGyazzListViewController.h"
+#import "GYZNavigationTitleView.h"
+
+
 @interface GYZListViewController ()
 {
     /* ページリスト。 */
@@ -24,6 +28,10 @@
     UIRefreshControl *_refreshControl;
     /* フィルタ */
     NSMutableArray *_filterdContents;
+    /* Popover */
+    FPPopoverController *_popover;
+    /* title */
+    UIButton *_titleButton;
 }
 
 @property () GYZGyazz *gyazz;
@@ -60,6 +68,27 @@
     [self setRefreshControl:rc];
     _refreshControl = rc;
     [self setGyazz:[GYZUserData currentGyazz]];
+    
+    GYZNavigationTitleView *title = [[GYZNavigationTitleView alloc] initWithTitle:self.gyazz.name];
+    [title addEventHandler:^(id sender) {
+        [_titleButton setBackgroundImage:[UIImage imageNamed:@"titlebg_selected"] forState:UIControlStateNormal];
+        GYZGyazzListViewController *list = [self.storyboard instantiateViewControllerWithIdentifier:@"GyazzListView"];
+        FPPopoverController *pop = [[FPPopoverController alloc] initWithViewController:list];
+        [pop setDelegate:self];
+        CGPoint p = CGPointMake(160, 20 + 44);
+        CGSize s = CGSizeMake(300, 440);
+        [pop setContentSize:s];
+        [pop presentPopoverFromPoint:p];
+        _popover = pop;
+    } forControlEvents:UIControlEventTouchUpInside];
+    [self.navigationItem setTitleView:title];
+    _titleButton = title;
+    
+}
+
+- (void)popoverControllerDidDismissPopover:(FPPopoverController *)popoverController
+{
+    [_titleButton setBackgroundImage:[UIImage imageNamed:@"titlebg"] forState:UIControlStateNormal];
 }
 
 - (GYZGyazz *)gyazz
@@ -200,6 +229,7 @@
     }
     return nil;
 }
+
 
 
 #pragma mark - Table view delegate

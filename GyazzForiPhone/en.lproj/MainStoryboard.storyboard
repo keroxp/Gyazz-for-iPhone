@@ -86,7 +86,9 @@
                             <outlet property="delegate" destination="eE2-xt-M6c" id="IpU-nd-Ipw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="VPT-cK-TSJ"/>
+                    <navigationItem key="navigationItem" id="VPT-cK-TSJ">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="7hV-gl-0Mw"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="25r-GI-P5D" id="aV2-TE-DYc"/>
                     </connections>
@@ -107,7 +109,7 @@
         <!--Gyazz List View Controller-->
         <scene sceneID="vnF-Xu-gin">
             <objects>
-                <tableViewController id="Afd-Cp-v3x" customClass="GYZGyazzListViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="GyazzListView" id="Afd-Cp-v3x" customClass="GYZGyazzListViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="tlp-uc-Xag">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -224,7 +226,7 @@
         <!--Navigation Controller - タイムライン-->
         <scene sceneID="t3Y-Ta-VjD">
             <objects>
-                <navigationController id="qNl-nK-7ZQ" sceneMemberID="viewController">
+                <navigationController id="qNl-nK-7ZQ" customClass="GYZNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="タイムライン" id="U5S-JI-6PX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rJI-VV-qVf">
@@ -243,7 +245,7 @@
         <!--Navigation Controller - ウォッチリスト-->
         <scene sceneID="ReP-Ma-B35">
             <objects>
-                <navigationController id="Tpm-dZ-fqb" sceneMemberID="viewController">
+                <navigationController id="Tpm-dZ-fqb" customClass="GYZNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="ウォッチリスト" id="3Ju-qU-qX4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dCc-mF-luf">

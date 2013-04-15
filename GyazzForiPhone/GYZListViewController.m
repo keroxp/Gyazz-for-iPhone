@@ -103,7 +103,7 @@
     if (gyazz && gyazz != _gyazz) {
         [self setGyazz:gyazz];
     }
-    self.navigationItem.title = self.gyazz.name;
+    [_titleButton setTitle:gyazz.name forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning

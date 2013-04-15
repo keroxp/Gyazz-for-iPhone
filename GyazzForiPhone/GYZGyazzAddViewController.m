@@ -6,20 +6,20 @@
 //  Copyright (c) 2013年 桜井雄介. All rights reserved.
 //
 
-#import "GYZGyazzEditViewController.h"
+#import "GYZGyazzAddViewController.h"
 #import "GYZTextFieldCell.h"
 #import <BlocksKit.h>
 #import "GYZGyazz.h"
 #import "GYZUserData.h"
 #import <JSONKit.h>
-@interface GYZGyazzEditViewController ()
+@interface GYZGyazzAddViewController ()
 
 - (IBAction)handleDone:(id)sender;
 - (IBAction)handleCancel:(id)sender;
 
 @end
 
-@implementation GYZGyazzEditViewController
+@implementation GYZGyazzAddViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

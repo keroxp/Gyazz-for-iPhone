@@ -103,32 +103,26 @@
 {
     [sender endRefreshing];
     
-    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:[self.page.absoluteString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
-    AFHTTPRequestOperation *opr = [[AFHTTPRequestOperation alloc] initWithRequest:req];
-    [opr setAuthenticationChallengeBlock:^(NSURLConnection *connection, NSURLAuthenticationChallenge *challenge) {
-        NSURLCredential *cr = [NSURLCredential credentialWithUser:self.page.gyazz.username
-                                                         password:self.page.gyazz.password
-                                                      persistence:NSURLCredentialPersistenceNone];
-        [[challenge sender] useCredential:cr forAuthenticationChallenge:challenge];
-    }];
-    [opr setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self.page.gyazz getHTMLOfPage:self.page success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [SVProgressHUD dismiss];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-//        $(@"%@",str);
+        //        $(@"%@",str);
         [self.webView loadHTMLString:str baseURL:[NSURL URLWithString:self.page.absoluteString]];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [SVProgressHUD dismiss];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"エラー", )
                                                      message:[error localizedDescription]
-                           delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", ) otherButtonTitles:nil, nil];
+                                                    delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", ) otherButtonTitles:nil, nil];
         [av  show];
         $(@"%@",error);
     }];
+
     [SVProgressHUD showWithStatus:NSLocalizedString(@"読込中...", )];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    [[NSOperationQueue mainQueue] addOperation:opr];
+
 
 }
 

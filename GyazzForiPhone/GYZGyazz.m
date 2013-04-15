@@ -76,6 +76,15 @@
     [self _accessToURL:path success:success failure:failure];
 }
 
+- (void)getHTMLOfPage:(GYZPage *)page success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+{
+    if (page.gyazz != self) {
+        return;
+    }
+    NSString *path = [NSString stringWithFormat:@"%@/%@",self.absoluteURLPath,page.title];
+    [self _accessToURL:path success:success failure:failure];
+}
+
 - (NSString *)absoluteURLPath
 {
     return [NSString stringWithFormat:@"http://gyazz.com/%@",_name];

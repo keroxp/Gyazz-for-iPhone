@@ -44,7 +44,7 @@
 		A68F3FD716F0A608007690E9 /* GYZListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FD616F0A608007690E9 /* GYZListViewController.m */; };
 		A68F3FDA16F0A625007690E9 /* GYZWatchListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FD916F0A625007690E9 /* GYZWatchListViewController.m */; };
 		A68F3FDD16F0A815007690E9 /* GYZGyazzListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FDC16F0A815007690E9 /* GYZGyazzListViewController.m */; };
-		A68F3FE116F0A85D007690E9 /* GYZGyazzEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FE016F0A85D007690E9 /* GYZGyazzEditViewController.m */; };
+		A68F3FE116F0A85D007690E9 /* GYZGyazzAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FE016F0A85D007690E9 /* GYZGyazzAddViewController.m */; };
 		A68F3FE716F0A9CB007690E9 /* GYZTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FE616F0A9CB007690E9 /* GYZTabBarController.m */; };
 		A68F3FEB16F0AA25007690E9 /* GYZGyazz.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FEA16F0AA25007690E9 /* GYZGyazz.m */; };
 		A68F3FEF16F0B07B007690E9 /* GYZPage.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FEE16F0B07B007690E9 /* GYZPage.m */; };
@@ -107,8 +107,8 @@
 		A68F3FD916F0A625007690E9 /* GYZWatchListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZWatchListViewController.m; sourceTree = "<group>"; };
 		A68F3FDB16F0A815007690E9 /* GYZGyazzListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZGyazzListViewController.h; sourceTree = "<group>"; };
 		A68F3FDC16F0A815007690E9 /* GYZGyazzListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZGyazzListViewController.m; sourceTree = "<group>"; };
-		A68F3FDF16F0A85D007690E9 /* GYZGyazzEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZGyazzEditViewController.h; sourceTree = "<group>"; };
-		A68F3FE016F0A85D007690E9 /* GYZGyazzEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZGyazzEditViewController.m; sourceTree = "<group>"; };
+		A68F3FDF16F0A85D007690E9 /* GYZGyazzAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZGyazzAddViewController.h; sourceTree = "<group>"; };
+		A68F3FE016F0A85D007690E9 /* GYZGyazzAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZGyazzAddViewController.m; sourceTree = "<group>"; };
 		A68F3FE516F0A9CB007690E9 /* GYZTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZTabBarController.h; sourceTree = "<group>"; };
 		A68F3FE616F0A9CB007690E9 /* GYZTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZTabBarController.m; sourceTree = "<group>"; };
 		A68F3FE916F0AA25007690E9 /* GYZGyazz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZGyazz.h; sourceTree = "<group>"; };
@@ -231,8 +231,8 @@
 			children = (
 				A68F3FDB16F0A815007690E9 /* GYZGyazzListViewController.h */,
 				A68F3FDC16F0A815007690E9 /* GYZGyazzListViewController.m */,
-				A68F3FDF16F0A85D007690E9 /* GYZGyazzEditViewController.h */,
-				A68F3FE016F0A85D007690E9 /* GYZGyazzEditViewController.m */,
+				A68F3FDF16F0A85D007690E9 /* GYZGyazzAddViewController.h */,
+				A68F3FE016F0A85D007690E9 /* GYZGyazzAddViewController.m */,
 				A68F3FF816F0CA86007690E9 /* GYZTableViewController.h */,
 				A68F3FF916F0CA86007690E9 /* GYZTableViewController.m */,
 				A68F3FD516F0A608007690E9 /* GYZListViewController.h */,
@@ -407,7 +407,7 @@
 				A68F3FD716F0A608007690E9 /* GYZListViewController.m in Sources */,
 				A68F3FDA16F0A625007690E9 /* GYZWatchListViewController.m in Sources */,
 				A68F3FDD16F0A815007690E9 /* GYZGyazzListViewController.m in Sources */,
-				A68F3FE116F0A85D007690E9 /* GYZGyazzEditViewController.m in Sources */,
+				A68F3FE116F0A85D007690E9 /* GYZGyazzAddViewController.m in Sources */,
 				A68F3FE716F0A9CB007690E9 /* GYZTabBarController.m in Sources */,
 				A68F3FEB16F0AA25007690E9 /* GYZGyazz.m in Sources */,
 				A68F3FEF16F0B07B007690E9 /* GYZPage.m in Sources */,

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GYZGyazzEditViewController : UITableViewController
+@interface GYZGyazzAddViewController : UITableViewController
 
 @end

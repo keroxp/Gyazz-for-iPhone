@@ -152,10 +152,10 @@
             </objects>
             <point key="canvasLocation" x="658" y="-1026"/>
         </scene>
-        <!--Gyazz Edit View Controller-->
+        <!--Gyazz Add View Controller-->
         <scene sceneID="A6p-2P-Vns">
             <objects>
-                <tableViewController id="IFL-5w-nwM" customClass="GYZGyazzEditViewController" sceneMemberID="viewController">
+                <tableViewController id="IFL-5w-nwM" customClass="GYZGyazzAddViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="FyB-Bl-qKc">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -247,13 +247,6 @@
         </scene>
     </scenes>
     <classes>
-        <class className="GYZGyazzEditViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYZGyazzEditViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="handleCancel:"/>
-                <relationship kind="action" name="handleDone:"/>
-            </relationships>
-        </class>
         <class className="GYZGyazzListViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GYZGyazzListViewController.h"/>
             <relationships>

@@ -21,6 +21,7 @@
 
 /* コンストラクタ */
 - (id)initWithName:(NSString*)name;
+
 /* 自身のページリストを取得する */
 - (void)getPageListWithWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
                             failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
@@ -34,6 +35,11 @@
 - (void)getRelatedOfPage:(GYZPage*)page
                  success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
                  failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+/* 対象ページのHTMLを取得 */
+- (void)getHTMLOfPage:(GYZPage*)page
+              success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+              failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
 /* URLパス */
 - (NSString*)absoluteURLPath;

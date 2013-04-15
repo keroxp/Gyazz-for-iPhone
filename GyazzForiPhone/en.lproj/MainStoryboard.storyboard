@@ -17,7 +17,6 @@
                     <connections>
                         <segue destination="qNl-nK-7ZQ" kind="relationship" relationship="viewControllers" id="jlL-bJ-q3j"/>
                         <segue destination="Tpm-dZ-fqb" kind="relationship" relationship="viewControllers" id="40c-C7-kFW"/>
-                        <segue destination="iy7-G2-cvI" kind="modal" identifier="showGyazzList" id="SqF-rX-jBM"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
@@ -86,11 +85,10 @@
                             <outlet property="delegate" destination="eE2-xt-M6c" id="IpU-nd-Ipw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="VPT-cK-TSJ">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="7hV-gl-0Mw"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="VPT-cK-TSJ"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="25r-GI-P5D" id="aV2-TE-DYc"/>
+                        <segue destination="iy7-G2-cvI" kind="modal" identifier="showGyazzList" id="ID8-Iq-FFI"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mdo-Sr-L37" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -104,7 +102,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1179" y="-261"/>
+            <point key="canvasLocation" x="1113" y="-261"/>
         </scene>
         <!--Gyazz List View Controller-->
         <scene sceneID="vnF-Xu-gin">
@@ -124,7 +122,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SettingCell" id="LuV-XH-raH">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AddCell" id="LuV-XH-raH">
                                 <rect key="frame" x="0.0" y="91" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -133,7 +131,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="FsG-Mr-1jt" kind="push" id="V01-gV-ZWA"/>
+                                    <segue destination="IFL-5w-nwM" kind="push" id="0CG-Vk-eXe"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -143,9 +141,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="81p-lw-AOu">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="rUY-Un-aVw">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="PDL-Mn-u3a">
                             <connections>
-                                <segue destination="DaF-kP-nEw" kind="modal" id="dkq-PG-RKP"/>
+                                <action selector="handleCancel:" destination="Afd-Cp-v3x" id="Nkv-Hn-veI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -153,33 +151,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5w-TO-sMD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="658" y="-1026"/>
-        </scene>
-        <!--View Controller - Setting-->
-        <scene sceneID="n5W-3b-X2g">
-            <objects>
-                <viewController id="FsG-Mr-1jt" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ZiX-fq-Hwe">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="sonamonohanai.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="HkK-di-gqD">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="242" id="KBe-Pv-pNm"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="HkK-di-gqD" firstAttribute="trailing" secondItem="ZiX-fq-Hwe" secondAttribute="trailing" type="default" id="4dc-TO-mmG"/>
-                            <constraint firstItem="HkK-di-gqD" firstAttribute="leading" secondItem="ZiX-fq-Hwe" secondAttribute="leading" type="default" id="BEJ-nu-PXx"/>
-                            <constraint firstItem="HkK-di-gqD" firstAttribute="top" secondItem="ZiX-fq-Hwe" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Lri-1k-j3p"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Setting" id="PG3-TD-tNr"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pvd-PB-ZV5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1088" y="-1026"/>
         </scene>
         <!--Gyazz Edit View Controller-->
         <scene sceneID="A6p-2P-Vns">
@@ -207,11 +178,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="5lU-Eb-h5e">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="aDk-RC-rMt">
-                            <connections>
-                                <action selector="handleCancel:" destination="IFL-5w-nwM" id="zG5-Wf-vsx"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="QTs-Al-PoE">
                             <connections>
                                 <action selector="handleDone:" destination="IFL-5w-nwM" id="eXe-Iw-Vy8"/>
@@ -221,12 +187,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="73u-iO-bfT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1088" y="-1744"/>
+            <point key="canvasLocation" x="1108" y="-1026"/>
         </scene>
         <!--Navigation Controller - タイムライン-->
         <scene sceneID="t3Y-Ta-VjD">
             <objects>
-                <navigationController id="qNl-nK-7ZQ" customClass="GYZNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="" id="qNl-nK-7ZQ" customClass="GYZNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="タイムライン" id="U5S-JI-6PX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rJI-VV-qVf">
@@ -240,7 +206,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Etf-PY-1cL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="653" y="-261"/>
+            <point key="canvasLocation" x="650" y="-261"/>
         </scene>
         <!--Navigation Controller - ウォッチリスト-->
         <scene sceneID="ReP-Ma-B35">
@@ -264,7 +230,7 @@
         <!--Navigation Controller-->
         <scene sceneID="zrF-1O-dAw">
             <objects>
-                <navigationController id="iy7-G2-cvI" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="GyazzListRoot" id="iy7-G2-cvI" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xfE-hQ-XXa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -279,28 +245,37 @@
             </objects>
             <point key="canvasLocation" x="132" y="-1026"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="wnR-F3-Wee">
-            <objects>
-                <navigationController id="DaF-kP-nEw" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="f2b-Mk-tRN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="IFL-5w-nwM" kind="relationship" relationship="rootViewController" id="vWF-pO-Or1"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ujv-z7-ivT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="658" y="-1744"/>
-        </scene>
     </scenes>
-    <resources>
-        <image name="sonamonohanai.jpg" width="348" height="280"/>
-    </resources>
+    <classes>
+        <class className="GYZGyazzEditViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYZGyazzEditViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="handleCancel:"/>
+                <relationship kind="action" name="handleDone:"/>
+            </relationships>
+        </class>
+        <class className="GYZGyazzListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYZGyazzListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="handleCancel:"/>
+            </relationships>
+        </class>
+        <class className="GYZListViewController" superclassName="GYZTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYZListViewController.h"/>
+        </class>
+        <class className="GYZNavigationController" superclassName="UINavigationController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYZNavigationController.h"/>
+        </class>
+        <class className="GYZTabBarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYZTabBarController.h"/>
+        </class>
+        <class className="GYZTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYZTableViewController.h"/>
+        </class>
+        <class className="GYZWatchListViewController" superclassName="GYZTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYZWatchListViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -34,7 +34,7 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
-    self.title = NSLocalizedString(@"登録済みGyazzリスト", );
+    self.title = NSLocalizedString(@"Gyazzリスト", );
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -49,6 +49,10 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)handleCancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 #pragma mark - Table view data source
@@ -67,7 +71,7 @@
             // 登録リスト
             return [[GYZUserData gyazzList] count];
         case 1:
-            // 設定
+            // 追加
             return 1;
         default:
             break;
@@ -78,7 +82,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    static NSString *SettingCellIdentifier = @"SettingCell";
+    static NSString *SettingCellIdentifier = @"AddCell";
     UITableViewCell *cell = nil;
     switch (indexPath.section) {
         case 0:{
@@ -92,7 +96,7 @@
             break;
         case 1:
             cell = [tableView dequeueReusableCellWithIdentifier:SettingCellIdentifier];
-            cell.textLabel.text = NSLocalizedString(@"設定", );
+            cell.textLabel.text = NSLocalizedString(@"新しいGyazzを追加...", );
             break;
         default:
             break;

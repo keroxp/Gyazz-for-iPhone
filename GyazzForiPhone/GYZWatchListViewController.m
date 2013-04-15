@@ -134,6 +134,7 @@
     GYZPage *page = [[GYZUserData watchList] objectAtIndex:indexPath.row];
     GYZPageViewController *pvc = [[GYZPageViewController alloc] initWithNibName:@"GYZPageViewController" bundle:nil];
     [pvc setPage:page];
+    [pvc setHidesBottomBarWhenPushed:YES];
     // ...
     // Pass the selected object to the new view controller.
     [self.navigationController pushViewController:pvc animated:YES];

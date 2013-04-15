@@ -16,7 +16,7 @@
         [self.titleLabel setFont:[UIFont boldSystemFontOfSize:18.0f]];
         [self.titleLabel setShadowColor:[UIColor blackColor]];
         [self.titleLabel setShadowOffset:CGSizeMake(0, 0.5)];
-        [self.titleLabel setText:title];
+        [self setTitle:title forState:UIControlStateNormal];
         [self setBackgroundImage:[UIImage imageNamed:@"titlebg"] forState:UIControlStateNormal];
         [self setBackgroundImage:[UIImage imageNamed:@"titlebg_selected"] forState:UIControlStateHighlighted];
 

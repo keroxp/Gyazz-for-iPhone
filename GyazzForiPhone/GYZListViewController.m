@@ -71,24 +71,11 @@
     
     GYZNavigationTitleView *title = [[GYZNavigationTitleView alloc] initWithTitle:self.gyazz.name];
     [title addEventHandler:^(id sender) {
-        [_titleButton setBackgroundImage:[UIImage imageNamed:@"titlebg_selected"] forState:UIControlStateNormal];
-        GYZGyazzListViewController *list = [self.storyboard instantiateViewControllerWithIdentifier:@"GyazzListView"];
-        FPPopoverController *pop = [[FPPopoverController alloc] initWithViewController:list];
-        [pop setDelegate:self];
-        CGPoint p = CGPointMake(160, 20 + 44);
-        CGSize s = CGSizeMake(300, 440);
-        [pop setContentSize:s];
-        [pop presentPopoverFromPoint:p];
-        _popover = pop;
+        [self performSegueWithIdentifier:@"showGyazzList" sender:self];
     } forControlEvents:UIControlEventTouchUpInside];
     [self.navigationItem setTitleView:title];
     _titleButton = title;
     
-}
-
-- (void)popoverControllerDidDismissPopover:(FPPopoverController *)popoverController
-{
-    [_titleButton setBackgroundImage:[UIImage imageNamed:@"titlebg"] forState:UIControlStateNormal];
 }
 
 - (GYZGyazz *)gyazz
@@ -246,6 +233,7 @@
 
     GYZPageViewController *pvc = [[GYZPageViewController alloc] initWithNibName:@"GYZPageViewController" bundle:nil];
     [pvc setPage:page];
+    [pvc setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:pvc animated:YES];
 }
 

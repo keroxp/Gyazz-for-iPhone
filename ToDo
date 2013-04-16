@@ -25,3 +25,9 @@ UNIXTime
 
 レスポンスにRepresentation画像URLを含める
 そもそもtext,relatedを含める
+
+◆AdHocURL
+
+http://lab.keroxp.me/gyazz-for-iphone/GyazzForiPhoneAdhoc.ipa
+http://lab.keroxp.me/gyazz-for-iphone/GyazzForiPhoneAdhoc.plist
+itms-services://?action=download-manifest&url=http://lab.keroxp.me/gyazz-for-iphone/GyazzForiPhoneAdhoc.plist

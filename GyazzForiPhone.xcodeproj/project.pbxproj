@@ -61,6 +61,14 @@
 		A6F2732F171DB1CD004DAAD7 /* navbgipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6F2732E171DB1CD004DAAD7 /* navbgipad@2x.png */; };
 		A6F27331171DB2D7004DAAD7 /* tabbgipad_light@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6F27330171DB2D7004DAAD7 /* tabbgipad_light@2x.png */; };
 		A6F2736D171DB76F004DAAD7 /* tabselectionbgipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6F2736C171DB76F004DAAD7 /* tabselectionbgipad@2x.png */; };
+		A6F27373171DBA38004DAAD7 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F2736F171DBA38004DAAD7 /* libTestFlight.a */; };
+		A6F27374171DBA38004DAAD7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A6F27370171DBA38004DAAD7 /* README.md */; };
+		A6F27375171DBA38004DAAD7 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = A6F27371171DBA38004DAAD7 /* release_notes.md */; };
+		A6F27377171DBA98004DAAD7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F27376171DBA98004DAAD7 /* libz.dylib */; };
+		A6F27379171DBD65004DAAD7 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A6F27378171DBD65004DAAD7 /* Default-Portrait~ipad.png */; };
+		A6F2737B171DBD6B004DAAD7 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A6F2737A171DBD6B004DAAD7 /* Default-Portrait@2x~ipad.png */; };
+		A6F2737D171DBD8A004DAAD7 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = A6F2737C171DBD8A004DAAD7 /* Icon-72.png */; };
+		A6F2737F171DBD8E004DAAD7 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6F2737E171DBD8E004DAAD7 /* Icon-72@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -144,6 +152,15 @@
 		A6F2732E171DB1CD004DAAD7 /* navbgipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbgipad@2x.png"; sourceTree = "<group>"; };
 		A6F27330171DB2D7004DAAD7 /* tabbgipad_light@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbgipad_light@2x.png"; sourceTree = "<group>"; };
 		A6F2736C171DB76F004DAAD7 /* tabselectionbgipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabselectionbgipad@2x.png"; sourceTree = "<group>"; };
+		A6F2736F171DBA38004DAAD7 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		A6F27370171DBA38004DAAD7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		A6F27371171DBA38004DAAD7 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
+		A6F27372171DBA38004DAAD7 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		A6F27376171DBA98004DAAD7 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		A6F27378171DBD65004DAAD7 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		A6F2737A171DBD6B004DAAD7 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		A6F2737C171DBD8A004DAAD7 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		A6F2737E171DBD8E004DAAD7 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,10 +168,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6F27377171DBA98004DAAD7 /* libz.dylib in Frameworks */,
 				A68F3FA716F0A597007690E9 /* UIKit.framework in Frameworks */,
 				A68F3FA916F0A597007690E9 /* Foundation.framework in Frameworks */,
 				A68F3FAB16F0A597007690E9 /* CoreGraphics.framework in Frameworks */,
 				970CD674E001424BA7CE26C1 /* libPods.a in Frameworks */,
+				A6F27373171DBA38004DAAD7 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,8 +248,13 @@
 		A68F3F9A16F0A597007690E9 = {
 			isa = PBXGroup;
 			children = (
+				A6F2737E171DBD8E004DAAD7 /* Icon-72@2x.png */,
+				A6F2737C171DBD8A004DAAD7 /* Icon-72.png */,
+				A6F2737A171DBD6B004DAAD7 /* Default-Portrait@2x~ipad.png */,
+				A6F27378171DBD65004DAAD7 /* Default-Portrait~ipad.png */,
 				A6699C16171C5B9D0013B8CE /* Icon@2x.png */,
 				A6699C14171C5B950013B8CE /* Icon.png */,
+				A6F2736E171DBA38004DAAD7 /* TestFlightSDK1.2.4 */,
 				A68F3FAC16F0A597007690E9 /* GyazzForiPhone */,
 				A68F3FA516F0A597007690E9 /* Frameworks */,
 				A68F3FA416F0A597007690E9 /* Products */,
@@ -249,6 +273,7 @@
 		A68F3FA516F0A597007690E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A6F27376171DBA98004DAAD7 /* libz.dylib */,
 				A68F3FA616F0A597007690E9 /* UIKit.framework */,
 				A68F3FA816F0A597007690E9 /* Foundation.framework */,
 				A68F3FAA16F0A597007690E9 /* CoreGraphics.framework */,
@@ -373,6 +398,17 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		A6F2736E171DBA38004DAAD7 /* TestFlightSDK1.2.4 */ = {
+			isa = PBXGroup;
+			children = (
+				A6F2736F171DBA38004DAAD7 /* libTestFlight.a */,
+				A6F27370171DBA38004DAAD7 /* README.md */,
+				A6F27371171DBA38004DAAD7 /* release_notes.md */,
+				A6F27372171DBA38004DAAD7 /* TestFlight.h */,
+			);
+			path = TestFlightSDK1.2.4;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -456,6 +492,12 @@
 				A6F2732F171DB1CD004DAAD7 /* navbgipad@2x.png in Resources */,
 				A6F27331171DB2D7004DAAD7 /* tabbgipad_light@2x.png in Resources */,
 				A6F2736D171DB76F004DAAD7 /* tabselectionbgipad@2x.png in Resources */,
+				A6F27374171DBA38004DAAD7 /* README.md in Resources */,
+				A6F27375171DBA38004DAAD7 /* release_notes.md in Resources */,
+				A6F27379171DBD65004DAAD7 /* Default-Portrait~ipad.png in Resources */,
+				A6F2737B171DBD6B004DAAD7 /* Default-Portrait@2x~ipad.png in Resources */,
+				A6F2737D171DBD8A004DAAD7 /* Icon-72.png in Resources */,
+				A6F2737F171DBD8E004DAAD7 /* Icon-72@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,6 +611,10 @@
 				GCC_PREFIX_HEADER = "GyazzForiPhone/GyazzForiPhone-Prefix.pch";
 				INFOPLIST_FILE = "GyazzForiPhone/GyazzForiPhone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/TestFlightSDK1.2.4\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3B4FDBF0-6582-4F6E-838A-EABFAE60FFE5";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3B4FDBF0-6582-4F6E-838A-EABFAE60FFE5";
@@ -615,6 +661,10 @@
 				GCC_PREFIX_HEADER = "GyazzForiPhone/GyazzForiPhone-Prefix.pch";
 				INFOPLIST_FILE = "GyazzForiPhone/GyazzForiPhone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/TestFlightSDK1.2.4\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3B4FDBF0-6582-4F6E-838A-EABFAE60FFE5";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3B4FDBF0-6582-4F6E-838A-EABFAE60FFE5";
@@ -694,6 +744,10 @@
 				GCC_PREFIX_HEADER = "GyazzForiPhone/GyazzForiPhone-Prefix.pch";
 				INFOPLIST_FILE = "GyazzForiPhone/GyazzForiPhone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/TestFlightSDK1.2.4\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -712,6 +766,10 @@
 				GCC_PREFIX_HEADER = "GyazzForiPhone/GyazzForiPhone-Prefix.pch";
 				INFOPLIST_FILE = "GyazzForiPhone/GyazzForiPhone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/TestFlightSDK1.2.4\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3B4FDBF0-6582-4F6E-838A-EABFAE60FFE5";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3B4FDBF0-6582-4F6E-838A-EABFAE60FFE5";

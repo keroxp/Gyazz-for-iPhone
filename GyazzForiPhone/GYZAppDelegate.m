@@ -12,7 +12,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    // TestFlightのインテグレーション
+
+    if ([UIDevice currentDevice]) {
+        // !!!: Use the next line only during beta
+        [TestFlight setDeviceIdentifier:[[[UIDevice currentDevice] identifierForVendor] UUIDString]];
+    }
+    [TestFlight takeOff:@"cf53c776-22b6-4c28-93b9-0042682c558c"];
+    
     return YES;
 }
 							

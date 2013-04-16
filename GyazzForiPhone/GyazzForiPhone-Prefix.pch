@@ -23,5 +23,5 @@
 #import <SVProgressHUD.h>
 #import <SVWebViewController.h>
 #import <SVModalWebViewController.h>
-
+#import <TestFlight.h>
 #endif

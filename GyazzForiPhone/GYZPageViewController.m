@@ -289,10 +289,8 @@
                 NSRange r = [tr rangeAtIndex:1];
                 NSString *title = [urlstr substringWithRange:r];;
                 // ナビゲーションを進める
-                UIStoryboard *st = [UIStoryboard storyboardWithName:@"PageStoryboard" bundle:[NSBundle mainBundle]];
-                GYZPageViewController *pvc = [st instantiateInitialViewController];
                 GYZPage *page = [[GYZPage alloc] initWithGyazz:self.page.gyazz title:title modtime:0];
-                [pvc setPage:page];
+                GYZPageViewController *pvc = [GYZPageViewController pageViewControllerWithPage:page enableCheckButton:YES];
                 [self.navigationController pushViewController:pvc animated:YES];
             }else if ([urlstr rangeOfString:@"twitter://"].location != NSNotFound){
                 // Twitterのリンクならアプリでひらく

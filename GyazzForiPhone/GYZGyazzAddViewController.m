@@ -103,9 +103,8 @@
             // 登録完了
             [[GYZUserData gyazzList] addObject:__newGyazz];
             [GYZUserData saveGyazzList];
-            [self dismissViewControllerAnimated:YES completion:^{
-                
-            }];
+            [GYZUserData setCurrentGyazz:__newGyazz];
+            [self.navigationController popViewControllerAnimated:YES];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSString *title = NSLocalizedString(@"エラー", );

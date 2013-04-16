@@ -171,7 +171,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="81p-lw-AOu">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="PDL-Mn-u3a">
+                        <barButtonItem key="leftBarButtonItem" title="閉じる" id="PDL-Mn-u3a">
                             <connections>
                                 <action selector="handleCancel:" destination="Afd-Cp-v3x" id="Nkv-Hn-veI"/>
                             </connections>
@@ -308,6 +308,46 @@
             <point key="canvasLocation" x="113" y="-1800"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="GYZGyazzAddViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYZGyazzAddViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="handleCancel:"/>
+                <relationship kind="action" name="handleDone:"/>
+            </relationships>
+        </class>
+        <class className="GYZGyazzListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYZGyazzListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="handleCancel:"/>
+                <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="GYZLicenseViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYZLicenseViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="GYZListViewController" superclassName="GYZTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYZListViewController.h"/>
+        </class>
+        <class className="GYZNavigationController" superclassName="UINavigationController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYZNavigationController.h"/>
+        </class>
+        <class className="GYZTabBarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYZTabBarController.h"/>
+        </class>
+        <class className="GYZTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYZTableViewController.h"/>
+        </class>
+        <class className="GYZWatchListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GYZWatchListViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

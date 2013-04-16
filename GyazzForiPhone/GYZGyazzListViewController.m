@@ -110,6 +110,8 @@
             cell.textLabel.text = g.name;
             if (g == [GYZUserData currentGyazz]) {
                 [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+            }else{
+                [cell setAccessoryType:UITableViewCellAccessoryNone];
             }
         }
             break;
@@ -218,7 +220,7 @@
                 [self.navigationController pushViewController:p animated:YES];
                 break;
             }
-            case 1:
+            case 2:
                 // メール
                 if ([MFMailComposeViewController canSendMail]) {
                     MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];

@@ -27,7 +27,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbg"] forBarMetrics:UIBarMetricsDefault];
+    if (self.view.bounds.size.width > 320) {
+        [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbgipad"] forBarMetrics:UIBarMetricsDefault];
+    }else{
+        [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbg"] forBarMetrics:UIBarMetricsDefault];
+    }
 }
 
 

@@ -27,13 +27,22 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self.tabBar setBackgroundImage:[UIImage imageNamed:@"tabbg_light"]];
-    [self.tabBar setSelectionIndicatorImage:[UIImage imageNamed:@"tabselectionbg"]];
-
+    
+    
     UITabBarItem *list = [self.tabBar.items objectAtIndex:0];
     [list setFinishedSelectedImage:[UIImage imageNamed:@"listicon_selected"] withFinishedUnselectedImage:[UIImage imageNamed:@"listicon"]];
     UITabBarItem *check = [self.tabBar.items objectAtIndex:1];
     [check setFinishedSelectedImage:[UIImage imageNamed:@"checkicon_selected"] withFinishedUnselectedImage:[UIImage imageNamed:@"checkicon"]];
+    
+    if (self.view.bounds.size.width > 320) {
+        [self.tabBar setBackgroundImage:[UIImage imageNamed:@"tabbgipad_light"]];
+//        [self.tabBar setSelectionIndicatorImage:[UIImage imageNamed:@"tabselectionbgipad"]];
+
+    }else{
+        [self.tabBar setBackgroundImage:[UIImage imageNamed:@"tabbg_light"]];
+        [self.tabBar setSelectionIndicatorImage:[UIImage imageNamed:@"tabselectionbg"]];
+    }
+
     
 }
 

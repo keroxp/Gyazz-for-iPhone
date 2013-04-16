@@ -87,7 +87,7 @@
 {
     NSString *t = [self tableView:tableView titleForHeaderInSection:section];
     if (t && tableView == self.tableView) {
-        return [[GYZSectionHeaderView alloc] initWithTitle:t];
+        return [[GYZSectionHeaderView alloc] initWithTitle:t constraintToSize:self.view.bounds.size];
     }
     return [super tableView:tableView viewForHeaderInSection:section];
 }

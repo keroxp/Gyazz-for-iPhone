@@ -12,6 +12,6 @@
 
 @property (readonly) UILabel *titleLabel;
 
-- (id)initWithTitle:(NSString*)title;
+- (id)initWithTitle:(NSString*)title constraintToSize:(CGSize)size;
 
 @end

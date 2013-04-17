@@ -157,8 +157,10 @@
 {
     if (section == 2) {
         // バージョン
-        NSString *v =  [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleVersion"];
-        return [NSString stringWithFormat:@"Gyazz for iPhone ver %@\n© Yusuke Sakurai & Keio University Masui Toshiyuki Laboratory All Rights Reserved.",v];
+        NSString *versionNum = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+        NSString *buildNum = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+        NSString *text = [NSString stringWithFormat:@"%@ Build %@", versionNum, buildNum];
+        return [NSString stringWithFormat:@"Gyazz for iPhone %@\n© Yusuke Sakurai & Keio University Masui Toshiyuki Laboratory All Rights Reserved.",text];
     }
     return [super tableView:tableView titleForFooterInSection:section];
 }

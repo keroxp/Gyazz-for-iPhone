@@ -10,4 +10,7 @@
 
 @interface GYZBarButton : UIButton
 
+/* 編集ボタンを取得 */
++ (GYZBarButton*)editButtonForController:(UIViewController*)controller;
+
 @end

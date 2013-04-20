@@ -34,19 +34,7 @@
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.title = NSLocalizedString(@"チェックリスト", );
-    GYZBarButton  *b = [[GYZBarButton alloc] initWithFrame:CGRectMake(0, 0, 66, 28)];
-    __block GYZBarButton *__b = b;
-    [b setTitle:NSLocalizedString(@"編集", ) forState:UIControlStateNormal];
-    [b addEventHandler:^(id sender) {
-        if (!self.isEditing){
-            [__b setTitle:NSLocalizedString(@"完了", ) forState:UIControlStateNormal];
-            [self setEditing:YES animated:YES];
-        }else{
-            [__b setTitle:NSLocalizedString(@"編集", ) forState:UIControlStateNormal];
-            [self setEditing:NO animated:YES];
-        }
-    } forControlEvents:UIControlEventTouchUpInside];
-    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:b]];
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:[GYZBarButton editButtonForController:self]]];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

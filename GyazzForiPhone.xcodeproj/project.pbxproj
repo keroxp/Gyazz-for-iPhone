@@ -36,6 +36,10 @@
 		A6699C15171C5B950013B8CE /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A6699C14171C5B950013B8CE /* Icon.png */; };
 		A6699C17171C5B9D0013B8CE /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6699C16171C5B9D0013B8CE /* Icon@2x.png */; };
 		A6699C1A171C63C50013B8CE /* GYZBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A6699C19171C63C50013B8CE /* GYZBarButton.m */; };
+		A6867A101723054E008CE02D /* GYZToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = A6867A0F1723054E008CE02D /* GYZToolbar.m */; };
+		A6867A1217230928008CE02D /* toolbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6867A1117230928008CE02D /* toolbg@2x.png */; };
+		A6867A14172311EC008CE02D /* editicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6867A13172311EC008CE02D /* editicon@2x.png */; };
+		A6867A1717231C5C008CE02D /* GYZWebModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6867A1617231C5C008CE02D /* GYZWebModel.m */; };
 		A68F3FA716F0A597007690E9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F3FA616F0A597007690E9 /* UIKit.framework */; };
 		A68F3FA916F0A597007690E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F3FA816F0A597007690E9 /* Foundation.framework */; };
 		A68F3FAB16F0A597007690E9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F3FAA16F0A597007690E9 /* CoreGraphics.framework */; };
@@ -128,6 +132,12 @@
 		A6699C19171C63C50013B8CE /* GYZBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZBarButton.m; sourceTree = "<group>"; };
 		A6699C1F171C68A40013B8CE /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ja; path = ja.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		A6699C20171C68A40013B8CE /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A6867A0E1723054E008CE02D /* GYZToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZToolbar.h; sourceTree = "<group>"; };
+		A6867A0F1723054E008CE02D /* GYZToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZToolbar.m; sourceTree = "<group>"; };
+		A6867A1117230928008CE02D /* toolbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbg@2x.png"; sourceTree = "<group>"; };
+		A6867A13172311EC008CE02D /* editicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "editicon@2x.png"; sourceTree = "<group>"; };
+		A6867A1517231C5C008CE02D /* GYZWebModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZWebModel.h; sourceTree = "<group>"; };
+		A6867A1617231C5C008CE02D /* GYZWebModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZWebModel.m; sourceTree = "<group>"; };
 		A68F3FA316F0A597007690E9 /* GyazzForiPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GyazzForiPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68F3FA616F0A597007690E9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A68F3FA816F0A597007690E9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -349,6 +359,8 @@
 		A68F3FD416F0A5E4007690E9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A6867A13172311EC008CE02D /* editicon@2x.png */,
+				A6867A1117230928008CE02D /* toolbg@2x.png */,
 				A6E1AF43171E536E00A5B239 /* checkicon.png */,
 				A6E1AF3B171E536400A5B239 /* addicon_selected.png */,
 				A6E1AF3C171E536400A5B239 /* addicon.png */,
@@ -417,6 +429,8 @@
 		A68F3FEC16F0AA28007690E9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A6867A1517231C5C008CE02D /* GYZWebModel.h */,
+				A6867A1617231C5C008CE02D /* GYZWebModel.m */,
 				A68F3FE916F0AA25007690E9 /* GYZGyazz.h */,
 				A68F3FEA16F0AA25007690E9 /* GYZGyazz.m */,
 				A68F3FED16F0B07B007690E9 /* GYZPage.h */,
@@ -436,6 +450,8 @@
 				A6699BFB171BF3590013B8CE /* GYZNavigationTitleView.m */,
 				A6699C18171C63C50013B8CE /* GYZBarButton.h */,
 				A6699C19171C63C50013B8CE /* GYZBarButton.m */,
+				A6867A0E1723054E008CE02D /* GYZToolbar.h */,
+				A6867A0F1723054E008CE02D /* GYZToolbar.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -567,6 +583,8 @@
 				A6E1AF41171E536400A5B239 /* backicon.png in Resources */,
 				A6E1AF42171E536400A5B239 /* checkicon_selected.png in Resources */,
 				A6E1AF44171E536E00A5B239 /* checkicon.png in Resources */,
+				A6867A1217230928008CE02D /* toolbg@2x.png in Resources */,
+				A6867A14172311EC008CE02D /* editicon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,6 +646,8 @@
 				A6699BFC171BF3590013B8CE /* GYZNavigationTitleView.m in Sources */,
 				A6699C0D171C4EEC0013B8CE /* GYZLicenseViewController.m in Sources */,
 				A6699C1A171C63C50013B8CE /* GYZBarButton.m in Sources */,
+				A6867A101723054E008CE02D /* GYZToolbar.m in Sources */,
+				A6867A1717231C5C008CE02D /* GYZWebModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class GYZPage;
+
 @interface GYZPageEditViewController : UIViewController
+
++ (GYZPageEditViewController*)controllerWithPage:(GYZPage*)page;
+
+@property (nonatomic) GYZPage *page;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 
 @end

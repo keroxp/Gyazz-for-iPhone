@@ -8,9 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum
+{
+    GYZBarButtonStyleNone = 0,
+    GYZBarButtonStyleAdd,
+    GYZBarButtonStyleEdit,
+}GYZBarButtonStyle;
+
 @interface GYZBarButton : UIButton
 
-/* 編集ボタンを取得 */
-+ (GYZBarButton*)editButtonForController:(UIViewController*)controller;
+/* テキストボタンを取得 */
++ (GYZBarButton*)barButtonWithText:(NSString*)text;
+/* アイコンボタンを取得 */
++ (GYZBarButton*)barButtonWithStyle:(GYZBarButtonStyle)style;
 
 @end

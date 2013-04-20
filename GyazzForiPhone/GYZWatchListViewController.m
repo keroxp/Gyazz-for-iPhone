@@ -34,13 +34,18 @@
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.title = NSLocalizedString(@"チェックリスト", );
-    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:[GYZBarButton editButtonForController:self]]];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    GYZBarButton *b = [GYZBarButton barButtonWithText:NSLocalizedString(@"編集", )];
+     __block GYZBarButton *__b = b;
+     [b addEventHandler:^(id sender) {
+        if (!self.isEditing){
+            [__b setTitle:NSLocalizedString(@"完了", ) forState:UIControlStateNormal];
+            [self setEditing:YES animated:YES];
+        }else{
+            [__b setTitle:NSLocalizedString(@"編集", ) forState:UIControlStateNormal];
+            [self setEditing:NO animated:YES];
+        }
+    } forControlEvents:UIControlEventTouchUpInside];
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:b]];
 }
 
 - (void)didReceiveMemoryWarning

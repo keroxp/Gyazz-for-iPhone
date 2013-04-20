@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #define kTextButtonFrame CGRectMake(0, 0, 66, 28)
+#define kDefaultFrame CGRectMake(0,0,32,32)
 
 @implementation GYZBarButton
 
@@ -32,39 +33,42 @@
 - (void)drawRect:(CGRect)rect
 {
     [super drawRect:rect];
-    // Drawing code
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGPathRef path = CGPathCreateWithRect(rect, NULL);
-    [[UIColor clearColor] setFill];
-    [[UIColor whiteColor] setStroke];
-    CGContextSetLineWidth(context, 3);
-    CGContextAddPath(context, path);
-    CGContextDrawPath(context, kCGPathFillStroke);
-    CGPathRelease(path);
+    // 文字ボタンなら枠を追加
+    if ([self titleForState:UIControlStateNormal]) {
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGPathRef path = CGPathCreateWithRect(rect, NULL);
+        [[UIColor clearColor] setFill];
+        [[UIColor whiteColor] setStroke];
+        CGContextSetLineWidth(context, 3);
+        CGContextAddPath(context, path);
+        CGContextDrawPath(context, kCGPathFillStroke);
+        CGPathRelease(path);
+        
+    }
 }
 
-+ (GYZBarButton *)textButtonForText:(NSString*)text
++ (GYZBarButton *)barButtonWithText:(NSString *)text
 {
     GYZBarButton *b = [[GYZBarButton alloc] initWithFrame:kTextButtonFrame];
-    [b setTitle:NSLocalizedString(@"編集", ) forState:UIControlStateNormal];
+    [b setTitle:text forState:UIControlStateNormal];
     return b;
 }
 
-+ (GYZBarButton *)editButtonForController:(UIViewController *)controller
++ (GYZBarButton *)barButtonWithStyle:(GYZBarButtonStyle)style
 {
-    GYZBarButton *b = [self textButtonForText:NSLocalizedString(@"編集", )];
-    __block GYZBarButton *__b = b;
-    [b addEventHandler:^(id sender) {
-        if (!controller.isEditing){
-            [__b setTitle:NSLocalizedString(@"完了", ) forState:UIControlStateNormal];
-            [controller setEditing:YES animated:YES];
-        }else{
-            [__b setTitle:NSLocalizedString(@"編集", ) forState:UIControlStateNormal];
-            [controller setEditing:NO animated:YES];
-        }
-    } forControlEvents:UIControlEventTouchUpInside];
+    GYZBarButton *b = [[GYZBarButton alloc] initWithFrame:kDefaultFrame];
+    switch (style) {
+        case GYZBarButtonStyleNone:
+            break;
+        case GYZBarButtonStyleAdd:
+            break;
+        case GYZBarButtonStyleEdit:
+            [b setImage:[UIImage imageNamed:@"editicon"] forState:UIControlStateNormal];
+            break;
+            
+        default:
+            break;
+    }
     return b;
 }
-
-
 @end

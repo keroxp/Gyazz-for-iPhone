@@ -54,10 +54,39 @@
     return [super isEqual:object];
 }
 
+#pragma mark - API
+
+- (void)getTextWithSuccess:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+{
+    NSString *path = [NSString stringWithFormat:@"%@/%@/text",self.gyazz.absoluteURLPath,self.title];
+    [self accessToURL:path success:success failure:failure];
+}
+
+- (void)getRelatedWithSuccess:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+{
+    NSString *path = [NSString stringWithFormat:@"%@/%@/related",self.gyazz.absoluteURLPath, self.title];
+    [self accessToURL:path success:success failure:failure];
+}
+
+- (void)getHTMLWithSuccess:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+{
+    NSString *path = [NSString stringWithFormat:@"%@/%@",self.gyazz.absoluteURLPath,self.title];
+    [self accessToURL:path success:success failure:failure];
+}
+
+- (void)saveWithText:(NSString *)text success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+{
+    AFHTTPClient *client = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:@"http://gyazz.com"]];
+    [client setAuthorizationHeaderWithUsername:self.username password:self.password];
+    NSString *data = [NSString stringWithFormat:@"%@\n%@\n%@",self.gyazz.name,self.title,text];
+    [client postPath:@"__write" parameters:@{@"data":data} success:success failure:failure];
+}
+
 #pragma mark - NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
+    [super encodeWithCoder:aCoder];
     [aCoder encodeObject:_gyazz forKey:@"gyazz"];
     [aCoder encodeObject:_title forKey:@"title"];
     [aCoder encodeObject:_modifiedDate forKey:@"modtime"];
@@ -66,11 +95,21 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super init];
+    self = [super initWithCoder:aDecoder];
     _gyazz = [aDecoder decodeObjectForKey:@"gyazz"];
     _title = [aDecoder decodeObjectForKey:@"title"];
     _modifiedDate = [aDecoder decodeObjectForKey:@"modtime"];
     return self;
+}
+
+- (NSString *)username
+{
+    return self.gyazz.username;
+}
+
+- (NSString *)password
+{
+    return self.gyazz.password;
 }
 
 @end

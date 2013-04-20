@@ -8,15 +8,22 @@
 
 #import <SVProgressHUD.h>
 #import "GYZPageViewController.h"
+#import "GYZPageEditViewController.h"
 #import "GYZPage.h"
 #import "GYZUserData.h"
 #import "GYZNavigationTitleView.h"
 #import "GYZNavigationStackViewController.h"
+#import "GYZToolbar.h"
+#import "GYZBarButton.h"
 
 @interface GYZPageViewController ()
 {
     NSURL *_URLToMove;
+    UIToolbar *_toolbar;
 }
+
+- (void)editButtonDidTap:(UIButton*)sender;
+
 @end
 
 @implementation GYZPageViewController
@@ -56,9 +63,42 @@
     }
     // スクロール速度を上げる
     [self.webView.scrollView setDecelerationRate:UIScrollViewDecelerationRateNormal];
+    // 戻るボタン
+    [self.navigationItem setHidesBackButton:YES];
+    UIImage *bi = [UIImage imageNamed:@"backicon"];
+    UIButton *b = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 35)];
+    [b setImage:bi forState:UIControlStateNormal];
+    [b addEventHandler:^(id sender) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *item_ = [[UIBarButtonItem alloc] initWithCustomView:b];
+    [self.navigationItem setLeftBarButtonItem:item_];
+    
+    // 履歴
+    GYZNavigationTitleView *title = [[GYZNavigationTitleView alloc] initWithTitle:self.page.title];
+    [title addEventHandler:^(id sender) {
+        [self performSegueWithIdentifier:@"showStack" sender:self];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [self.navigationItem setTitleView:title];
+    
     // 読み込み
     [self refresh:nil];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    // 右上に編集ボタンを追加
+    GYZBarButton *edit = [GYZBarButton barButtonWithStyle:GYZBarButtonStyleEdit];
+    [edit addEventHandler:^(id sender) {
+        [self presentViewController:[GYZPageEditViewController controllerWithPage:self.page] animated:YES completion:NULL];
+    } forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *e = [[UIBarButtonItem alloc] initWithCustomView:edit];
+    [self.navigationItem setRightBarButtonItem:e];
+    
+    // チェックリストが有効な遷移なら
     if (self.isCheckButtonEnabled) {
         // チェックリストに追加ボタンを追加
         UIButton *add = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 38, 31)];
@@ -83,41 +123,30 @@
                 [__add setImage:[UIImage imageNamed:@"addicon_selected"] forState:UIControlStateNormal];
             }
         } forControlEvents:UIControlEventTouchUpInside];
-        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:add];
-        [self.navigationItem setRightBarButtonItem:item];
+        UIBarButtonItem *additem = [[UIBarButtonItem alloc] initWithCustomView:add];
+        // iPhoneならツールバーを追加して追加
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+            CGRect f = self.view.frame;
+            GYZToolbar *tb = [[GYZToolbar alloc] initWithFrame:CGRectMake(0, f.size.height - 44, 320, 44)];
+            UIBarButtonItem *sp = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+            [tb setItems:@[sp,additem,sp]];
+            f = self.webView.frame;
+            f.size.height -= 44.0f;
+            [self.webView setFrame:f];
+            [self.view addSubview:tb];
+            _toolbar = tb;
+        }else if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+            UIBarButtonItem *e = self.navigationItem.rightBarButtonItem;
+            [self.navigationItem setRightBarButtonItems:@[e,additem]];
+        }
     }
-
     
-    // 戻るボタン
-    [self.navigationItem setHidesBackButton:YES];
-    UIImage *bi = [UIImage imageNamed:@"backicon"];
-    UIButton *b = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 35)];
-    [b setImage:bi forState:UIControlStateNormal];
-    [b addEventHandler:^(id sender) {
-        [self.navigationController popViewControllerAnimated:YES];
-    } forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *item_ = [[UIBarButtonItem alloc] initWithCustomView:b];
-    [self.navigationItem setLeftBarButtonItem:item_];
-    
-    // 履歴
-    GYZNavigationTitleView *title = [[GYZNavigationTitleView alloc] initWithTitle:self.page.title];
-    [title addEventHandler:^(id sender) {
-        [self performSegueWithIdentifier:@"showStack" sender:self];
-    } forControlEvents:UIControlEventTouchUpInside];
-    [self.navigationItem setTitleView:title];
 }
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    GYZNavigationStackViewController *vc = (GYZNavigationStackViewController*)[[segue destinationViewController] topViewController];
-    [vc setController:self.navigationController];
-}
-
 - (void)refresh:(UIRefreshControl*)sender
 {
     [sender endRefreshing];
     
-    [self.page.gyazz getHTMLOfPage:self.page success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self.page getHTMLWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         [SVProgressHUD dismiss];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
@@ -136,9 +165,17 @@
 
     [SVProgressHUD showWithStatus:NSLocalizedString(@"読込中...", )];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-
-
+    
 }
+
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    GYZNavigationStackViewController *vc = (GYZNavigationStackViewController*)[[segue destinationViewController] topViewController];
+    [vc setController:self.navigationController];
+}
+
 
 /* 
  タグ
@@ -264,11 +301,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Web View
+
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     $(@"%@",error);
     [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"読み込みエラー", )];
-
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType

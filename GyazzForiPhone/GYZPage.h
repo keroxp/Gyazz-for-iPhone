@@ -6,12 +6,12 @@
 //  Copyright (c) 2013年 桜井雄介. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "GYZWebModel.h"
 #import "GYZGyazz.h"
 
 @class GYZGyazz;
 
-@interface GYZPage : NSObject <NSCoding>
+@interface GYZPage : GYZWebModel
 
 /* 所属するGyazz */
 @property () GYZGyazz *gyazz;
@@ -20,9 +20,11 @@
 /* 最終更新日付 */
 @property (readonly) NSDate *modifiedDate;
 /* ページのテキスト。あれば */
-@property (readonly) NSString *text;
+@property (nonatomic) NSString *text;
 /* テキストのHTML出力。あれば */
-@property (readonly) NSString *htmlText;
+@property (nonatomic) NSString *htmlText;
+/* 関連ページ 。あれば */
+@property (nonatomic) NSString *relatedPages;
 /* URL */
 @property (readonly) NSString *absoluteString;
 
@@ -32,5 +34,22 @@
 /* コンストラクタ*/
 - (id)initWithGyazz:(GYZGyazz*)gyazz title:(NSString*)title modtime:(NSInteger)modtime;
 
+
+/* 対象ページのテキストを取得 */
+- (void)getTextWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+              failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+/* 対象ページの関連ページを取得 */
+- (void)getRelatedWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                 failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+/* 対象ページのHTMLを取得 */
+- (void)getHTMLWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+              failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+/* ページを保存 */
+- (void)saveWithText:(NSString*)text
+             success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
 @end

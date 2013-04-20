@@ -1,6 +1,7 @@
-platform :ios, '5.0'
+platform :ios, '6.0'
 pod 'AFNetworking'
 pod 'JSONKit'
 pod 'BlocksKit'
 pod 'SVWebViewController'
 pod 'SVProgressHUD'
+pod 'UDBarTrackballItem'

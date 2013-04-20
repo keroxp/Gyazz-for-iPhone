@@ -19,8 +19,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="tNy-hn-FJX" firstAttribute="leading" secondItem="qIm-oo-Wd5" secondAttribute="leading" type="default" id="4Pq-FZ-crv"/>
-                            <constraint firstItem="tNy-hn-FJX" firstAttribute="bottom" secondItem="qIm-oo-Wd5" secondAttribute="bottom" type="default" id="5fH-rC-Nmc"/>
                             <constraint firstItem="tNy-hn-FJX" firstAttribute="top" secondItem="qIm-oo-Wd5" secondAttribute="top" type="default" id="FIO-Da-iL8"/>
+                            <constraint firstItem="tNy-hn-FJX" firstAttribute="bottom" secondItem="qIm-oo-Wd5" secondAttribute="bottom" type="default" id="HDF-9F-g24"/>
                             <constraint firstItem="tNy-hn-FJX" firstAttribute="trailing" secondItem="qIm-oo-Wd5" secondAttribute="trailing" type="default" id="sud-ML-SB7"/>
                         </constraints>
                     </view>

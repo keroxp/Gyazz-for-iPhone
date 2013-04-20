@@ -22,8 +22,6 @@
     UIToolbar *_toolbar;
 }
 
-- (void)editButtonDidTap:(UIButton*)sender;
-
 @end
 
 @implementation GYZPageViewController
@@ -93,7 +91,7 @@
     // 右上に編集ボタンを追加
     GYZBarButton *edit = [GYZBarButton barButtonWithStyle:GYZBarButtonStyleEdit];
     [edit addEventHandler:^(id sender) {
-        [self presentViewController:[GYZPageEditViewController controllerWithPage:self.page] animated:YES completion:NULL];
+        [self performSegueWithIdentifier:@"showEdit" sender:self];
     } forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *e = [[UIBarButtonItem alloc] initWithCustomView:edit];
     [self.navigationItem setRightBarButtonItem:e];
@@ -172,8 +170,13 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    GYZNavigationStackViewController *vc = (GYZNavigationStackViewController*)[[segue destinationViewController] topViewController];
-    [vc setController:self.navigationController];
+    if ([segue.identifier isEqualToString:@"showStack"]) {
+        GYZNavigationStackViewController *vc = (GYZNavigationStackViewController*)[[segue destinationViewController] topViewController];
+        [vc setController:self.navigationController];
+    }else if ([segue.identifier isEqualToString:@"showEdit"]){
+        GYZPageEditViewController *pv = (GYZPageEditViewController*)[[segue destinationViewController] topViewController];
+        [pv setPage:self.page];        
+    }
 }
 
 

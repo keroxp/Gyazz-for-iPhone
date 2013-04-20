@@ -21,8 +21,9 @@
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 /* Chcek Button */
 @property (assign, getter = isCheckButtonEnabled) BOOL checkButtonEnabled;
-
 /* 表示するページ */
 @property () GYZPage *page;
+/* 再読み込み */
+- (void)refresh:(UIRefreshControl*)sender;
 
 @end

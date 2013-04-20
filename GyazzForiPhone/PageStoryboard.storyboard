@@ -28,11 +28,12 @@
                         <outlet property="webView" destination="tNy-hn-FJX" id="UQq-Hn-4lS"/>
                         <segue destination="66J-ov-Nex" kind="modal" identifier="showStack" id="uvZ-kx-HaH"/>
                         <segue destination="ulq-qW-j9X" kind="modal" identifier="showWeb" id="8l4-k9-sUI"/>
+                        <segue destination="yRe-mU-egl" kind="modal" identifier="showEdit" id="He9-AM-ntH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6J4-jB-JjP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-197" y="122"/>
+            <point key="canvasLocation" x="-201" y="-58"/>
         </scene>
         <!--Navigation Stack View Controller-->
         <scene sceneID="IcO-vV-amS">
@@ -69,6 +70,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q5j-KZ-hGU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="866" y="-323"/>
+        </scene>
+        <!--Page Edit View Controller-->
+        <scene sceneID="sUW-kl-ipa">
+            <objects>
+                <viewController id="iCA-zF-YGJ" customClass="GYZPageEditViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qPY-6Z-mud">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSA-bT-KpA">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hSA-bT-KpA" firstAttribute="trailing" secondItem="qPY-6Z-mud" secondAttribute="trailing" type="default" id="1iB-9v-7mz"/>
+                            <constraint firstItem="hSA-bT-KpA" firstAttribute="top" secondItem="qPY-6Z-mud" secondAttribute="top" type="default" id="6y8-vq-Qpv"/>
+                            <constraint firstItem="hSA-bT-KpA" firstAttribute="leading" secondItem="qPY-6Z-mud" secondAttribute="leading" type="default" id="bhU-2U-l2o"/>
+                            <constraint firstItem="hSA-bT-KpA" firstAttribute="bottom" secondItem="qPY-6Z-mud" secondAttribute="bottom" type="user" id="fJ7-7o-2wt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Pri-Vj-L3h">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="YxD-KX-k26">
+                            <connections>
+                                <action selector="cancelButtonDidTap:" destination="iCA-zF-YGJ" id="cav-2E-vKj"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="yOl-zu-cb5">
+                            <connections>
+                                <action selector="doneButtonDidTap:" destination="iCA-zF-YGJ" id="eXC-bb-89U"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bottomConstraint" destination="fJ7-7o-2wt" id="Pxv-6L-V6U"/>
+                        <outlet property="textView" destination="hSA-bT-KpA" id="av3-Gh-apo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i7e-G9-LKv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="874" y="-1085"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1br-rV-Xze">
@@ -122,6 +166,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5XK-iO-zXt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="340" y="376"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eHZ-Qs-FcS">
+            <objects>
+                <navigationController id="yRe-mU-egl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="irn-hk-u99">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="iCA-zF-YGJ" kind="relationship" relationship="rootViewController" id="2L2-GK-IFI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rh0-Tb-7CQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="348" y="-1085"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

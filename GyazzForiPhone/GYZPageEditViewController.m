@@ -7,6 +7,7 @@
 //
 
 #import "GYZPageEditViewController.h"
+#import "GYZPageViewController.h"
 #import "GYZPage.h"
 #import <UDBarTrackballItem.h>
 
@@ -20,7 +21,12 @@
     UIToolbar *_inputAccessoryView;
 }
 
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
+
+
 - (UIToolbar*)inputAccessoryView;
+- (void)setButtonsEnabled:(BOOL)enabled;
 - (void)keyboardWillShow:(NSNotification*)notification;
 - (void)keyboardWillHide:(NSNotification*)notification;
 - (void)keyboardWillChangeFrame:(NSNotification*)notification;
@@ -28,13 +34,6 @@
 @end
 
 @implementation GYZPageEditViewController
-
-+ (GYZPageEditViewController *)controllerWithPage:(GYZPage *)page
-{
-    GYZPageEditViewController *pec = [[GYZPageEditViewController alloc] initWithNibName:@"GYZPageEditViewController" bundle:nil];
-    [pec setPage:page];
-    return pec;
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -113,6 +112,12 @@
     [super setTitle:title];
 }
 
+- (void)setButtonsEnabled:(BOOL)enabled
+{
+    [self.navigationItem.rightBarButtonItem setEnabled:enabled];
+    [self.navigationItem.leftBarButtonItem setEnabled:enabled];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -167,11 +172,12 @@
 - (IBAction)doneButtonDidTap:(id)sender {
     UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"変更を保存しますか？", )];
     [as addButtonWithTitle:NSLocalizedString(@"保存する", ) handler:^{
-        TFLog(@"保存");
+        [self setButtonsEnabled:NO];
         [self.page saveWithText:self.textView.text success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            TFLog(@"保存されました");
+            [self setButtonsEnabled:YES];;
             [self dismissViewControllerAnimated:YES completion:NULL];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [self setButtonsEnabled:YES];
             [SVProgressHUD showErrorWithStatus:error.localizedDescription];
             TFLog(@"%@",error);
         }];

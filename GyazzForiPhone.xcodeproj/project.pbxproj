@@ -39,6 +39,12 @@
 		A6867A1217230928008CE02D /* toolbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6867A1117230928008CE02D /* toolbg@2x.png */; };
 		A6867A14172311EC008CE02D /* editicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6867A13172311EC008CE02D /* editicon@2x.png */; };
 		A6867A1717231C5C008CE02D /* GYZWebModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6867A1617231C5C008CE02D /* GYZWebModel.m */; };
+		A6867A9A17241605008CE02D /* inputboldicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6867A9617241605008CE02D /* inputboldicon@2x.png */; };
+		A6867A9B17241605008CE02D /* inputlinkicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6867A9717241605008CE02D /* inputlinkicon@2x.png */; };
+		A6867A9C17241605008CE02D /* inputredoicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6867A9817241605008CE02D /* inputredoicon@2x.png */; };
+		A6867A9D17241605008CE02D /* inputundoicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6867A9917241605008CE02D /* inputundoicon@2x.png */; };
+		A6867AA01724165A008CE02D /* GYZInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6867A9F1724165A008CE02D /* GYZInputAccessoryView.m */; };
+		A6867AA2172419D9008CE02D /* whitebg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6867AA1172419D9008CE02D /* whitebg@2x.png */; };
 		A68F3FA716F0A597007690E9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F3FA616F0A597007690E9 /* UIKit.framework */; };
 		A68F3FA916F0A597007690E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F3FA816F0A597007690E9 /* Foundation.framework */; };
 		A68F3FAB16F0A597007690E9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F3FAA16F0A597007690E9 /* CoreGraphics.framework */; };
@@ -136,6 +142,13 @@
 		A6867A13172311EC008CE02D /* editicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "editicon@2x.png"; sourceTree = "<group>"; };
 		A6867A1517231C5C008CE02D /* GYZWebModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZWebModel.h; sourceTree = "<group>"; };
 		A6867A1617231C5C008CE02D /* GYZWebModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZWebModel.m; sourceTree = "<group>"; };
+		A6867A9617241605008CE02D /* inputboldicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inputboldicon@2x.png"; sourceTree = "<group>"; };
+		A6867A9717241605008CE02D /* inputlinkicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inputlinkicon@2x.png"; sourceTree = "<group>"; };
+		A6867A9817241605008CE02D /* inputredoicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inputredoicon@2x.png"; sourceTree = "<group>"; };
+		A6867A9917241605008CE02D /* inputundoicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inputundoicon@2x.png"; sourceTree = "<group>"; };
+		A6867A9E1724165A008CE02D /* GYZInputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZInputAccessoryView.h; sourceTree = "<group>"; };
+		A6867A9F1724165A008CE02D /* GYZInputAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZInputAccessoryView.m; sourceTree = "<group>"; };
+		A6867AA1172419D9008CE02D /* whitebg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whitebg@2x.png"; sourceTree = "<group>"; };
 		A68F3FA316F0A597007690E9 /* GyazzForiPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GyazzForiPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68F3FA616F0A597007690E9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A68F3FA816F0A597007690E9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -356,6 +369,11 @@
 		A68F3FD416F0A5E4007690E9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A6867AA1172419D9008CE02D /* whitebg@2x.png */,
+				A6867A9617241605008CE02D /* inputboldicon@2x.png */,
+				A6867A9717241605008CE02D /* inputlinkicon@2x.png */,
+				A6867A9817241605008CE02D /* inputredoicon@2x.png */,
+				A6867A9917241605008CE02D /* inputundoicon@2x.png */,
 				A6867A13172311EC008CE02D /* editicon@2x.png */,
 				A6867A1117230928008CE02D /* toolbg@2x.png */,
 				A6E1AF43171E536E00A5B239 /* checkicon.png */,
@@ -449,6 +467,8 @@
 				A6699C19171C63C50013B8CE /* GYZBarButton.m */,
 				A6867A0E1723054E008CE02D /* GYZToolbar.h */,
 				A6867A0F1723054E008CE02D /* GYZToolbar.m */,
+				A6867A9E1724165A008CE02D /* GYZInputAccessoryView.h */,
+				A6867A9F1724165A008CE02D /* GYZInputAccessoryView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -581,6 +601,11 @@
 				A6E1AF44171E536E00A5B239 /* checkicon.png in Resources */,
 				A6867A1217230928008CE02D /* toolbg@2x.png in Resources */,
 				A6867A14172311EC008CE02D /* editicon@2x.png in Resources */,
+				A6867A9A17241605008CE02D /* inputboldicon@2x.png in Resources */,
+				A6867A9B17241605008CE02D /* inputlinkicon@2x.png in Resources */,
+				A6867A9C17241605008CE02D /* inputredoicon@2x.png in Resources */,
+				A6867A9D17241605008CE02D /* inputundoicon@2x.png in Resources */,
+				A6867AA2172419D9008CE02D /* whitebg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,6 +669,7 @@
 				A6699C1A171C63C50013B8CE /* GYZBarButton.m in Sources */,
 				A6867A101723054E008CE02D /* GYZToolbar.m in Sources */,
 				A6867A1717231C5C008CE02D /* GYZWebModel.m in Sources */,
+				A6867AA01724165A008CE02D /* GYZInputAccessoryView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

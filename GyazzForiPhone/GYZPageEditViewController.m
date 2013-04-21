@@ -9,6 +9,7 @@
 #import "GYZPageEditViewController.h"
 #import "GYZPageViewController.h"
 #import "GYZPage.h"
+#import "GYZInputAccessoryView.h"
 #import <UDBarTrackballItem.h>
 
 @interface GYZPageEditViewController ()
@@ -19,12 +20,17 @@
     NSString *_pageText;
     /*  */
     UIToolbar *_inputAccessoryView;
+    /*  */
+    UISwipeGestureRecognizer *_leftSwypeHander;
+    /*  */
+    UISwipeGestureRecognizer *_rightSwypeHandler;
 }
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 
 
+- (void)handleSwype:(UISwipeGestureRecognizer*)sender;
 - (UIToolbar*)inputAccessoryView;
 - (void)setButtonsEnabled:(BOOL)enabled;
 - (void)keyboardWillShow:(NSNotification*)notification;
@@ -44,57 +50,68 @@
     return self;
 }
 
-- (UIToolbar*)inputAccessoryView
-{
-    if (!_inputAccessoryView) {
-        // ツールバー
-        UIToolbar *tb = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-        // スペース
-        UIBarButtonItem *sp = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace handler:NULL];
-        // トラックボール
-        UDBarTrackballItem *track = [[UDBarTrackballItem alloc] initForTextView:self.textView];
-        // UNDO
-        UIBarButtonItem *undo = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemUndo handler:^(id sender) {
-            [self.textView.undoManager undo];
-        }];
-        UIBarButtonItem *redo = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRedo handler:^(id sender) {
-            [self.textView.undoManager redo];
-        }];
-        UIBarButtonItem *bold = [[UIBarButtonItem alloc] initWithTitle:@"B" style:UIBarButtonItemStyleBordered handler:^(id sender) {
-            UITextRange *r = [self.textView selectedTextRange];
-            if(!r.isEmpty){
-                // からでなければ包む
-                NSString *s = [self.textView textInRange:r];
-                [self.textView insertText:[NSString stringWithFormat:@"[[[%@]]",s]];
-            }else{
-                // 空なら挿入
-                [self.textView insertText:@"[[[]]"];
-                [self.textView setSelectedRange:NSMakeRange(self.textView.selectedRange.location - 2, 0)];
-            }
-        }];
-        
-        UIBarButtonItem *link = [[UIBarButtonItem alloc] initWithTitle:@"<link/>" style:UIBarButtonItemStyleBordered handler:^(id sender) {
-            UITextRange *r = [self.textView selectedTextRange];
-            if(!r.isEmpty){
-                // からでなければ包む
-                NSString *s = [self.textView textInRange:r];
-                [self.textView insertText:[NSString stringWithFormat:@"[[%@]]",s]];
-            }else{
-                // 空なら挿入
-                [self.textView insertText:@"[[]]"];
-                [self.textView setSelectedRange:NSMakeRange(self.textView.selectedRange.location - 2, 0)];
-            }
-        }];
-        [tb setItems:@[undo,sp,redo,sp,track,sp,bold,link]];
-        _inputAccessoryView = tb;
-    }
-    return _inputAccessoryView;
-}
+//- (UIToolbar*)inputAccessoryView
+//{
+//    if (!_inputAccessoryView) {
+//        // ツールバー
+//        UIToolbar *tb = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+//        [tb setBackgroundColor:[UIColor whiteColor]];
+//        // スペース
+//        UIBarButtonItem *sp = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace handler:NULL];
+//        // トラックボール
+//        UDBarTrackballItem *track = [[UDBarTrackballItem alloc] initForTextView:self.textView];
+//        // UNDO
+//        UIButton *undo = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 38)];
+//
+//        UIBarButtonItem *undo = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemUndo handler:^(id sender) {
+//            [self.textView.undoManager undo];
+//        }];
+//        [undo setStyle:UIBarButtonItemStylePlain];
+//        UIBarButtonItem *redo = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRedo handler:^(id sender) {
+//            [self.textView.undoManager redo];
+//        }];
+//        [redo setStyle:UIBarButtonItemStylePlain];
+//        UIBarButtonItem *bold = [[UIBarButtonItem alloc] initWithTitle:@"B" style:UIBarButtonItemStyleBordered handler:^(id sender) {
+//            UITextRange *r = [self.textView selectedTextRange];
+//            if(!r.isEmpty){
+//                // からでなければ包む
+//                NSString *s = [self.textView textInRange:r];
+//                [self.textView insertText:[NSString stringWithFormat:@"[[[%@]]",s]];
+//            }else{
+//                // 空なら挿入
+//                [self.textView insertText:@"[[[]]"];
+//                [self.textView setSelectedRange:NSMakeRange(self.textView.selectedRange.location - 2, 0)];
+//            }
+//        }];
+//        [bold setStyle:UIBarButtonItemStylePlain];
+//        
+//        UIBarButtonItem *link = [[UIBarButtonItem alloc] initWithTitle:@"<link/>" style:UIBarButtonItemStyleBordered handler:^(id sender) {
+//            UITextRange *r = [self.textView selectedTextRange];
+//            if(!r.isEmpty){
+//                // からでなければ包む
+//                NSString *s = [self.textView textInRange:r];
+//                [self.textView insertText:[NSString stringWithFormat:@"[[%@]]",s]];
+//            }else{
+//                // 空なら挿入
+//                [self.textView insertText:@"[[]]"];
+//                [self.textView setSelectedRange:NSMakeRange(self.textView.selectedRange.location - 2, 0)];
+//            }
+//        }];
+//        [link setStyle:UIBarButtonItemStylePlain];
+//        [tb setItems:@[undo,sp,redo,sp,track,sp,bold,link]];
+//        _inputAccessoryView = tb;
+//    }
+//    return _inputAccessoryView;
+//}
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];        
-    [self.textView setInputAccessoryView:[self inputAccessoryView]];
+    [super viewDidLoad];
+    _inputAccessoryView = [[GYZInputAccessoryView alloc] initWithTextView:self.textView];
+    [self.textView setInputAccessoryView:_inputAccessoryView];
+
+    _leftSwypeHander = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwype:)];
+    
     [self.page getTextWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         [SVProgressHUD dismiss];
         _pageText = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
@@ -156,6 +173,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)handleSwype:(UISwipeGestureRecognizer *)sender
+{
+    NSRange r = [self.textView selectedRange];
+    NSInteger i = r.location;
+    char c = [self.textView.text characterAtIndex:i];
+    while (c != '\n') {
+        i--;
+        c = [self.textView.text characterAtIndex:i];
+    } 
+    NSRange nr = NSMakeRange(i, 0);
+
+}
+
 #pragma mark - Action
 
 - (IBAction)cancelButtonDidTap:(id)sender {
@@ -189,38 +219,6 @@
 
 #pragma mark - Keyboard
 
-//- (void)keyboardWillShow:(NSNotification *)notification
-//{
-//    NSLog(@"keybord will show");
-//    // ユーザーインフォを取得
-//    NSDictionary *userInfo = [notification userInfo];
-//    
-//    // キーボードとTextViewの重なり具合を算出
-//    CGFloat overlap;
-//    CGRect keyboardFrame;
-//    CGRect textViewFrame;
-//    keyboardFrame = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-//    keyboardFrame = [_textView.superview convertRect:keyboardFrame fromView:nil];
-//    textViewFrame = _textView.frame;
-//    overlap = MAX(0.0, CGRectGetMaxY(textViewFrame) - CGRectGetMinY(keyboardFrame));
-//    
-//    // Calc textViewFrameEnd
-//    CGRect textViewFrameEnd;
-//    textViewFrameEnd = _textView.frame;
-//    textViewFrameEnd.size.height -= overlap;
-//    
-//    // Animate frame of _textView
-//    NSTimeInterval duration;
-//    UIViewAnimationCurve animationCurve;
-//    void (^animations)(void);
-//    duration = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-//    animationCurve = [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
-//    animations = ^(void) {
-//        _textView.frame = textViewFrameEnd;
-//    };
-//    [UIView animateWithDuration:duration delay:0.0 options:(animationCurve << 16) animations:animations completion:nil];
-//
-//}
 - (void)keyboardWillShow:(NSNotification *)notification {
     NSDictionary *info = [notification userInfo];
     CGRect keyboardFrame = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
@@ -243,47 +241,6 @@
         [self.view layoutIfNeeded];
     }];
 }
-
-
-//- (void)keyboardWillHide:(NSNotification *)notification
-//{
-//    // _textView.frame.size.height : view自体の高さ
-//    // _textView.contentSize.height: scrollView全体の高さ
-//    // _textView.contentOffset     : スクロールしている位置（相対）
-//    
-//    NSLog(@"keyboard will hide");
-//    // Get userInfo
-//    NSDictionary *userInfo = [notification userInfo];
-//    
-//    // Record contentOffset
-//    CGPoint contentOffset = _textView.contentOffset;
-//    //    NSLog(@"text view height is %f",_textView.contentSize.height);
-//    //    NSLog(@"Contents offset is %f",contentOffset.y);
-//    
-//    // Reset frame and insets keeping appearance
-//    [_textView setContentInset:UIEdgeInsetsZero];
-//    [_textView setScrollIndicatorInsets:UIEdgeInsetsZero];
-//    [_textView setContentOffset:contentOffset];
-//    
-//    //    NSLog(@"reseted text fram height is %f",_textView.frame.size.height);
-//    
-//    // Animate contentOffset of _textView if needed
-//    CGFloat contentOffsetDeltaY = _textView.contentSize.height - (contentOffset.y + _textView.frame.size.height);
-//    
-//    NSLog(@"Content offset delta Y is %f",contentOffsetDeltaY);
-//    if (contentOffsetDeltaY < 0.0) {
-//        // Animate contentOffset of _textView
-//        NSTimeInterval duration = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-//        UIViewAnimationCurve animationCurve = [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
-//        void (^animations)(void);
-//        animations = ^(void) {
-//            _textView.contentOffset = CGPointMake(contentOffset.x, contentOffset.y + contentOffsetDeltaY);
-//        };
-//        [UIView animateWithDuration:duration delay:0.0 options:(animationCurve << 16) animations:animations completion:nil];
-//    }
-//    [_textView setFrame:_textView.superview.bounds];
-//    
-//}
 
 - (void)keyboardWillChangeFrame:(NSNotification *)notification
 {

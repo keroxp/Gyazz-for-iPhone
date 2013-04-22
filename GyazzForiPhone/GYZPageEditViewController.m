@@ -50,60 +50,6 @@
     return self;
 }
 
-//- (UIToolbar*)inputAccessoryView
-//{
-//    if (!_inputAccessoryView) {
-//        // ツールバー
-//        UIToolbar *tb = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-//        [tb setBackgroundColor:[UIColor whiteColor]];
-//        // スペース
-//        UIBarButtonItem *sp = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace handler:NULL];
-//        // トラックボール
-//        UDBarTrackballItem *track = [[UDBarTrackballItem alloc] initForTextView:self.textView];
-//        // UNDO
-//        UIButton *undo = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 38)];
-//
-//        UIBarButtonItem *undo = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemUndo handler:^(id sender) {
-//            [self.textView.undoManager undo];
-//        }];
-//        [undo setStyle:UIBarButtonItemStylePlain];
-//        UIBarButtonItem *redo = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRedo handler:^(id sender) {
-//            [self.textView.undoManager redo];
-//        }];
-//        [redo setStyle:UIBarButtonItemStylePlain];
-//        UIBarButtonItem *bold = [[UIBarButtonItem alloc] initWithTitle:@"B" style:UIBarButtonItemStyleBordered handler:^(id sender) {
-//            UITextRange *r = [self.textView selectedTextRange];
-//            if(!r.isEmpty){
-//                // からでなければ包む
-//                NSString *s = [self.textView textInRange:r];
-//                [self.textView insertText:[NSString stringWithFormat:@"[[[%@]]",s]];
-//            }else{
-//                // 空なら挿入
-//                [self.textView insertText:@"[[[]]"];
-//                [self.textView setSelectedRange:NSMakeRange(self.textView.selectedRange.location - 2, 0)];
-//            }
-//        }];
-//        [bold setStyle:UIBarButtonItemStylePlain];
-//        
-//        UIBarButtonItem *link = [[UIBarButtonItem alloc] initWithTitle:@"<link/>" style:UIBarButtonItemStyleBordered handler:^(id sender) {
-//            UITextRange *r = [self.textView selectedTextRange];
-//            if(!r.isEmpty){
-//                // からでなければ包む
-//                NSString *s = [self.textView textInRange:r];
-//                [self.textView insertText:[NSString stringWithFormat:@"[[%@]]",s]];
-//            }else{
-//                // 空なら挿入
-//                [self.textView insertText:@"[[]]"];
-//                [self.textView setSelectedRange:NSMakeRange(self.textView.selectedRange.location - 2, 0)];
-//            }
-//        }];
-//        [link setStyle:UIBarButtonItemStylePlain];
-//        [tb setItems:@[undo,sp,redo,sp,track,sp,bold,link]];
-//        _inputAccessoryView = tb;
-//    }
-//    return _inputAccessoryView;
-//}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -201,6 +147,7 @@
 
 - (IBAction)doneButtonDidTap:(id)sender {
     UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"変更を保存しますか？", )];
+    NSString *text = self.textView.text;
     [as addButtonWithTitle:NSLocalizedString(@"保存する", ) handler:^{
         [self setButtonsEnabled:NO];
         [self.page saveWithText:self.textView.text success:^(AFHTTPRequestOperation *operation, id responseObject) {

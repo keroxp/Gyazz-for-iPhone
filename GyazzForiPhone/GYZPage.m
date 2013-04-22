@@ -79,7 +79,8 @@
     AFHTTPClient *client = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:@"http://gyazz.com"]];
     [client setAuthorizationHeaderWithUsername:self.username password:self.password];
     NSString *data = [NSString stringWithFormat:@"%@\n%@\n%@",self.gyazz.name,self.title,text];
-    [client postPath:@"__write" parameters:@{@"data":data} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    TFLog(@"%@",data);
+    [client postPath:@"__write__" parameters:@{@"data":data} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         if (success) {
             success(operation,responseObject);

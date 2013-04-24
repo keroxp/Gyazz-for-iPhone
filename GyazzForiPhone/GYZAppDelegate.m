@@ -8,17 +8,34 @@
 
 #import "GYZAppDelegate.h"
 #import "GYZUserData.h"
+
+@interface GYZAppDelegate ()
+
+- (void)iCloudStoreDidChange:(NSNotification*)notification;
+
+@end
+
 @implementation GYZAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // TestFlightのインテグレーション
-
     if ([UIDevice currentDevice]) {
         // !!!: Use the next line only during beta
         [TestFlight setDeviceIdentifier:[[[UIDevice currentDevice] identifierForVendor] UUIDString]];
     }
     [TestFlight takeOff:@"cf53c776-22b6-4c28-93b9-0042682c558c"];
+    
+    // iCloudのリモート通知を受ける
+    [[NSNotificationCenter defaultCenter]
+     addObserver: self
+     selector: @selector (iCloudStoreDidChange:)
+     name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification
+     object: [NSUbiquitousKeyValueStore defaultStore]];
+    
+    // get changes that might have happened while this
+    // instance of your app wasn't running
+    [[NSUbiquitousKeyValueStore defaultStore] synchronize];
     
     return YES;
 }
@@ -44,12 +61,21 @@
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     [GYZUserData saveGyazzList];
+    [GYZUserData saveWatchList];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [GYZUserData saveGyazzList];
+    [GYZUserData saveWatchList];
+}
+
+#pragma mark - Notifiacation
+
+- (void)iCloudStoreDidChange:(NSNotification *)notification
+{
+    [GYZUserData iCloudStoreDidChange:notification];
 }
 
 @end

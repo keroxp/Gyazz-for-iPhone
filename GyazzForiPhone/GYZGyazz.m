@@ -28,6 +28,19 @@
     return self;
 }
 
+- (BOOL)isEqual:(id)object
+{
+    if (object == self) {
+        return YES;
+    }
+    if ([object isKindOfClass:[self class]]) {
+        if ([[(GYZGyazz*)object name] isEqualToString:self.name]) {
+            return YES;
+        }
+    }
+    return [super isEqual:object];
+}
+
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [super encodeWithCoder:aCoder];

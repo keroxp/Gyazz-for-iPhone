@@ -16,6 +16,7 @@
 
 @interface GYZGyazzListViewController ()
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
+- (void)iCloudStoreDidChange:(NSNotification*)notification;
 
 @end
 
@@ -40,6 +41,13 @@
     self.title = NSLocalizedString(@"Gyazzリスト", );
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    // iCloudを同期
+    [[NSNotificationCenter defaultCenter]
+     addObserver: self
+     selector: @selector (iCloudStoreDidChange:)
+     name: GYZUserDataDidChangeNotification
+     object: nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -65,6 +73,7 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (IBAction)handleCancel:(id)sender {
@@ -241,6 +250,13 @@
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
     [controller dismissViewControllerAnimated:YES completion:NULL];
+}
+
+#pragma mark - 
+
+- (void)iCloudStoreDidChange:(NSNotification *)notification
+{
+    [self.tableView reloadData];
 }
 
 @end

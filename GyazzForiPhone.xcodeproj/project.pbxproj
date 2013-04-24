@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		970CD674E001424BA7CE26C1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1DBB50177945F689F9346F /* libPods.a */; };
+		A605E8F1172519DE006C5579 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A605E8F0172519DE006C5579 /* MobileCoreServices.framework */; };
+		A605E8F3172519E5006C5579 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A605E8F2172519E5006C5579 /* SystemConfiguration.framework */; };
 		A63543E916FD69B500C50ED0 /* page.html in Resources */ = {isa = PBXBuildFile; fileRef = A63543E816FD69B500C50ED0 /* page.html */; };
 		A63543EB16FD6B5500C50ED0 /* zepto.min.js in Resources */ = {isa = PBXBuildFile; fileRef = A63543EA16FD6B5500C50ED0 /* zepto.min.js */; };
 		A6496582171A2F6100D95608 /* GYZPageEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6496580171A2F6100D95608 /* GYZPageEditViewController.m */; };
@@ -100,6 +102,9 @@
 /* Begin PBXFileReference section */
 		368692A77B7F4E3E9A69222B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		5C1DBB50177945F689F9346F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A605E8EF172512A5006C5579 /* GyazzForiPhone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GyazzForiPhone.entitlements; sourceTree = "<group>"; };
+		A605E8F0172519DE006C5579 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		A605E8F2172519E5006C5579 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A63543E816FD69B500C50ED0 /* page.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = page.html; sourceTree = "<group>"; };
 		A63543EA16FD6B5500C50ED0 /* zepto.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = zepto.min.js; sourceTree = "<group>"; };
 		A649657F171A2F6100D95608 /* GYZPageEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZPageEditViewController.h; sourceTree = "<group>"; };
@@ -223,10 +228,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6F27377171DBA98004DAAD7 /* libz.dylib in Frameworks */,
+				A605E8F3172519E5006C5579 /* SystemConfiguration.framework in Frameworks */,
+				A605E8F1172519DE006C5579 /* MobileCoreServices.framework in Frameworks */,
 				A68F3FA716F0A597007690E9 /* UIKit.framework in Frameworks */,
 				A68F3FA916F0A597007690E9 /* Foundation.framework in Frameworks */,
 				A68F3FAB16F0A597007690E9 /* CoreGraphics.framework in Frameworks */,
+				A6F27377171DBA98004DAAD7 /* libz.dylib in Frameworks */,
 				970CD674E001424BA7CE26C1 /* libPods.a in Frameworks */,
 				A6F27373171DBA38004DAAD7 /* libTestFlight.a in Frameworks */,
 			);
@@ -327,6 +334,8 @@
 		A68F3FA516F0A597007690E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A605E8F2172519E5006C5579 /* SystemConfiguration.framework */,
+				A605E8F0172519DE006C5579 /* MobileCoreServices.framework */,
 				A6F27376171DBA98004DAAD7 /* libz.dylib */,
 				A68F3FA616F0A597007690E9 /* UIKit.framework */,
 				A68F3FA816F0A597007690E9 /* Foundation.framework */,
@@ -339,6 +348,7 @@
 		A68F3FAC16F0A597007690E9 /* GyazzForiPhone */ = {
 			isa = PBXGroup;
 			children = (
+				A605E8EF172512A5006C5579 /* GyazzForiPhone.entitlements */,
 				A68F3FBE16F0A597007690E9 /* MainStoryboard.storyboard */,
 				A6699C03171C02AC0013B8CE /* PageStoryboard.storyboard */,
 				A68F3FE816F0A9DD007690E9 /* Singletons */,
@@ -729,6 +739,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 368692A77B7F4E3E9A69222B /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = GyazzForiPhone/GyazzForiPhone.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Yusuke Sakurai";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yusuke Sakurai";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -779,6 +790,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 368692A77B7F4E3E9A69222B /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = GyazzForiPhone/GyazzForiPhone.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Yusuke Sakurai";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yusuke Sakurai";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -862,6 +874,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 368692A77B7F4E3E9A69222B /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = GyazzForiPhone/GyazzForiPhone.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -884,6 +897,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 368692A77B7F4E3E9A69222B /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = GyazzForiPhone/GyazzForiPhone.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

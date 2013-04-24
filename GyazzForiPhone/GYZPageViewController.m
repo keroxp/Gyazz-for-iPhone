@@ -135,7 +135,11 @@
             _toolbar = tb;
         }else if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
             UIBarButtonItem *e = self.navigationItem.rightBarButtonItem;
-            [self.navigationItem setRightBarButtonItems:@[e,additem]];
+            if (e) {
+                [self.navigationItem setRightBarButtonItems:@[e,additem]];
+            }else{
+                [self.navigationItem setRightBarButtonItem:additem];
+            }
         }
     }
     

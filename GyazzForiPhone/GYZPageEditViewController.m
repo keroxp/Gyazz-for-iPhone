@@ -31,7 +31,6 @@
 
 
 - (void)handleSwype:(UISwipeGestureRecognizer*)sender;
-- (UIToolbar*)inputAccessoryView;
 - (void)setButtonsEnabled:(BOOL)enabled;
 - (void)keyboardWillShow:(NSNotification*)notification;
 - (void)keyboardWillHide:(NSNotification*)notification;
@@ -128,8 +127,7 @@
         i--;
         c = [self.textView.text characterAtIndex:i];
     } 
-    NSRange nr = NSMakeRange(i, 0);
-
+//    NSRange nr = NSMakeRange(i, 0);
 }
 
 #pragma mark - Action

@@ -17,6 +17,8 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 #import <BlocksKit.h>
 #import <AFNetworking.h>
 #import <SVModalWebViewController.h>

@@ -15,6 +15,7 @@
 
 @interface GYZWatchListViewController ()
 
+- (void)iCloudStoreDidChange:(NSNotification*)notification;
 @end
 
 @implementation GYZWatchListViewController
@@ -46,12 +47,21 @@
         }
     } forControlEvents:UIControlEventTouchUpInside];
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:b]];
+    
+    // iCloudを同期
+    [[NSNotificationCenter defaultCenter]
+     addObserver: self
+     selector: @selector (iCloudStoreDidChange:)
+     name: GYZUserDataDidChangeNotification
+     object: nil];
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -145,6 +155,13 @@
     // ...
     // Pass the selected object to the new view controller.
     [self.navigationController pushViewController:pvc animated:YES];
+}
+
+#pragma mark -
+
+- (void)iCloudStoreDidChange:(NSNotification *)notification
+{
+    [self.tableView reloadData];
 }
 
 @end

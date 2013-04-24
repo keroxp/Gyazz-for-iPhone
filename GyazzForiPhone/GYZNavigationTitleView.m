@@ -19,7 +19,6 @@
         [self setTitle:title forState:UIControlStateNormal];
         [self setBackgroundImage:[UIImage imageNamed:@"titlebg"] forState:UIControlStateNormal];
         [self setBackgroundImage:[UIImage imageNamed:@"titlebg_selected"] forState:UIControlStateHighlighted];
-
     }
     return self;
 }

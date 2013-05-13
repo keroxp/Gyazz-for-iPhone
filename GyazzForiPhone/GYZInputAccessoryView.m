@@ -57,10 +57,10 @@
             if(!r.isEmpty){
                 // からでなければ包む
                 NSString *s = [textView textInRange:r];
-                [textView insertText:[NSString stringWithFormat:@"[[[%@]]",s]];
+                [textView insertText:[NSString stringWithFormat:@"[[[%@]]]",s]];
             }else{
                 // 空なら挿入
-                [textView insertText:@"[[[]]"];
+                [textView insertText:@"[[[]]]"];
                 [textView setSelectedRange:NSMakeRange(textView.selectedRange.location - 2, 0)];
             }
         } forControlEvents:UIControlEventTouchUpInside];

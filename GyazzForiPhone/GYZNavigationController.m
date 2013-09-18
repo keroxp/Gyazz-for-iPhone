@@ -29,14 +29,14 @@
 	// Do any additional setup after loading the view.
     if (self.view.bounds.size.width > 320) {
         [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbgipad"] forBarMetrics:UIBarMetricsDefault];
-        NSDictionary *attrs = @{
-                                UITextAttributeTextColor: [UIColor whiteColor],
-                                UITextAttributeTextShadowColor: [UIColor darkGrayColor]
-                                };
-        [self.navigationBar setTitleTextAttributes:attrs];
     }else{
         [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbg"] forBarMetrics:UIBarMetricsDefault];
     }
+    NSDictionary *attrs = @{
+                            UITextAttributeTextColor: [UIColor whiteColor],
+                            UITextAttributeTextShadowColor: [UIColor darkGrayColor]
+                            };
+    [self.navigationBar setTitleTextAttributes:attrs];
 }
 
 

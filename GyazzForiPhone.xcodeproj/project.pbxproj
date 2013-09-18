@@ -510,7 +510,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A68F3FD116F0A597007690E9 /* Build configuration list for PBXNativeTarget "GyazzForiPhone" */;
 			buildPhases = (
-				A6E1AF22171E489E00A5B239 /* ShellScript */,
 				A68F3F9F16F0A597007690E9 /* Sources */,
 				A68F3FA016F0A597007690E9 /* Frameworks */,
 				A68F3FA116F0A597007690E9 /* Resources */,
@@ -635,19 +634,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-		};
-		A6E1AF22171E489E00A5B239 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/bash;
-			shellScript = "#!/bin/bash\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -75,22 +75,22 @@
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    if([self tableView:tableView titleForHeaderInSection:section] && tableView == self.tableView){
-        return 22.0f;
-    }
-    return [super tableView:tableView heightForHeaderInSection:section];
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    NSString *t = [self tableView:tableView titleForHeaderInSection:section];
-    if (t && tableView == self.tableView) {
-        return [[GYZSectionHeaderView alloc] initWithTitle:t constraintToSize:self.view.bounds.size];
-    }
-    return [super tableView:tableView viewForHeaderInSection:section];
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    if([self tableView:tableView titleForHeaderInSection:section] && tableView == self.tableView){
+//        return 22.0f;
+//    }
+//    return [super tableView:tableView heightForHeaderInSection:section];
+//}
+//
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    NSString *t = [self tableView:tableView titleForHeaderInSection:section];
+//    if (t && tableView == self.tableView) {
+//        return [[GYZSectionHeaderView alloc] initWithTitle:t constraintToSize:self.view.bounds.size];
+//    }
+//    return [super tableView:tableView viewForHeaderInSection:section];
+//}
 
 /*
 // Override to support conditional editing of the table view.

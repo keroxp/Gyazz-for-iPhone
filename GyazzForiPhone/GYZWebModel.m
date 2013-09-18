@@ -26,13 +26,9 @@
     return self;
 }
 
-- (void)accessToURL:(NSString *)URL
-             success:(void (^)(AFHTTPRequestOperation *, id))success
-             failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+- (void)accessWithURLRequest:(NSURLRequest *)request success:(GYZNetworkSuccessBlock)success failure:(GYZNetworkFailureBlock)failure
 {
-    $(@"%@,%@,%@",URL,self.username,self.password);
-    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:[URL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
-    AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:req];
+    AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         $(@"%@",[[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
@@ -57,7 +53,7 @@
             [self setPassword:nil];
             UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ユーザ名もしくはパスワードが違います", ) message:nil];
             [av setCancelButtonWithTitle:@"OK" handler:^{
-                [self accessToURL:URL success:success failure:failure];
+                [self accessToURL:request.URL.absoluteString success:success failure:failure];
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
             }];
             [av show];
@@ -81,7 +77,7 @@
                     [self setUsername:[[__av textFieldAtIndex:0] text]];
                     [self setPassword:[[__av textFieldAtIndex:1] text]];
                     // リトライ
-                    [self accessToURL:URL success:success failure:failure];
+                    [self accessToURL:request.URL.absoluteString success:success failure:failure];
                 }];
                 [av setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
                 [[av textFieldAtIndex:0] setPlaceholder:NSLocalizedString(@"ユーザ名", )];
@@ -96,6 +92,13 @@
     NSOperationQueue *q = [[NSOperationQueue alloc] init];
     [q addOperation:op];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+}
+
+- (void)accessToURL:(NSString *)URL success:(GYZNetworkSuccessBlock)success failure:(GYZNetworkFailureBlock)failure
+{
+    $(@"%@,%@,%@",URL,self.username,self.password);
+    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:[URL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    [self accessWithURLRequest:req success:success failure:failure];
 }
 
 @end

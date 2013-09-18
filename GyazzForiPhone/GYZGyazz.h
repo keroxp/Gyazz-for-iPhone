@@ -8,23 +8,18 @@
 
 #import "GYZWebModel.h"
 
-@class GYZPage, AFHTTPRequestOperation;
-
 @interface GYZGyazz : GYZWebModel  <NSCoding>
 
 /* Gyazzの名前 */
 @property (readonly) NSString *name;
 
-
 /* コンストラクタ */
 - (id)initWithName:(NSString*)name;
 
 /* 自身のページリストを取得する */
-- (void)getPageListWithWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+- (void)getPageListWithWithSuccess:(GYZNetworkSuccessBlock)success
+                           failure:(GYZNetworkFailureBlock)failure;
 
-/* URLパス */
-- (NSString*)absoluteURLPath;
 /* UserDefaultsに保存 */
 - (void)save;
 

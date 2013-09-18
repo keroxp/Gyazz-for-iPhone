@@ -145,7 +145,6 @@
 
 - (IBAction)doneButtonDidTap:(id)sender {
     UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"変更を保存しますか？", )];
-    NSString *text = self.textView.text;
     [as addButtonWithTitle:NSLocalizedString(@"保存する", ) handler:^{
         [self setButtonsEnabled:NO];
         [self.page saveWithText:self.textView.text success:^(AFHTTPRequestOperation *operation, id responseObject) {

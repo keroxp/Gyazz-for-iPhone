@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void (^GYZNetworkSuccessBlock)(AFHTTPRequestOperation *operation, id responseObj);
+typedef void (^GYZNetworkFailureBlock)(AFHTTPRequestOperation *operation, NSError *e) ;
+
 @interface GYZWebModel : NSObject <NSCoding>
 
 /* Basic認証用のUserName */
@@ -17,7 +20,21 @@
 
 /* 対象URLにアクセス */
 - (void)accessToURL:(NSString *)URL
-             success:(void (^)(AFHTTPRequestOperation *, id))success
-            failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure;
+             success:(GYZNetworkSuccessBlock)success
+            failure:(GYZNetworkFailureBlock)failure;
+
+- (void)accessWithURLRequest:(NSURLRequest*)request
+                     success:(GYZNetworkSuccessBlock)success
+                     failure:(GYZNetworkFailureBlock)failure;
+
+@end
+
+@interface GYZWebModel (Abstract)
+
+/* URLパス */
+- (NSString*)absoluteURLPath;
+/* URL */
+- (NSURL*)absoluteURL;
+
 
 @end

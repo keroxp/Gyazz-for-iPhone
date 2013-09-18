@@ -56,7 +56,7 @@
     return self;
 }
 
-- (void)getPageListWithWithSuccess:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+- (void)getPageListWithWithSuccess:(GYZNetworkSuccessBlock)success failure:(GYZNetworkFailureBlock)failure
 {
     NSString *path = [NSString stringWithFormat:@"%@/__list",[self absoluteURLPath]];
     [self accessToURL:path success:success failure:failure];
@@ -65,6 +65,11 @@
 - (NSString *)absoluteURLPath
 {
     return [NSString stringWithFormat:@"http://gyazz.com/%@",_name];
+}
+
+- (NSURL *)absoluteURL
+{
+    return [NSURL URLWithString:self.absoluteURLPath];
 }
 
 - (void)save

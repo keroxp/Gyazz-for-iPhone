@@ -25,8 +25,6 @@
 @property (nonatomic) NSString *htmlText;
 /* 関連ページ 。あれば */
 @property (nonatomic) NSString *relatedPages;
-/* URL */
-@property (readonly) NSString *absoluteString;
 
 /* JSONArrayからページリストを作る */
 + (NSArray*)pagesFromJSONArray:(NSArray*)JSONArray ofGyazz:(GYZGyazz*)gyazz;
@@ -36,20 +34,20 @@
 
 
 /* 対象ページのテキストを取得 */
-- (void)getTextWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-              failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+- (void)getTextWithSuccess:(GYZNetworkSuccessBlock)success
+                   failure:(GYZNetworkFailureBlock)failure;
 
 /* 対象ページの関連ページを取得 */
-- (void)getRelatedWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                 failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+- (void)getRelatedWithSuccess:(GYZNetworkSuccessBlock)success
+                      failure:(GYZNetworkFailureBlock)failure;
 
 /* 対象ページのHTMLを取得 */
-- (void)getHTMLWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-              failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+- (void)getHTMLWithSuccess:(GYZNetworkSuccessBlock)success
+                   failure:(GYZNetworkFailureBlock)failure;
 
 /* ページを保存 */
 - (void)saveWithText:(NSString*)text
-             success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+             success:(GYZNetworkSuccessBlock)success
+             failure:(GYZNetworkFailureBlock)failure;
 
 @end

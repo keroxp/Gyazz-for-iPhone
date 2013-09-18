@@ -1,27 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ulT-pB-pEa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ulT-pB-pEa">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
         <!--Page View Controller-->
         <scene sceneID="Gkl-aU-rt2">
             <objects>
                 <viewController id="ulT-pB-pEa" customClass="GYZPageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bLc-Of-mmk"/>
+                        <viewControllerLayoutGuide type="bottom" id="Dfi-Cd-MyG"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qIm-oo-Wd5">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tNy-hn-FJX">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="tNy-hn-FJX" firstAttribute="leading" secondItem="qIm-oo-Wd5" secondAttribute="leading" type="default" id="4Pq-FZ-crv"/>
-                            <constraint firstItem="tNy-hn-FJX" firstAttribute="top" secondItem="qIm-oo-Wd5" secondAttribute="top" type="default" id="FIO-Da-iL8"/>
-                            <constraint firstItem="tNy-hn-FJX" firstAttribute="bottom" secondItem="qIm-oo-Wd5" secondAttribute="bottom" type="default" id="HDF-9F-g24"/>
-                            <constraint firstItem="tNy-hn-FJX" firstAttribute="trailing" secondItem="qIm-oo-Wd5" secondAttribute="trailing" type="default" id="sud-ML-SB7"/>
+                            <constraint firstItem="tNy-hn-FJX" firstAttribute="leading" secondItem="qIm-oo-Wd5" secondAttribute="leading" id="4Pq-FZ-crv"/>
+                            <constraint firstItem="tNy-hn-FJX" firstAttribute="top" secondItem="qIm-oo-Wd5" secondAttribute="top" id="FIO-Da-iL8"/>
+                            <constraint firstItem="tNy-hn-FJX" firstAttribute="bottom" secondItem="qIm-oo-Wd5" secondAttribute="bottom" id="HDF-9F-g24"/>
+                            <constraint firstItem="tNy-hn-FJX" firstAttribute="trailing" secondItem="qIm-oo-Wd5" secondAttribute="trailing" id="sud-ML-SB7"/>
                         </constraints>
                     </view>
                     <connections>
@@ -39,19 +45,18 @@
         <scene sceneID="IcO-vV-amS">
             <objects>
                 <tableViewController id="OXl-cK-MGg" customClass="GYZNavigationStackViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="YFR-s1-K3E">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="YFR-s1-K3E">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="6Dz-Nu-OMb">
-                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <rect key="frame" x="0.0" y="119" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Dz-Nu-OMb" id="xug-1A-nwM">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
+                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -75,11 +80,16 @@
         <scene sceneID="sUW-kl-ipa">
             <objects>
                 <viewController id="iCA-zF-YGJ" customClass="GYZPageEditViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rsP-GW-ALs"/>
+                        <viewControllerLayoutGuide type="bottom" id="jrl-88-wy1"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qPY-6Z-mud">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSA-bT-KpA">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -87,10 +97,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hSA-bT-KpA" firstAttribute="trailing" secondItem="qPY-6Z-mud" secondAttribute="trailing" type="default" id="1iB-9v-7mz"/>
-                            <constraint firstItem="hSA-bT-KpA" firstAttribute="top" secondItem="qPY-6Z-mud" secondAttribute="top" type="default" id="6y8-vq-Qpv"/>
-                            <constraint firstItem="hSA-bT-KpA" firstAttribute="leading" secondItem="qPY-6Z-mud" secondAttribute="leading" type="default" id="bhU-2U-l2o"/>
-                            <constraint firstItem="hSA-bT-KpA" firstAttribute="bottom" secondItem="qPY-6Z-mud" secondAttribute="bottom" type="user" id="fJ7-7o-2wt"/>
+                            <constraint firstItem="hSA-bT-KpA" firstAttribute="trailing" secondItem="qPY-6Z-mud" secondAttribute="trailing" id="1iB-9v-7mz"/>
+                            <constraint firstItem="hSA-bT-KpA" firstAttribute="top" secondItem="qPY-6Z-mud" secondAttribute="top" id="6y8-vq-Qpv"/>
+                            <constraint firstItem="hSA-bT-KpA" firstAttribute="leading" secondItem="qPY-6Z-mud" secondAttribute="leading" id="bhU-2U-l2o"/>
+                            <constraint firstItem="hSA-bT-KpA" firstAttribute="bottom" secondItem="qPY-6Z-mud" secondAttribute="bottom" id="fJ7-7o-2wt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Pri-Vj-L3h">
@@ -136,8 +146,12 @@
         <scene sceneID="wIT-OG-SzJ">
             <objects>
                 <viewController id="tpA-3r-Ktp" customClass="SVWebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cdf-cR-PUy"/>
+                        <viewControllerLayoutGuide type="bottom" id="20A-KQ-ML9"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ipj-cT-3bt">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>

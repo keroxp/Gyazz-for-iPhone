@@ -153,7 +153,7 @@
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         //        $(@"%@",str);
-        [self.webView loadHTMLString:str baseURL:[NSURL URLWithString:self.page.absoluteString]];
+        [self.webView loadHTMLString:str baseURL:[NSURL URLWithString:self.page.absoluteURLPath]];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [SVProgressHUD dismiss];

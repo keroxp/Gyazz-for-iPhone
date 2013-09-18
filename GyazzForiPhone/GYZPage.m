@@ -36,9 +36,14 @@
     return self;
 }
 
-- (NSString *)absoluteString
+- (NSString *)absoluteURLPath
 {
     return [NSString stringWithFormat:@"%@/%@",self.gyazz.absoluteURLPath,self.title];
+}
+
+- (NSURL *)absoluteURL
+{
+    return [NSURL URLWithString:self.absoluteURLPath];
 }
 
 
@@ -56,42 +61,55 @@
 
 #pragma mark - API
 
-- (void)getTextWithSuccess:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+- (void)getTextWithSuccess:(GYZNetworkSuccessBlock)success failure:(GYZNetworkFailureBlock)failure
 {
     NSString *path = [NSString stringWithFormat:@"%@/%@/text",self.gyazz.absoluteURLPath,self.title];
     [self accessToURL:path success:success failure:failure];
 }
 
-- (void)getRelatedWithSuccess:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+- (void)getRelatedWithSuccess:(GYZNetworkSuccessBlock)success failure:(GYZNetworkFailureBlock)failure
 {
     NSString *path = [NSString stringWithFormat:@"%@/%@/related",self.gyazz.absoluteURLPath, self.title];
     [self accessToURL:path success:success failure:failure];
 }
 
-- (void)getHTMLWithSuccess:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+- (void)getHTMLWithSuccess:(GYZNetworkSuccessBlock)success failure:(GYZNetworkFailureBlock)failure
 {
     NSString *path = [NSString stringWithFormat:@"%@/%@",self.gyazz.absoluteURLPath,self.title];
-    [self accessToURL:path success:success failure:failure];
+    [self accessToURL:path success:^(AFHTTPRequestOperation *operation, id responseObj) {
+        // クッキーを保存
+//        NSLog(@"%@",operation.response.allHeaderFields);
+//        NSArray * all = [NSHTTPCookie cookiesWithResponseHeaderFields:[operation.response allHeaderFields]
+//                                                               forURL:self.absoluteURL];
+//        NSLog(@"How many Cookies: %d", all.count);
+//        
+//        [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookies:all
+//                                                           forURL:self.absoluteURL mainDocumentURL:nil];
+//        
+//        for (NSHTTPCookie *cookie in all)
+//            NSLog(@"Name: %@ : Value: %@, Expires: %@", cookie.name, cookie.value, cookie.expiresDate);
+
+        if (success) {
+            success(operation,responseObj);
+        }
+        
+    } failure:failure];
 }
 
-- (void)saveWithText:(NSString *)text success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+
+- (void)saveWithText:(NSString *)text success:(GYZNetworkSuccessBlock)success failure:(GYZNetworkFailureBlock)failure
 {
-    AFHTTPClient *client = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:@"http://gyazz.com"]];
-    [client setAuthorizationHeaderWithUsername:self.username password:self.password];
+    //クッキーの取得
+    NSArray * availableCookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:self.gyazz.absoluteURL];
+    NSDictionary * headers = [NSHTTPCookie requestHeaderFieldsWithCookies:availableCookies];
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:self.absoluteURL];
     NSString *data = [NSString stringWithFormat:@"%@\n%@\n%@",self.gyazz.name,self.title,text];
+    [req setAllHTTPHeaderFields:headers];
+    [req setValue:self.username forHTTPHeaderField:@"username"];
+    [req setValue:self.password forHTTPHeaderField:@"password"];
+    [req setHTTPBody:[NSString stringWithFormat:@"data=%@",data]];
+    [self accessWithURLRequest:req success:success failure:failure];
     TFLog(@"%@",data);
-    [client postPath:@"__write__" parameters:@{@"data":data} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        if (success) {
-            success(operation,responseObject);
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        if (failure) {
-            failure(operation,error);
-        }
-    }];
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 }
 
 #pragma mark - NSCoding

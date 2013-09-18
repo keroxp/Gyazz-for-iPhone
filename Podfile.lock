@@ -6,6 +6,7 @@ PODS:
   - libffi (3.0.13)
   - SVProgressHUD (0.9)
   - SVWebViewController (0.1)
+  - TestFlightSDK (2.0)
   - UDBarTrackballItem (1.0.0)
 
 DEPENDENCIES:
@@ -14,6 +15,7 @@ DEPENDENCIES:
   - JSONKit
   - SVProgressHUD
   - SVWebViewController
+  - TestFlightSDK
   - UDBarTrackballItem
 
 SPEC CHECKSUMS:
@@ -23,6 +25,7 @@ SPEC CHECKSUMS:
   libffi: 64ef39353e747bb2b25e1026afd96a157bf9231c
   SVProgressHUD: 03d4845ec8e64591726428a08236c6a5489d45f8
   SVWebViewController: 2e3a367237bb7072e54e05c6eaa82d21a12ba676
+  TestFlightSDK: 940906d4b2550cf397c6f2d2fcc4ebfdcd8ae858
   UDBarTrackballItem: 46926afb3be77319da4d65ceb8077f5bccf27df5
 
 COCOAPODS: 0.24.0

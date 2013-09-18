@@ -75,6 +75,15 @@
 		A6A8CBAF17EA4E1D003F4CCB /* listicon7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A8CBAE17EA4E1D003F4CCB /* listicon7@2x.png */; };
 		A6A8CBB217EA530B003F4CCB /* addicon_selected7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A8CBB017EA530B003F4CCB /* addicon_selected7@2x.png */; };
 		A6A8CBB317EA530B003F4CCB /* addicon7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A8CBB117EA530B003F4CCB /* addicon7@2x.png */; };
+		A6A8CBBA17EA7141003F4CCB /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A8CBB417EA7141003F4CCB /* Icon-40.png */; };
+		A6A8CBBB17EA7141003F4CCB /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A8CBB517EA7141003F4CCB /* Icon-40@2x.png */; };
+		A6A8CBBC17EA7141003F4CCB /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A8CBB617EA7141003F4CCB /* Icon-76.png */; };
+		A6A8CBBD17EA7141003F4CCB /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A8CBB717EA7141003F4CCB /* Icon-76@2x.png */; };
+		A6A8CBBE17EA7141003F4CCB /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A8CBB817EA7141003F4CCB /* Icon-Small.png */; };
+		A6A8CBBF17EA7141003F4CCB /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A8CBB917EA7141003F4CCB /* Icon-Small@2x.png */; };
+		A6A8CBC517EA7261003F4CCB /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A8CBC417EA7261003F4CCB /* Icon-120.png */; };
+		A6A8CBC817EA7291003F4CCB /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A8CBC617EA7291003F4CCB /* Icon-Small-50.png */; };
+		A6A8CBC917EA7291003F4CCB /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A8CBC717EA7291003F4CCB /* Icon-Small-50@2x.png */; };
 		A6E1AF2F171E535E00A5B239 /* listicon_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = A6E1AF23171E535E00A5B239 /* listicon_selected.png */; };
 		A6E1AF30171E535E00A5B239 /* listicon.png in Resources */ = {isa = PBXBuildFile; fileRef = A6E1AF24171E535E00A5B239 /* listicon.png */; };
 		A6E1AF31171E535E00A5B239 /* navbg.png in Resources */ = {isa = PBXBuildFile; fileRef = A6E1AF25171E535E00A5B239 /* navbg.png */; };
@@ -95,9 +104,6 @@
 		A6F2732F171DB1CD004DAAD7 /* navbgipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6F2732E171DB1CD004DAAD7 /* navbgipad@2x.png */; };
 		A6F27331171DB2D7004DAAD7 /* tabbgipad_light@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6F27330171DB2D7004DAAD7 /* tabbgipad_light@2x.png */; };
 		A6F2736D171DB76F004DAAD7 /* tabselectionbgipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6F2736C171DB76F004DAAD7 /* tabselectionbgipad@2x.png */; };
-		A6F27373171DBA38004DAAD7 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F2736F171DBA38004DAAD7 /* libTestFlight.a */; };
-		A6F27374171DBA38004DAAD7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A6F27370171DBA38004DAAD7 /* README.md */; };
-		A6F27375171DBA38004DAAD7 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = A6F27371171DBA38004DAAD7 /* release_notes.md */; };
 		A6F27377171DBA98004DAAD7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F27376171DBA98004DAAD7 /* libz.dylib */; };
 		A6F27379171DBD65004DAAD7 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A6F27378171DBD65004DAAD7 /* Default-Portrait~ipad.png */; };
 		A6F2737B171DBD6B004DAAD7 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A6F2737A171DBD6B004DAAD7 /* Default-Portrait@2x~ipad.png */; };
@@ -205,6 +211,15 @@
 		A6A8CBAE17EA4E1D003F4CCB /* listicon7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "listicon7@2x.png"; sourceTree = "<group>"; };
 		A6A8CBB017EA530B003F4CCB /* addicon_selected7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addicon_selected7@2x.png"; sourceTree = "<group>"; };
 		A6A8CBB117EA530B003F4CCB /* addicon7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addicon7@2x.png"; sourceTree = "<group>"; };
+		A6A8CBB417EA7141003F4CCB /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40.png"; sourceTree = "<group>"; };
+		A6A8CBB517EA7141003F4CCB /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@2x.png"; sourceTree = "<group>"; };
+		A6A8CBB617EA7141003F4CCB /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
+		A6A8CBB717EA7141003F4CCB /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@2x.png"; sourceTree = "<group>"; };
+		A6A8CBB817EA7141003F4CCB /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		A6A8CBB917EA7141003F4CCB /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		A6A8CBC417EA7261003F4CCB /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
+		A6A8CBC617EA7291003F4CCB /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		A6A8CBC717EA7291003F4CCB /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50@2x.png"; sourceTree = "<group>"; };
 		A6E1AF23171E535E00A5B239 /* listicon_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = listicon_selected.png; sourceTree = "<group>"; };
 		A6E1AF24171E535E00A5B239 /* listicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = listicon.png; sourceTree = "<group>"; };
 		A6E1AF25171E535E00A5B239 /* navbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navbg.png; sourceTree = "<group>"; };
@@ -225,10 +240,6 @@
 		A6F2732E171DB1CD004DAAD7 /* navbgipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbgipad@2x.png"; sourceTree = "<group>"; };
 		A6F27330171DB2D7004DAAD7 /* tabbgipad_light@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbgipad_light@2x.png"; sourceTree = "<group>"; };
 		A6F2736C171DB76F004DAAD7 /* tabselectionbgipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabselectionbgipad@2x.png"; sourceTree = "<group>"; };
-		A6F2736F171DBA38004DAAD7 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
-		A6F27370171DBA38004DAAD7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		A6F27371171DBA38004DAAD7 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
-		A6F27372171DBA38004DAAD7 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		A6F27376171DBA98004DAAD7 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		A6F27378171DBD65004DAAD7 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		A6F2737A171DBD6B004DAAD7 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
@@ -248,7 +259,6 @@
 				A68F3FAB16F0A597007690E9 /* CoreGraphics.framework in Frameworks */,
 				A6F27377171DBA98004DAAD7 /* libz.dylib in Frameworks */,
 				970CD674E001424BA7CE26C1 /* libPods.a in Frameworks */,
-				A6F27373171DBA38004DAAD7 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,13 +332,21 @@
 		A68F3F9A16F0A597007690E9 = {
 			isa = PBXGroup;
 			children = (
+				A6A8CBC617EA7291003F4CCB /* Icon-Small-50.png */,
+				A6A8CBC717EA7291003F4CCB /* Icon-Small-50@2x.png */,
+				A6A8CBC417EA7261003F4CCB /* Icon-120.png */,
+				A6A8CBB417EA7141003F4CCB /* Icon-40.png */,
+				A6A8CBB517EA7141003F4CCB /* Icon-40@2x.png */,
+				A6A8CBB617EA7141003F4CCB /* Icon-76.png */,
+				A6A8CBB717EA7141003F4CCB /* Icon-76@2x.png */,
+				A6A8CBB817EA7141003F4CCB /* Icon-Small.png */,
+				A6A8CBB917EA7141003F4CCB /* Icon-Small@2x.png */,
 				A6F2737E171DBD8E004DAAD7 /* Icon-72@2x.png */,
 				A6F2737C171DBD8A004DAAD7 /* Icon-72.png */,
 				A6F2737A171DBD6B004DAAD7 /* Default-Portrait@2x~ipad.png */,
 				A6F27378171DBD65004DAAD7 /* Default-Portrait~ipad.png */,
 				A6699C16171C5B9D0013B8CE /* Icon@2x.png */,
 				A6699C14171C5B950013B8CE /* Icon.png */,
-				A6F2736E171DBA38004DAAD7 /* TestFlightSDK1.2.4 */,
 				A68F3FAC16F0A597007690E9 /* GyazzForiPhone */,
 				A68F3FA516F0A597007690E9 /* Frameworks */,
 				A68F3FA416F0A597007690E9 /* Products */,
@@ -512,17 +530,6 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
-		A6F2736E171DBA38004DAAD7 /* TestFlightSDK1.2.4 */ = {
-			isa = PBXGroup;
-			children = (
-				A6F2736F171DBA38004DAAD7 /* libTestFlight.a */,
-				A6F27370171DBA38004DAAD7 /* README.md */,
-				A6F27371171DBA38004DAAD7 /* release_notes.md */,
-				A6F27372171DBA38004DAAD7 /* TestFlight.h */,
-			);
-			path = TestFlightSDK1.2.4;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -553,6 +560,11 @@
 				CLASSPREFIX = GYZ;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Masui Lab";
+				TargetAttributes = {
+					A68F3FA216F0A597007690E9 = {
+						DevelopmentTeam = 2M4NMV4P4Y;
+					};
+				};
 			};
 			buildConfigurationList = A68F3F9E16F0A597007690E9 /* Build configuration list for PBXProject "GyazzForiPhone" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -579,7 +591,9 @@
 			files = (
 				A63543EB16FD6B5500C50ED0 /* zepto.min.js in Resources */,
 				A68F3FB116F0A597007690E9 /* InfoPlist.strings in Resources */,
+				A6A8CBC917EA7291003F4CCB /* Icon-Small-50@2x.png in Resources */,
 				A68F3FB916F0A597007690E9 /* Default.png in Resources */,
+				A6A8CBBD17EA7141003F4CCB /* Icon-76@2x.png in Resources */,
 				A68F3FBB16F0A597007690E9 /* Default@2x.png in Resources */,
 				A68F3FBD16F0A597007690E9 /* Default-568h@2x.png in Resources */,
 				A68F3FC016F0A597007690E9 /* MainStoryboard.storyboard in Resources */,
@@ -596,6 +610,7 @@
 				A6699BF3171BEC2F0013B8CE /* titlebg_selected@2x.png in Resources */,
 				A6699BF4171BEC2F0013B8CE /* titlebg@2x.png in Resources */,
 				A6699BF6171BEEAE0013B8CE /* backicon@2x.png in Resources */,
+				A6A8CBC517EA7261003F4CCB /* Icon-120.png in Resources */,
 				A6699C00171BF9450013B8CE /* addicon@2x.png in Resources */,
 				A6699C02171BFBBC0013B8CE /* addicon_selected@2x.png in Resources */,
 				A6699C04171C02AC0013B8CE /* PageStoryboard.storyboard in Resources */,
@@ -606,34 +621,38 @@
 				A6F2732F171DB1CD004DAAD7 /* navbgipad@2x.png in Resources */,
 				A6F27331171DB2D7004DAAD7 /* tabbgipad_light@2x.png in Resources */,
 				A6F2736D171DB76F004DAAD7 /* tabselectionbgipad@2x.png in Resources */,
-				A6F27374171DBA38004DAAD7 /* README.md in Resources */,
-				A6F27375171DBA38004DAAD7 /* release_notes.md in Resources */,
 				A6F27379171DBD65004DAAD7 /* Default-Portrait~ipad.png in Resources */,
 				A6F2737B171DBD6B004DAAD7 /* Default-Portrait@2x~ipad.png in Resources */,
 				A6F2737D171DBD8A004DAAD7 /* Icon-72.png in Resources */,
 				A6F2737F171DBD8E004DAAD7 /* Icon-72@2x.png in Resources */,
+				A6A8CBBC17EA7141003F4CCB /* Icon-76.png in Resources */,
 				A6E1AF2F171E535E00A5B239 /* listicon_selected.png in Resources */,
 				A6E1AF30171E535E00A5B239 /* listicon.png in Resources */,
 				A6E1AF31171E535E00A5B239 /* navbg.png in Resources */,
 				A6E1AF32171E535E00A5B239 /* navbgipad.png in Resources */,
 				A6A8CBAD17EA4E16003F4CCB /* checkicon7@2x.png in Resources */,
 				A6E1AF33171E535E00A5B239 /* sectionbg.png in Resources */,
+				A6A8CBBB17EA7141003F4CCB /* Icon-40@2x.png in Resources */,
 				A6E1AF34171E535E00A5B239 /* tabbg_dark.png in Resources */,
 				A6E1AF35171E535E00A5B239 /* tabbg_light.png in Resources */,
 				A6E1AF36171E535E00A5B239 /* tabbgipad_light.png in Resources */,
 				A6E1AF37171E535E00A5B239 /* tabselectionbg.png in Resources */,
 				A6E1AF38171E535E00A5B239 /* tabselectionbgipad.png in Resources */,
+				A6A8CBC817EA7291003F4CCB /* Icon-Small-50.png in Resources */,
 				A6E1AF39171E535E00A5B239 /* titlebg_selected.png in Resources */,
 				A6E1AF3A171E535E00A5B239 /* titlebg.png in Resources */,
+				A6A8CBBA17EA7141003F4CCB /* Icon-40.png in Resources */,
 				A6E1AF3F171E536400A5B239 /* addicon_selected.png in Resources */,
 				A6E1AF40171E536400A5B239 /* addicon.png in Resources */,
 				A6E1AF41171E536400A5B239 /* backicon.png in Resources */,
 				A6E1AF42171E536400A5B239 /* checkicon_selected.png in Resources */,
 				A6A8CBB317EA530B003F4CCB /* addicon7@2x.png in Resources */,
 				A6E1AF44171E536E00A5B239 /* checkicon.png in Resources */,
+				A6A8CBBE17EA7141003F4CCB /* Icon-Small.png in Resources */,
 				A6867A1217230928008CE02D /* toolbg@2x.png in Resources */,
 				A6A8CBAF17EA4E1D003F4CCB /* listicon7@2x.png in Resources */,
 				A6867A14172311EC008CE02D /* editicon@2x.png in Resources */,
+				A6A8CBBF17EA7141003F4CCB /* Icon-Small@2x.png in Resources */,
 				A6867A9A17241605008CE02D /* inputboldicon@2x.png in Resources */,
 				A6867A9B17241605008CE02D /* inputlinkicon@2x.png in Resources */,
 				A6867A9C17241605008CE02D /* inputredoicon@2x.png in Resources */,
@@ -752,7 +771,7 @@
 			baseConfigurationReference = 368692A77B7F4E3E9A69222B /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = GyazzForiPhone/GyazzForiPhone.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Yusuke Sakurai";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yusuke Sakurai";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GyazzForiPhone/GyazzForiPhone-Prefix.pch";
@@ -803,7 +822,7 @@
 			baseConfigurationReference = 368692A77B7F4E3E9A69222B /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = GyazzForiPhone/GyazzForiPhone.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Yusuke Sakurai";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yusuke Sakurai";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GyazzForiPhone/GyazzForiPhone-Prefix.pch";
@@ -910,7 +929,7 @@
 			baseConfigurationReference = 368692A77B7F4E3E9A69222B /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = GyazzForiPhone/GyazzForiPhone.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GyazzForiPhone/GyazzForiPhone-Prefix.pch";

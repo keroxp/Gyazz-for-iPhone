@@ -107,7 +107,7 @@
     [req setAllHTTPHeaderFields:headers];
     [req setValue:self.username forHTTPHeaderField:@"username"];
     [req setValue:self.password forHTTPHeaderField:@"password"];
-    [req setHTTPBody:[NSString stringWithFormat:@"data=%@",data]];
+    [req setHTTPBody:[[NSString stringWithFormat:@"data=%@",data] dataUsingEncoding:NSUTF8StringEncoding]];
     [self accessWithURLRequest:req success:success failure:failure];
     TFLog(@"%@",data);
 }

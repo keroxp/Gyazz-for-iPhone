@@ -20,6 +20,7 @@
 {
     NSURL *_URLToMove;
     UIToolbar *_toolbar;
+    UIRefreshControl *_refreshControl;
 }
 
 @end
@@ -28,11 +29,13 @@
 
 + (GYZPageViewController *)pageViewControllerWithPage:(GYZPage *)page enableCheckButton:(BOOL)checkButton
 {
-    UIStoryboard *s = [UIStoryboard storyboardWithName:@"PageStoryboard" bundle:[NSBundle mainBundle]];
-    GYZPageViewController *p = [s instantiateInitialViewController];
-    [p setPage:page];
-    [p setCheckButtonEnabled:checkButton];
-    return p;
+    @autoreleasepool {
+        UIStoryboard *s = [UIStoryboard storyboardWithName:@"PageStoryboard" bundle:[NSBundle mainBundle]];
+        GYZPageViewController *p = [s instantiateInitialViewController];
+        [p setPage:page];
+        [p setCheckButtonEnabled:checkButton];
+        return p;
+    }
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -48,10 +51,12 @@
 {
     [super viewDidLoad];
     // タイトルを設定
+    __block __weak typeof (self) __self = self;
     self.title = self.page.title;
     // リフレッシュを追加
     UIRefreshControl *rc = [[UIRefreshControl alloc] init];
     [rc addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    _refreshControl = rc;
     [self.webView.scrollView addSubview:rc];
     // デリゲートを設定
     [self.webView setDelegate:self];
@@ -64,10 +69,10 @@
     // 戻るボタン
     [self.navigationItem setHidesBackButton:YES];
     UIImage *bi = [UIImage imageNamed:@"backicon"];
-    UIButton *b = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 35)];
+    UIButton *b = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 20, 44)];
     [b setImage:bi forState:UIControlStateNormal];
     [b addEventHandler:^(id sender) {
-        [self.navigationController popViewControllerAnimated:YES];
+        [__self.navigationController popViewControllerAnimated:YES];
     } forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *item_ = [[UIBarButtonItem alloc] initWithCustomView:b];
     [self.navigationItem setLeftBarButtonItem:item_];
@@ -75,26 +80,26 @@
     // 履歴
     GYZNavigationTitleView *title = [[GYZNavigationTitleView alloc] initWithTitle:self.page.title];
     [title addEventHandler:^(id sender) {
-        [self performSegueWithIdentifier:@"showStack" sender:self];
+        [__self performSegueWithIdentifier:@"showStack" sender:__self];
     } forControlEvents:UIControlEventTouchUpInside];
     [self.navigationItem setTitleView:title];
     
     // 読み込み
-    [self refresh:nil];
+    [self refresh:rc];
     
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
+    
     // 右上に編集ボタンを追加
-//    GYZBarButton *edit = [GYZBarButton barButtonWithStyle:GYZBarButtonStyleEdit];
-//    [edit addEventHandler:^(id sender) {
-//        [self performSegueWithIdentifier:@"showEdit" sender:self];
-//    } forControlEvents:UIControlEventTouchUpInside];
-//    UIBarButtonItem *e = [[UIBarButtonItem alloc] initWithCustomView:edit];
-//    [self.navigationItem setRightBarButtonItem:e];
+    //    GYZBarButton *edit = [GYZBarButton barButtonWithStyle:GYZBarButtonStyleEdit];
+    //    [edit addEventHandler:^(id sender) {
+    //        [self performSegueWithIdentifier:@"showEdit" sender:self];
+    //    } forControlEvents:UIControlEventTouchUpInside];
+    //    UIBarButtonItem *e = [[UIBarButtonItem alloc] initWithCustomView:edit];
+    //    [self.navigationItem setRightBarButtonItem:e];
     
     // チェックリストが有効な遷移なら
     if (self.isCheckButtonEnabled) {
@@ -102,37 +107,33 @@
         UIButton *add = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 38, 31)];
         __block UIButton *__add = add;
         if ([[GYZUserData watchList] containsObject:self.page]) {
-            [add setImage:[UIImage imageNamed:@"addicon_selected"] forState:UIControlStateNormal];
+            [add setImage:[UIImage imageNamed:@"addicon_selected7"] forState:UIControlStateNormal];
         }else{
-            [add setImage:[UIImage imageNamed:@"addicon"] forState:UIControlStateNormal];
+            [add setImage:[UIImage imageNamed:@"addicon7"] forState:UIControlStateNormal];
         }
+        __block __weak typeof (self) __self = self;
         [add addEventHandler:^(id sender) {
-            if ([[GYZUserData watchList] containsObject:self.page]) {
-                NSString *m = [NSString stringWithFormat:@"%@\nチェックリストから削除しました",self.page.title];
-                [[GYZUserData watchList] removeObject:self.page];
+            if ([[GYZUserData watchList] containsObject:__self.page]) {
+                NSString *m = [NSString stringWithFormat:@"%@\nチェックリストから削除しました",__self.page.title];
+                [[GYZUserData watchList] removeObject:__self.page];
                 [GYZUserData saveWatchList];
                 [SVProgressHUD showErrorWithStatus:NSLocalizedString(m, )];
                 [__add setImage:[UIImage imageNamed:@"addicon"] forState:UIControlStateNormal];
             }else{
-                NSString *m = [NSString stringWithFormat:@"%@\nチェックリストに追加しました",self.page.title];
-                [[GYZUserData watchList] addObject:self.page];
+                NSString *m = [NSString stringWithFormat:@"%@\nチェックリストに追加しました",__self.page.title];
+                [[GYZUserData watchList] addObject:__self.page];
                 [GYZUserData saveWatchList];
                 [SVProgressHUD showSuccessWithStatus:NSLocalizedString(m, )];
-                [__add setImage:[UIImage imageNamed:@"addicon_selected"] forState:UIControlStateNormal];
+                [__add setImage:[UIImage imageNamed:@"addicon_selected7"] forState:UIControlStateNormal];
             }
         } forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *additem = [[UIBarButtonItem alloc] initWithCustomView:add];
         // iPhoneならツールバーを追加して追加
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-            CGRect f = self.view.frame;
-            GYZToolbar *tb = [[GYZToolbar alloc] initWithFrame:CGRectMake(0, f.size.height - 44, 320, 44)];
+            // ツールバーを表示
+            [self.navigationController setToolbarHidden:NO animated:NO];
             UIBarButtonItem *sp = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-            [tb setItems:@[sp,additem,sp]];
-            f = self.webView.frame;
-            f.size.height -= 44.0f;
-            [self.webView setFrame:f];
-            [self.view addSubview:tb];
-            _toolbar = tb;
+            [self setToolbarItems:@[sp,additem,sp]];
         }else if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
             UIBarButtonItem *e = self.navigationItem.rightBarButtonItem;
             if (e) {
@@ -144,19 +145,28 @@
     }
     
 }
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.navigationController setToolbarHidden:YES];
+}
+
 - (void)refresh:(UIRefreshControl*)sender
 {
-    [sender endRefreshing];
-    
+    [sender beginRefreshing];
+    UIEdgeInsets is = self.webView.scrollView.contentInset;
+    [self.webView.scrollView setContentOffset:CGPointMake(0, -is.top) animated:YES];
+    __block __weak typeof (self) __self = self;
     [self.page getHTMLWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [SVProgressHUD dismiss];
+        [sender endRefreshing];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         //        $(@"%@",str);
-        [self.webView loadHTMLString:str baseURL:[NSURL URLWithString:self.page.absoluteURLPath]];
+        [__self.webView loadHTMLString:str baseURL:[NSURL URLWithString:__self.page.absoluteURLPath]];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [SVProgressHUD dismiss];
+        [sender endRefreshing];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"エラー", )
                                                      message:[error localizedDescription]
@@ -164,8 +174,7 @@
         [av  show];
         $(@"%@",error);
     }];
-
-    [SVProgressHUD showWithStatus:NSLocalizedString(@"読込中...", )];
+    
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
 }
@@ -179,12 +188,12 @@
         [vc setController:self.navigationController];
     }else if ([segue.identifier isEqualToString:@"showEdit"]){
         GYZPageEditViewController *pv = (GYZPageEditViewController*)[[segue destinationViewController] topViewController];
-        [pv setPage:self.page];        
+        [pv setPage:self.page];
     }
 }
 
 
-/* 
+/*
  タグ
  キーワードを “[[”と “]]” で囲むと、キーワードページへのリンクになります。
  “[[目次]]” ⇒ 目次
@@ -209,7 +218,7 @@
 - (NSString*)parsePageText:(NSString*)text
 {
     // 改行で分割
-    NSMutableString *html = [NSMutableString string];    
+    NSMutableString *html = [NSMutableString string];
     NSArray *lines = [text componentsSeparatedByString:@"\n"];
     for (int i = 0, max = lines.count ; i < max ; i++) {
         NSString *line = [lines objectAtIndex:i];
@@ -217,7 +226,7 @@
         line = [line stringByReplacingOccurrencesOfString:@"]]]" withString:@"</b>"];
         NSError *e = nil;
         
-//        $(@"brefore : %@",line);
+        //        $(@"brefore : %@",line);
         
         NSString *linkPattern = @"\\[\\[(.+)\\]\\]";
         e = nil;
@@ -226,11 +235,11 @@
                                                                                error:&e];
         if(e != nil){
             NSLog(@"%@", [e description]);
-        }        
+        }
         
         NSArray *matches = [reg matchesInString:line options:0 range:NSMakeRange(0, line.length)];
         
-//        $(@"matches : %i",matches.count);
+        //        $(@"matches : %i",matches.count);
         for (NSTextCheckingResult *tcr in matches) {
             
             // マッチから[[と]]を覗いた範囲
@@ -239,7 +248,7 @@
             // innerだけにトリミング
             NSString *link = [line substringWithRange:range];
             NSString *linkText = [link copy];
-//            $(@"link text : %@",linkText);
+            //            $(@"link text : %@",linkText);
             // URLリンク
             NSString *urlLinkPat = @"http:\\/\\/.+";
             // Gyazz内部リンク
@@ -292,11 +301,11 @@
                 NSString *a = [NSString stringWithFormat:@"<a href=\"%@\">%@</a>",link,linkText];
                 replace = a;
             }
-//            $(@"replace : %@",replace);
+            //            $(@"replace : %@",replace);
             line = [line stringByReplacingCharactersInRange:NSMakeRange(range.location-2, range.length+4) withString:replace];
         }
         line = [NSString stringWithFormat:@"<div id=\"line-%i\" class=\"line\">%@</div>",i,line];
-//        $(@"after : %@",line);
+        //        $(@"after : %@",line);
         [html appendFormat:@"%@",line];
     }
     return html;

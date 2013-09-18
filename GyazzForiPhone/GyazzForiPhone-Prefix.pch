@@ -27,3 +27,5 @@
 #import <SVModalWebViewController.h>
 #import <TestFlight.h>
 #endif
+
+#define kiOS7MainColor [UIColor colorWithRed:255.0f/255.0f green:129.0f/255.0f blue:97.0f/255.0f alpha:1.0f]

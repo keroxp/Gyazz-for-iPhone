@@ -62,15 +62,19 @@
     return 1;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return NSLocalizedString(@"\"http://gyazz.com/\" に続くGyazzの名前を入力してください。", );
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"TextCell";
     GYZTextFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
         cell = [[GYZTextFieldCell alloc] initWithReuseIdentifier:CellIdentifier];
-        [cell.textLabel setText:@"http://gyazz.com/"];
-        [cell.textField setPlaceholder:@"名前"];
-        [cell setTextFieldMinX:158];
+        [cell.textField setPlaceholder:NSLocalizedString(@"例：UIPedia, レストラン",)];
+        [cell.textField setDelegate:self];
     }
     
     // Configure the cell...
@@ -83,11 +87,22 @@
     [[(GYZTextFieldCell*)cell textField] becomeFirstResponder];
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self handleDone:nil];
+    return YES;
+}
+
 
 - (IBAction)handleDone:(id)sender {
     GYZTextFieldCell *tcell = (GYZTextFieldCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    if (tcell.textField.text.length == 0) {
+        [UIAlertView showAlertViewWithTitle:NSLocalizedString(@"Gyazzの名前は最低でも一文字以上必要です", ) message:Nil cancelButtonTitle:@"OK" otherButtonTitles:nil handler:NULL];
+        return;
+    }
     GYZGyazz *newGyazz = [[GYZGyazz alloc] initWithName:tcell.textField.text];
     __block GYZGyazz *__newGyazz = newGyazz;
+    __block __weak typeof (self) __self = self;
     [newGyazz getPageListWithWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *jsonstr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         $(@"%@",jsonstr);
@@ -104,7 +119,7 @@
             [[GYZUserData gyazzList] addObject:__newGyazz];
             [GYZUserData saveGyazzList];
             [GYZUserData setCurrentGyazz:__newGyazz];
-            [self.navigationController popViewControllerAnimated:YES];
+            [__self.navigationController popViewControllerAnimated:YES];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSString *title = NSLocalizedString(@"エラー", );

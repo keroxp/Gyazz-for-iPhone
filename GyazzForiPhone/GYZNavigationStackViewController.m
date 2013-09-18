@@ -9,9 +9,6 @@
 #import "GYZNavigationStackViewController.h"
 
 @interface GYZNavigationStackViewController ()
-{
-    UINavigationController *_controller;
-}
 
 @end
 
@@ -66,7 +63,7 @@
     if (section == 0) {
         return 1;
     }else{
-        return _controller.viewControllers.count - 1;
+        return self.controller.viewControllers.count - 1;
     }
 }
 
@@ -78,7 +75,7 @@
     if (indexPath.section == 0) {
         cell.textLabel.text = NSLocalizedString(@"トップヘ戻る", );
     }else{
-        UIViewController *vc = [_controller.viewControllers objectAtIndex:indexPath.row + 1];
+        UIViewController *vc = [self.controller.viewControllers objectAtIndex:indexPath.row + 1];
         cell.textLabel.text = vc.title;   
     }
     // Configure the cell...
@@ -130,10 +127,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        [_controller popToRootViewControllerAnimated:YES];
+        [self.controller popToRootViewControllerAnimated:YES];
     }else{
-        UIViewController *vc = [_controller.viewControllers objectAtIndex:indexPath.row + 1];
-        [_controller popToViewController:vc animated:YES];
+        UIViewController *vc = [self.controller.viewControllers objectAtIndex:indexPath.row + 1];
+        [self.controller popToViewController:vc animated:YES];
     }
     [self dismissViewControllerAnimated:YES completion:NULL];
 }

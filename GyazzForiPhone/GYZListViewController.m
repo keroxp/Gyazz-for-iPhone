@@ -69,8 +69,9 @@
     [self setGyazz:[GYZUserData currentGyazz]];
     
     GYZNavigationTitleView *title = [[GYZNavigationTitleView alloc] initWithTitle:self.gyazz.name];
+    __block __weak typeof (self) __self = self;
     [title addEventHandler:^(id sender) {
-        [self performSegueWithIdentifier:@"showGyazzList" sender:self];
+        [__self performSegueWithIdentifier:@"showGyazzList" sender:__self];
     } forControlEvents:UIControlEventTouchUpInside];
     [self.navigationItem setTitleView:title];
     _titleButton = title;
@@ -90,7 +91,6 @@
         _pageList = nil;
         _pageListDividedByModififedDate = nil;
         [self.tableView reloadData];
-        [_refreshControl beginRefreshing];
         [self refreshList:_refreshControl];
     }
 }
@@ -129,14 +129,16 @@
 
 - (void)refreshList:(UIRefreshControl *)sender
 {
-    [SVProgressHUD showWithStatus:NSLocalizedString(@"読込中...", )];
+    [sender beginRefreshing];
+    UIEdgeInsets is = self.tableView.contentInset;
+    [self.tableView setContentOffset:CGPointMake(0, -is.top) animated:YES];
+    __block __weak typeof (self) __self = self;
     [_gyazz getPageListWithWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [SVProgressHUD dismiss];
         [sender endRefreshing];
         NSString *jsonstr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSError *e = nil;
         id jsonobj = [jsonstr objectFromJSONStringWithParseOptions:JKParseOptionNone error:&e];
-        NSArray *pages = [GYZPage pagesFromJSONArray:jsonobj ofGyazz:_gyazz];
+        NSArray *pages = [GYZPage pagesFromJSONArray:jsonobj ofGyazz:__self.gyazz];
         NSMutableArray *ma = [NSMutableArray arrayWithCapacity:10];
         NSDate *now = [NSDate date];
         for (int i = 0 ; i < 10; i++) {
@@ -171,9 +173,8 @@
         }
         _pageList = pages;
         _pageListDividedByModififedDate = ma;
-        [self.tableView reloadData];
+        [__self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [SVProgressHUD dismiss];
         [sender endRefreshing];
     }];
 }

@@ -23,7 +23,7 @@
 - (void)commonInit
 {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        [self setBackgroundImage:[UIImage imageNamed:@"toolbg"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+        [self setBackgroundImage:[UIImage imageNamed:@"navbg7"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
     }else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
         [self setBackgroundImage:[UIImage imageNamed:@"toolbgipad"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
     }

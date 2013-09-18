@@ -32,7 +32,7 @@
         [self addSubview:label];
 //        UIImageView *iv = [[UIImageView alloc] initWithFrame:self.bounds];
 //        [iv setImage:[UIImage imageNamed:@"sectionbg"]];
-        [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"sectionbg"]]];
+        [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"sectionbg7"]]];
 //        [self insertSubview:iv belowSubview:label];
         _titleLabel = label;
     }

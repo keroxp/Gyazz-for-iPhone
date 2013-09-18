@@ -194,7 +194,8 @@
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
+    [GYZUserData saveGyazzList];
 }
 
 
@@ -227,7 +228,7 @@
                 GYZGyazz *gyazz = [[GYZGyazz alloc] initWithName:@"Gyazz"];
                 GYZPage *page = [[GYZPage alloc] initWithGyazz:gyazz title:@"目次" modtime:0];
                 GYZPageViewController *p = [GYZPageViewController pageViewControllerWithPage:page enableCheckButton:NO];
-                [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbg"] forBarMetrics:UIBarMetricsDefault];
+                [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbg7"] forBarMetrics:UIBarMetricsDefault];
                 [self.navigationController pushViewController:p animated:YES];
                 break;
             }

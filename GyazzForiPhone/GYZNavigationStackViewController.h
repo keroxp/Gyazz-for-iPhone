@@ -10,7 +10,7 @@
 
 @interface GYZNavigationStackViewController : UITableViewController
 
-@property () UINavigationController *controller;
+@property (weak) UINavigationController *controller;
 
 - (id)initWithStyle:(UITableViewStyle)style navigationController:(UINavigationController*)controller;
 

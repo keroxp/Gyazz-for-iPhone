@@ -1,29 +1,28 @@
-
 PODS:
-- AFNetworking (1.1.0)
-- BlocksKit (1.8.1):
-  - libffi
-- JSONKit (1.5pre)
-- SVProgressHUD (0.9)
-- SVWebViewController (0.1)
-- UDBarTrackballItem (1.0.0)
-- libffi (3.0.11)
+  - AFNetworking (1.1.0)
+  - BlocksKit (1.8.1):
+    - libffi
+  - JSONKit (1.5pre)
+  - libffi (3.0.13)
+  - SVProgressHUD (0.9)
+  - SVWebViewController (0.1)
+  - UDBarTrackballItem (1.0.0)
 
 DEPENDENCIES:
-- AFNetworking
-- BlocksKit
-- JSONKit
-- SVProgressHUD
-- SVWebViewController
-- UDBarTrackballItem
+  - AFNetworking
+  - BlocksKit
+  - JSONKit
+  - SVProgressHUD
+  - SVWebViewController
+  - UDBarTrackballItem
 
 SPEC CHECKSUMS:
   AFNetworking: 761a418233d280c1e0580bcb76ff9cb4c3073d17
   BlocksKit: 18102744fd7c44b54f1e54ce6ffe9258bcb5df81
   JSONKit: 409734ab3407fce90ef7eaa95d7168f38d9a6601
+  libffi: 64ef39353e747bb2b25e1026afd96a157bf9231c
   SVProgressHUD: 03d4845ec8e64591726428a08236c6a5489d45f8
   SVWebViewController: 2e3a367237bb7072e54e05c6eaa82d21a12ba676
-  UDBarTrackballItem: 3b141e119f6e1ca8eb364f9a78e45c6413850849
-  libffi: 8a1d9ba43c0c84b546b42c6f742714e73aa07ae1
+  UDBarTrackballItem: 46926afb3be77319da4d65ceb8077f5bccf27df5
 
-COCOAPODS: 0.16.4
+COCOAPODS: 0.24.0

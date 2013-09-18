@@ -89,12 +89,12 @@
     [super viewWillAppear:animated];
 
     // 右上に編集ボタンを追加
-    GYZBarButton *edit = [GYZBarButton barButtonWithStyle:GYZBarButtonStyleEdit];
-    [edit addEventHandler:^(id sender) {
-        [self performSegueWithIdentifier:@"showEdit" sender:self];
-    } forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *e = [[UIBarButtonItem alloc] initWithCustomView:edit];
-    [self.navigationItem setRightBarButtonItem:e];
+//    GYZBarButton *edit = [GYZBarButton barButtonWithStyle:GYZBarButtonStyleEdit];
+//    [edit addEventHandler:^(id sender) {
+//        [self performSegueWithIdentifier:@"showEdit" sender:self];
+//    } forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *e = [[UIBarButtonItem alloc] initWithCustomView:edit];
+//    [self.navigationItem setRightBarButtonItem:e];
     
     // チェックリストが有効な遷移なら
     if (self.isCheckButtonEnabled) {

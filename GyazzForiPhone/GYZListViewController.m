@@ -91,7 +91,7 @@
         _pageList = nil;
         _pageListDividedByModififedDate = nil;
         [self.tableView reloadData];
-        [self refreshList:_refreshControl];
+        [self refreshList:nil];
     }
 }
 
@@ -129,12 +129,15 @@
 
 - (void)refreshList:(UIRefreshControl *)sender
 {
-    [sender beginRefreshing];
+    if (!sender) {
+        [self.refreshControl beginRefreshing];
+    }else{
+        [sender beginRefreshing];
+    }
     UIEdgeInsets is = self.tableView.contentInset;
     [self.tableView setContentOffset:CGPointMake(0, -is.top) animated:YES];
     __block __weak typeof (self) __self = self;
     [_gyazz getPageListWithWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [sender endRefreshing];
         NSString *jsonstr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSError *e = nil;
         id jsonobj = [jsonstr objectFromJSONStringWithParseOptions:JKParseOptionNone error:&e];
@@ -174,9 +177,23 @@
         _pageList = pages;
         _pageListDividedByModififedDate = ma;
         [__self.tableView reloadData];
+        if (sender) {
+            // 手動での更新
+            [sender endRefreshing];
+            // オフセットの修正
+            [__self.tableView setContentOffset:CGPointMake(0, -64.0) animated:YES];
+        }else{
+            // 自動での更新
+            [__self.refreshControl endRefreshing];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [sender endRefreshing];
     }];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    NSLog(@"offs %@, ins %@", NSStringFromCGPoint(scrollView.contentOffset), NSStringFromUIEdgeInsets(scrollView.contentInset));
 }
 
 #pragma mark - Table view data source

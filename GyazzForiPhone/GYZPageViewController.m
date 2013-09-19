@@ -107,9 +107,17 @@
         UIButton *add = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 38, 31)];
         __block UIButton *__add = add;
         if ([[GYZUserData watchList] containsObject:self.page]) {
-            [add setImage:[UIImage imageNamed:@"addicon_selected7"] forState:UIControlStateNormal];
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+                [add setImage:[UIImage imageNamed:@"addicon_selected7"] forState:UIControlStateNormal];
+            }else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+                [add setImage:[UIImage imageNamed:@"addicon_selected"] forState:UIControlStateNormal];
+            }
         }else{
-            [add setImage:[UIImage imageNamed:@"addicon7"] forState:UIControlStateNormal];
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+                [add setImage:[UIImage imageNamed:@"addicon7"] forState:UIControlStateNormal];
+            }else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+                [add setImage:[UIImage imageNamed:@"addicon"] forState:UIControlStateNormal];
+            }
         }
         __block __weak typeof (self) __self = self;
         [add addEventHandler:^(id sender) {
@@ -124,7 +132,11 @@
                 [[GYZUserData watchList] addObject:__self.page];
                 [GYZUserData saveWatchList];
                 [SVProgressHUD showSuccessWithStatus:NSLocalizedString(m, )];
-                [__add setImage:[UIImage imageNamed:@"addicon_selected7"] forState:UIControlStateNormal];
+                if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+                    [__add setImage:[UIImage imageNamed:@"addicon_selected7"] forState:UIControlStateNormal];
+                }else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+                    [__add setImage:[UIImage imageNamed:@"addicon_selected"] forState:UIControlStateNormal];
+                }
             }
         } forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *additem = [[UIBarButtonItem alloc] initWithCustomView:add];

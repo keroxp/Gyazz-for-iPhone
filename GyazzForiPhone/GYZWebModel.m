@@ -29,6 +29,7 @@
 - (void)accessWithURLRequest:(NSURLRequest *)request success:(GYZNetworkSuccessBlock)success failure:(GYZNetworkFailureBlock)failure
 {
     AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    __block __weak typeof (self) __self = self;
     [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         $(@"%@",[[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
@@ -49,18 +50,18 @@
             //IDパスワードが違うときこっちに来る
             $(@"idとpassが違う");
             [connection cancel];
-            [self setUsername:nil];
-            [self setPassword:nil];
+            [__self setUsername:nil];
+            [__self setPassword:nil];
             UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ユーザ名もしくはパスワードが違います", ) message:nil];
             [av setCancelButtonWithTitle:@"OK" handler:^{
-                [self accessToURL:request.URL.absoluteString success:success failure:failure];
+                [__self accessToURL:request.URL.absoluteString success:success failure:failure];
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
             }];
             [av show];
         } else {
-            if (self.username.length && self.password.length) {
+            if (__self.username.length && __self.password.length) {
                 $(@"id pass あり");
-                NSURLCredential *credential = [NSURLCredential credentialWithUser:self.username password:self.password persistence:NSURLCredentialPersistenceNone];
+                NSURLCredential *credential = [NSURLCredential credentialWithUser:__self.username password:__self.password persistence:NSURLCredentialPersistenceNone];
                 [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
                 
             }else{
@@ -70,14 +71,14 @@
                 [av setCancelButtonWithTitle:NSLocalizedString(@"やめる", ) handler:^{
                     [connection cancel];
                     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-                    [self setUsername:nil];
-                    [self setPassword:nil];
+                    [__self setUsername:nil];
+                    [__self setPassword:nil];
                 }];
                 [av addButtonWithTitle:NSLocalizedString(@"認証", ) handler:^{
-                    [self setUsername:[[__av textFieldAtIndex:0] text]];
-                    [self setPassword:[[__av textFieldAtIndex:1] text]];
+                    [__self setUsername:[[__av textFieldAtIndex:0] text]];
+                    [__self setPassword:[[__av textFieldAtIndex:1] text]];
                     // リトライ
-                    [self accessToURL:request.URL.absoluteString success:success failure:failure];
+                    [__self accessToURL:request.URL.absoluteString success:success failure:failure];
                 }];
                 [av setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
                 [[av textFieldAtIndex:0] setPlaceholder:NSLocalizedString(@"ユーザ名", )];

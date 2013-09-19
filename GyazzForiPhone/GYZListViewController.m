@@ -191,11 +191,6 @@
     }];
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    NSLog(@"offs %@, ins %@", NSStringFromCGPoint(scrollView.contentOffset), NSStringFromUIEdgeInsets(scrollView.contentInset));
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

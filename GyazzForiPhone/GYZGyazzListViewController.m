@@ -167,9 +167,8 @@
     if (section == 2) {
         // バージョン
         NSString *versionNum = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-        NSString *buildNum = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
-        NSString *text = [NSString stringWithFormat:@"%@ Build %@", versionNum, buildNum];
-        return [NSString stringWithFormat:@"Gyazz for iPhone %@\n© Yusuke Sakurai & Keio University Masui Toshiyuki Laboratory All Rights Reserved.",text];
+        NSString *text = [NSString stringWithFormat:@"ver. %@", versionNum];
+        return [NSString stringWithFormat:@"Gyazz for iOS %@\n© Yusuke Sakurai & Keio University Masui Toshiyuki Laboratory All Rights Reserved.",text];
     }
     return [super tableView:tableView titleForFooterInSection:section];
 }

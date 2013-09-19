@@ -26,28 +26,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    
-    
+	// Do any additional setup after loading the view.    
     UITabBarItem *list = [self.tabBar.items objectAtIndex:0];
-    [list setFinishedSelectedImage:[UIImage imageNamed:@"listicon7"] withFinishedUnselectedImage:[UIImage imageNamed:@"listicon7"]];
     UITabBarItem *check = [self.tabBar.items objectAtIndex:1];
-    [check setFinishedSelectedImage:[UIImage imageNamed:@"checkicon7"] withFinishedUnselectedImage:[UIImage imageNamed:@"checkicon7"]];
-    
-    for (UITabBarItem *i in self.tabBar.items) {
-        [i setTitleTextAttributes:@{UITextAttributeTextColor: kiOS7MainColor} forState:UIControlStateSelected];
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        [list setFinishedSelectedImage:[UIImage imageNamed:@"listicon_selected"] withFinishedUnselectedImage:[UIImage imageNamed:@"listicon"]];
+        [check setFinishedSelectedImage:[UIImage imageNamed:@"checkicon_selected"] withFinishedUnselectedImage:[UIImage imageNamed:@"checkicon"]];
+        if (self.view.bounds.size.width > 320) {
+            [self.tabBar setBackgroundImage:[UIImage imageNamed:@"tabbgipad_light"]];
+//        [self.tabBar setSelectionIndicatorImage:[UIImage imageNamed:@"tabselectionbgipad"]];
+            
+        }else{
+            [self.tabBar setBackgroundImage:[UIImage imageNamed:@"tabbg_light"]];
+            [self.tabBar setSelectionIndicatorImage:[UIImage imageNamed:@"tabselectionbg"]];
+        }
+    }else{
+        [list setFinishedSelectedImage:[UIImage imageNamed:@"listicon7"] withFinishedUnselectedImage:[UIImage imageNamed:@"listicon7"]];
+        [check setFinishedSelectedImage:[UIImage imageNamed:@"checkicon7"] withFinishedUnselectedImage:[UIImage imageNamed:@"checkicon7"]];
+        for (UITabBarItem *i in self.tabBar.items) {
+            [i setTitleTextAttributes:@{UITextAttributeTextColor: kiOS7MainColor} forState:UIControlStateSelected];
+        }
     }
-    
-//    if (self.view.bounds.size.width > 320) {
-//        [self.tabBar setBackgroundImage:[UIImage imageNamed:@"tabbgipad_light"]];
-////        [self.tabBar setSelectionIndicatorImage:[UIImage imageNamed:@"tabselectionbgipad"]];
-//
-//    }else{
-//        [self.tabBar setBackgroundImage:[UIImage imageNamed:@"tabbg_light"]];
-//        [self.tabBar setSelectionIndicatorImage:[UIImage imageNamed:@"tabselectionbg"]];
-//    }
-
-    
 }
 
 - (void)didReceiveMemoryWarning

@@ -35,22 +35,25 @@
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.title = NSLocalizedString(@"チェックリスト", );
-//    GYZBarButton *b = [GYZBarButton barButtonWithText:NSLocalizedString(@"編集", )];
-//     __block GYZBarButton *__b = b;
-//     [b addEventHandler:^(id sender) {
-//        if (!self.isEditing){
-//            [__b setTitle:NSLocalizedString(@"完了", ) forState:UIControlStateNormal];
-//            [self setEditing:YES animated:YES];
-//        }else{
-//            [__b setTitle:NSLocalizedString(@"編集", ) forState:UIControlStateNormal];
-//            [self setEditing:NO animated:YES];
-//        }
-//    } forControlEvents:UIControlEventTouchUpInside];
-//    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:b]];
-    NSDictionary *di = @{UITextAttributeTextColor: [UIColor whiteColor]};
-    [self.editButtonItem setTitleTextAttributes:di forState:UIControlStateNormal];
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        GYZBarButton *b = [GYZBarButton barButtonWithText:NSLocalizedString(@"編集", )];
+        __block GYZBarButton *__b = b;
+        [b addEventHandler:^(id sender) {
+            if (!self.isEditing){
+                [__b setTitle:NSLocalizedString(@"完了", ) forState:UIControlStateNormal];
+                [self setEditing:YES animated:YES];
+            }else{
+                [__b setTitle:NSLocalizedString(@"編集", ) forState:UIControlStateNormal];
+                [self setEditing:NO animated:YES];
+            }
+        } forControlEvents:UIControlEventTouchUpInside];
+        [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:b]];
+        
+    }else{
+        NSDictionary *di = @{UITextAttributeTextColor: [UIColor whiteColor]};
+        [self.editButtonItem setTitleTextAttributes:di forState:UIControlStateNormal];
+        self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    }
     // iCloudを同期
     [[NSNotificationCenter defaultCenter]
      addObserver: self

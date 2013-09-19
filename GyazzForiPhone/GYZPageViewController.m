@@ -69,7 +69,12 @@
     // 戻るボタン
     [self.navigationItem setHidesBackButton:YES];
     UIImage *bi = [UIImage imageNamed:@"backicon"];
-    UIButton *b = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 20, 44)];
+    UIButton *b = [[UIButton alloc] initWithFrame:CGRectZero];
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        b.frame = CGRectMake(0, 0, 35, 44);
+    }else{
+        b.frame = CGRectMake(0, 0, 20, 44);
+    }
     [b setImage:bi forState:UIControlStateNormal];
     [b addEventHandler:^(id sender) {
         [__self.navigationController popViewControllerAnimated:YES];
@@ -107,15 +112,15 @@
         UIButton *add = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 38, 31)];
         __block UIButton *__add = add;
         if ([[GYZUserData watchList] containsObject:self.page]) {
-            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone && SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
                 [add setImage:[UIImage imageNamed:@"addicon_selected7"] forState:UIControlStateNormal];
-            }else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+            }else{
                 [add setImage:[UIImage imageNamed:@"addicon_selected"] forState:UIControlStateNormal];
             }
         }else{
-            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone && SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
                 [add setImage:[UIImage imageNamed:@"addicon7"] forState:UIControlStateNormal];
-            }else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+            }else{
                 [add setImage:[UIImage imageNamed:@"addicon"] forState:UIControlStateNormal];
             }
         }
@@ -132,9 +137,9 @@
                 [[GYZUserData watchList] addObject:__self.page];
                 [GYZUserData saveWatchList];
                 [SVProgressHUD showSuccessWithStatus:NSLocalizedString(m, )];
-                if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+                if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone && SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
                     [__add setImage:[UIImage imageNamed:@"addicon_selected7"] forState:UIControlStateNormal];
-                }else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+                }else{
                     [__add setImage:[UIImage imageNamed:@"addicon_selected"] forState:UIControlStateNormal];
                 }
             }
@@ -143,6 +148,9 @@
         // iPhoneならツールバーを追加して追加
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
             // ツールバーを表示
+            if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+                [self.navigationController.toolbar setBackgroundImage:[UIImage imageNamed:@"toolbg"] forToolbarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+            }
             [self.navigationController setToolbarHidden:NO animated:NO];
             UIBarButtonItem *sp = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
             [self setToolbarItems:@[sp,additem,sp]];
@@ -154,8 +162,7 @@
                 [self.navigationItem setRightBarButtonItem:additem];
             }
         }
-    }
-    
+    }    
 }
 
 - (void)viewWillDisappear:(BOOL)animated

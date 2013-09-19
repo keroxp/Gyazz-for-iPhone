@@ -26,13 +26,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-//    if (self.view.bounds.size.width > 320) {
-//        [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbgipad"] forBarMetrics:UIBarMetricsDefault];
-//    }else{
-//     
-//    }
-    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbg7"] forBarMetrics:UIBarMetricsDefault];
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        // iOS6
+        if (self.view.bounds.size.width > 320) {
+            [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbgipad"] forBarMetrics:UIBarMetricsDefault];
+        }else{
+            [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbg"] forBarMetrics:UIBarMetricsDefault];
+        }
+    }else if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")){
+        [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbg7"] forBarMetrics:UIBarMetricsDefault];
+        
+    }
     NSDictionary *attrs = @{
                             UITextAttributeTextColor: [UIColor whiteColor],
                             UITextAttributeTextShadowColor: [UIColor darkGrayColor]

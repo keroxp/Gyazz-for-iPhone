@@ -17,9 +17,11 @@
         [self.titleLabel setShadowColor:[UIColor blackColor]];
         [self.titleLabel setShadowOffset:CGSizeMake(0, 0.5)];
         [self setTitle:title forState:UIControlStateNormal];
-        [self setTitleColor:[UIColor colorWithWhite:0.85 alpha:1.0f] forState:UIControlStateHighlighted];
-//        [self setBackgroundImage:[UIImage imageNamed:@"titlebg"] forState:UIControlStateNormal];
-//        [self setBackgroundImage:[UIImage imageNamed:@"titlebg_selected"] forState:UIControlStateHighlighted];
+        if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+            [self setTitleColor:[UIColor colorWithWhite:0.85 alpha:1.0f] forState:UIControlStateHighlighted];
+            [self setBackgroundImage:[UIImage imageNamed:@"titlebg"] forState:UIControlStateNormal];
+            [self setBackgroundImage:[UIImage imageNamed:@"titlebg_selected"] forState:UIControlStateHighlighted];
+        }
     }
     return self;
 }

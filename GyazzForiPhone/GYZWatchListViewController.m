@@ -157,7 +157,7 @@
     // Navigation logic may go here. Create and push another view controller.
     GYZPage *page = [[GYZUserData watchList] objectAtIndex:indexPath.row];
     GYZPageViewController *pvc = [GYZPageViewController pageViewControllerWithPage:page enableCheckButton:YES];
-    [pvc setHidesBottomBarWhenPushed:YES];
+//    [pvc setHidesBottomBarWhenPushed:YES];
     // ...
     // Pass the selected object to the new view controller.
     [self.navigationController pushViewController:pvc animated:YES];

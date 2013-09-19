@@ -83,11 +83,12 @@
     [self.navigationItem setLeftBarButtonItem:item_];
     
     // 履歴
-    GYZNavigationTitleView *title = [[GYZNavigationTitleView alloc] initWithTitle:self.page.title];
-    [title addEventHandler:^(id sender) {
-        [__self performSegueWithIdentifier:@"showStack" sender:__self];
-    } forControlEvents:UIControlEventTouchUpInside];
-    [self.navigationItem setTitleView:title];
+//    GYZNavigationTitleView *title = [[GYZNavigationTitleView alloc] initWithTitle:self.page.title];
+//    [title addEventHandler:^(id sender) {
+//        [__self performSegueWithIdentifier:@"showStack" sender:__self];
+//    } forControlEvents:UIControlEventTouchUpInside];
+//    [self.navigationItem setTitleView:title];
+    self.title = self.page.title;
     
     // 読み込み
     [self refresh:rc];
@@ -112,17 +113,17 @@
         UIButton *add = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 38, 31)];
         __block UIButton *__add = add;
         if ([[GYZUserData watchList] containsObject:self.page]) {
-            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone && SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-                [add setImage:[UIImage imageNamed:@"addicon_selected7"] forState:UIControlStateNormal];
-            }else{
+//            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone && SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+//                [add setImage:[UIImage imageNamed:@"addicon_selected7"] forState:UIControlStateNormal];
+//            }else{
                 [add setImage:[UIImage imageNamed:@"addicon_selected"] forState:UIControlStateNormal];
-            }
+//            }
         }else{
-            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone && SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-                [add setImage:[UIImage imageNamed:@"addicon7"] forState:UIControlStateNormal];
-            }else{
+//            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone && SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+//                [add setImage:[UIImage imageNamed:@"addicon7"] forState:UIControlStateNormal];
+//            }else{
                 [add setImage:[UIImage imageNamed:@"addicon"] forState:UIControlStateNormal];
-            }
+//            }
         }
         __block __weak typeof (self) __self = self;
         [add addEventHandler:^(id sender) {
@@ -137,32 +138,33 @@
                 [[GYZUserData watchList] addObject:__self.page];
                 [GYZUserData saveWatchList];
                 [SVProgressHUD showSuccessWithStatus:NSLocalizedString(m, )];
-                if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone && SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-                    [__add setImage:[UIImage imageNamed:@"addicon_selected7"] forState:UIControlStateNormal];
-                }else{
+//                if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone && SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+//                    [__add setImage:[UIImage imageNamed:@"addicon_selected7"] forState:UIControlStateNormal];
+//                }else{
                     [__add setImage:[UIImage imageNamed:@"addicon_selected"] forState:UIControlStateNormal];
-                }
+//                }
             }
         } forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *additem = [[UIBarButtonItem alloc] initWithCustomView:add];
-        // iPhoneならツールバーを追加して追加
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-            // ツールバーを表示
-            if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
-                [self.navigationController.toolbar setBackgroundImage:[UIImage imageNamed:@"toolbg"] forToolbarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
-            }
-            [self.navigationController setToolbarHidden:NO animated:NO];
-            UIBarButtonItem *sp = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-            [self setToolbarItems:@[sp,additem,sp]];
-        }else if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
-            UIBarButtonItem *e = self.navigationItem.rightBarButtonItem;
-            if (e) {
-                [self.navigationItem setRightBarButtonItems:@[e,additem]];
-            }else{
-                [self.navigationItem setRightBarButtonItem:additem];
-            }
-        }
-    }    
+        [self.navigationItem setRightBarButtonItem:additem];
+//        // iPhoneならツールバーを追加して追加
+//        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+//            // ツールバーを表示
+//            if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+//                [self.navigationController.toolbar setBackgroundImage:[UIImage imageNamed:@"toolbg"] forToolbarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+//            }
+//            [self.navigationController setToolbarHidden:NO animated:NO];
+//            UIBarButtonItem *sp = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+//            [self setToolbarItems:@[sp,additem,sp]];
+//        }else if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+//            UIBarButtonItem *e = self.navigationItem.rightBarButtonItem;
+//            if (e) {
+//                [self.navigationItem setRightBarButtonItems:@[e,additem]];
+//            }else{
+//                [self.navigationItem setRightBarButtonItem:additem];
+//            }
+//        }
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated

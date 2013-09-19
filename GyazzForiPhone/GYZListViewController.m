@@ -260,7 +260,7 @@
     }
 
     GYZPageViewController *pvc = [GYZPageViewController pageViewControllerWithPage:page enableCheckButton:YES];
-    [pvc setHidesBottomBarWhenPushed:YES];
+//    [pvc setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:pvc animated:YES];
 }
 

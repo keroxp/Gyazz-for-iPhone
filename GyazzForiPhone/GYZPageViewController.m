@@ -90,6 +90,13 @@
 //    [self.navigationItem setTitleView:title];
     self.title = self.page.title;
     
+    // スワイプ
+    UISwipeGestureRecognizer *sgr = [[UISwipeGestureRecognizer alloc] initWithHandler:^(UIGestureRecognizer *sender, UIGestureRecognizerState state, CGPoint location) {
+        [__self.navigationController popViewControllerAnimated:YES];
+    }];
+    [sgr setDirection:UISwipeGestureRecognizerDirectionRight];
+    [self.view addGestureRecognizer:sgr];
+    
     // 読み込み
     [self refresh:rc];
     
@@ -184,7 +191,9 @@
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         //        $(@"%@",str);
-        [__self.webView loadHTMLString:str baseURL:[NSURL URLWithString:__self.page.absoluteURLPath]];
+        NSString *o = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"override" ofType:@"css"] encoding:NSUTF8StringEncoding error:nil];
+        NSString *overridestyle = [NSString stringWithFormat:@"<style>%@</style></head>",o];
+        [__self.webView loadHTMLString:[str stringByReplacingOccurrencesOfString:@"</head>" withString:overridestyle] baseURL:[NSURL URLWithString:__self.page.absoluteURLPath]];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [sender endRefreshing];

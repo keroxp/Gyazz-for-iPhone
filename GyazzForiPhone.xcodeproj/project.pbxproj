@@ -112,6 +112,7 @@
 		A6E1AF41171E536400A5B239 /* backicon.png in Resources */ = {isa = PBXBuildFile; fileRef = A6E1AF3D171E536400A5B239 /* backicon.png */; };
 		A6E1AF42171E536400A5B239 /* checkicon_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = A6E1AF3E171E536400A5B239 /* checkicon_selected.png */; };
 		A6E1AF44171E536E00A5B239 /* checkicon.png in Resources */ = {isa = PBXBuildFile; fileRef = A6E1AF43171E536E00A5B239 /* checkicon.png */; };
+		A6E2190317EAAA660016B422 /* override.css in Resources */ = {isa = PBXBuildFile; fileRef = A6E2190217EAAA660016B422 /* override.css */; };
 		A6F2732F171DB1CD004DAAD7 /* navbgipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6F2732E171DB1CD004DAAD7 /* navbgipad@2x.png */; };
 		A6F27331171DB2D7004DAAD7 /* tabbgipad_light@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6F27330171DB2D7004DAAD7 /* tabbgipad_light@2x.png */; };
 		A6F2736D171DB76F004DAAD7 /* tabselectionbgipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6F2736C171DB76F004DAAD7 /* tabselectionbgipad@2x.png */; };
@@ -257,6 +258,7 @@
 		A6E1AF3D171E536400A5B239 /* backicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backicon.png; sourceTree = "<group>"; };
 		A6E1AF3E171E536400A5B239 /* checkicon_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkicon_selected.png; sourceTree = "<group>"; };
 		A6E1AF43171E536E00A5B239 /* checkicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkicon.png; sourceTree = "<group>"; };
+		A6E2190217EAAA660016B422 /* override.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = override.css; sourceTree = "<group>"; };
 		A6F2732E171DB1CD004DAAD7 /* navbgipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbgipad@2x.png"; sourceTree = "<group>"; };
 		A6F27330171DB2D7004DAAD7 /* tabbgipad_light@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbgipad_light@2x.png"; sourceTree = "<group>"; };
 		A6F2736C171DB76F004DAAD7 /* tabselectionbgipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabselectionbgipad@2x.png"; sourceTree = "<group>"; };
@@ -463,6 +465,7 @@
 				A63543EA16FD6B5500C50ED0 /* zepto.min.js */,
 				A63543E816FD69B500C50ED0 /* page.html */,
 				A6699C0E171C4FF70013B8CE /* licence.html */,
+				A6E2190217EAAA660016B422 /* override.css */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -683,6 +686,7 @@
 				A6E1AF34171E535E00A5B239 /* tabbg_dark.png in Resources */,
 				A6E1AF35171E535E00A5B239 /* tabbg_light.png in Resources */,
 				A6E1AF36171E535E00A5B239 /* tabbgipad_light.png in Resources */,
+				A6E2190317EAAA660016B422 /* override.css in Resources */,
 				A6E1AF37171E535E00A5B239 /* tabselectionbg.png in Resources */,
 				A6A8CBF717EA85B9003F4CCB /* Default-Landscape~ipad.png in Resources */,
 				A6E1AF38171E535E00A5B239 /* tabselectionbgipad.png in Resources */,
@@ -824,7 +828,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = GyazzForiPhone/GyazzForiPhone.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yusuke Sakurai";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GyazzForiPhone/GyazzForiPhone-Prefix.pch";
 				INFOPLIST_FILE = "GyazzForiPhone/GyazzForiPhone-Info.plist";
@@ -834,7 +838,7 @@
 					"\"$(SRCROOT)/TestFlightSDK1.2.4\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "677BB204-F419-4248-93A0-16F2EA9AF384";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "677BB204-F419-4248-93A0-16F2EA9AF384";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -875,7 +879,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = GyazzForiPhone/GyazzForiPhone.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yusuke Sakurai";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GyazzForiPhone/GyazzForiPhone-Prefix.pch";
 				INFOPLIST_FILE = "GyazzForiPhone/GyazzForiPhone-Info.plist";
@@ -885,7 +889,7 @@
 					"\"$(SRCROOT)/TestFlightSDK1.2.4\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "135B1790-A117-48EA-A866-F86CB65EDE9C";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "135B1790-A117-48EA-A866-F86CB65EDE9C";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -982,7 +986,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = GyazzForiPhone/GyazzForiPhone.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GyazzForiPhone/GyazzForiPhone-Prefix.pch";
 				INFOPLIST_FILE = "GyazzForiPhone/GyazzForiPhone-Info.plist";

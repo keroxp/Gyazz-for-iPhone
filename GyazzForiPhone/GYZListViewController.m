@@ -177,18 +177,24 @@
         _pageList = pages;
         _pageListDividedByModififedDate = ma;
         [__self.tableView reloadData];
-        if (sender) {
-            // 手動での更新
-            [sender endRefreshing];
-            // オフセットの修正
-            [__self.tableView setContentOffset:CGPointMake(0, -64.0) animated:YES];
-        }else{
-            // 自動での更新
-            [__self.refreshControl endRefreshing];
-        }
+        [__self stopRefreshing:sender];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [sender endRefreshing];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"データの読み込みに失敗しました。ネットワークに接続されていないか、サーバーが応答を停止している可能性があります", )];
+        [__self stopRefreshing:sender];
     }];
+}
+
+- (void)stopRefreshing:(UIRefreshControl*)sender
+{
+    if (sender) {
+        // 手動での更新
+        [sender endRefreshing];
+        // オフセットの修正
+        [self.tableView setContentOffset:CGPointMake(0, -64.0) animated:YES];
+    }else{
+        // 自動での更新
+        [self.refreshControl endRefreshing];
+    }
 }
 
 #pragma mark - Table view data source

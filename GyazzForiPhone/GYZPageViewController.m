@@ -192,7 +192,8 @@
         NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         //        $(@"%@",str);
         NSString *o = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"override" ofType:@"css"] encoding:NSUTF8StringEncoding error:nil];
-        NSString *overridestyle = [NSString stringWithFormat:@"<style>%@</style></head>",o];
+        NSString *jspath = [[NSBundle mainBundle] pathForResource:@"override" ofType:@"js"];
+        NSString *overridestyle = [NSString stringWithFormat:@"<style>%@</style><script type=\"text/javascript\" src=\"%@\"></script></head>",o,jspath];
         [__self.webView loadHTMLString:[str stringByReplacingOccurrencesOfString:@"</head>" withString:overridestyle] baseURL:[NSURL URLWithString:__self.page.absoluteURLPath]];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

@@ -1,31 +1,45 @@
 PODS:
-  - AFNetworking (1.1.0)
-  - BlocksKit (1.8.1):
+  - AFNetworking (2.0.3):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
+  - AFNetworking/NSURLConnection (2.0.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.0.3):
+    - AFNetworking/NSURLConnection
+  - AFNetworking/Reachability (2.0.3)
+  - AFNetworking/Security (2.0.3)
+  - AFNetworking/Serialization (2.0.3)
+  - AFNetworking/UIKit (2.0.3):
+    - AFNetworking/NSURLConnection
+  - BlocksKit (1.8.3):
     - libffi
-  - JSONKit (1.5pre)
   - libffi (3.0.13)
-  - SVProgressHUD (0.9)
-  - SVWebViewController (0.1)
-  - TestFlightSDK (2.0)
+  - SVProgressHUD (1.0)
+  - SVWebViewController (1.0)
+  - TestFlightSDK (2.0.2)
   - UDBarTrackballItem (1.0.0)
 
 DEPENDENCIES:
   - AFNetworking
-  - BlocksKit
-  - JSONKit
+  - BlocksKit (~> 1.8.3)
   - SVProgressHUD
   - SVWebViewController
-  - TestFlightSDK
+  - TestFlightSDK (~> 2.0.2)
   - UDBarTrackballItem
 
 SPEC CHECKSUMS:
-  AFNetworking: 761a418233d280c1e0580bcb76ff9cb4c3073d17
-  BlocksKit: 18102744fd7c44b54f1e54ce6ffe9258bcb5df81
-  JSONKit: 409734ab3407fce90ef7eaa95d7168f38d9a6601
+  AFNetworking: e499052cbf3d743e9bb727bb37adb9dc2547ba15
+  BlocksKit: 27257f9cbbec0ea98c80ba83cc2ea7111ae62eb2
   libffi: 64ef39353e747bb2b25e1026afd96a157bf9231c
-  SVProgressHUD: 03d4845ec8e64591726428a08236c6a5489d45f8
-  SVWebViewController: 2e3a367237bb7072e54e05c6eaa82d21a12ba676
-  TestFlightSDK: 940906d4b2550cf397c6f2d2fcc4ebfdcd8ae858
+  SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
+  SVWebViewController: e576371f7015bce92c97c304c32336700064847b
+  TestFlightSDK: 0811097c1f831afb71f68ccd07ae71325cb90f43
   UDBarTrackballItem: 46926afb3be77319da4d65ceb8077f5bccf27df5
 
-COCOAPODS: 0.24.0
+COCOAPODS: 0.28.0

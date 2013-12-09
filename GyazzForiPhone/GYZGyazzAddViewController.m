@@ -11,7 +11,7 @@
 #import <BlocksKit.h>
 #import "GYZGyazz.h"
 #import "GYZUserData.h"
-#import <JSONKit.h>
+
 @interface GYZGyazzAddViewController ()
 
 - (IBAction)handleDone:(id)sender;

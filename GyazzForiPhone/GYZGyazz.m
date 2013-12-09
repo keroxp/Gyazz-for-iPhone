@@ -10,7 +10,6 @@
 #import "GYZPage.h"
 #import "GYZUserData.h"
 #import <AFNetworking.h>
-#import <JSONKit.h>
 #import <BlocksKit.h>
 
 

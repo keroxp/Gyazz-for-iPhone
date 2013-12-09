@@ -10,7 +10,6 @@
 #import "GYZPageViewController.h"
 #import "GYZPage.h"
 #import "GYZUserData.h"
-#import <JSONKit.h>
 #import <SVProgressHUD.h>
 #import "GYZGyazzListViewController.h"
 #import "GYZNavigationTitleView.h"
@@ -138,9 +137,10 @@
     [self.tableView setContentOffset:CGPointMake(0, -is.top) animated:YES];
     __block __weak typeof (self) __self = self;
     [_gyazz getPageListWithWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSString *jsonstr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+//        NSString *jsonstr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSError *e = nil;
-        id jsonobj = [jsonstr objectFromJSONStringWithParseOptions:JKParseOptionNone error:&e];
+//        id jsonobj = [jsonstr objectFromJSONStringWithParseOptions:JKParseOptionNone error:&e];
+        id jsonobj = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:&e];
         NSArray *pages = [GYZPage pagesFromJSONArray:jsonobj ofGyazz:__self.gyazz];
         NSMutableArray *ma = [NSMutableArray arrayWithCapacity:10];
         NSDate *now = [NSDate date];

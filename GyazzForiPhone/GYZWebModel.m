@@ -44,7 +44,7 @@
         }
     }];
     // Basic認証用のコールバックブロック
-    [op setAuthenticationChallengeBlock:^(NSURLConnection *connection, NSURLAuthenticationChallenge *challenge) {
+    [op setWillSendRequestForAuthenticationChallengeBlock:^(NSURLConnection *connection, NSURLAuthenticationChallenge *challenge) {
         
         if ([challenge proposedCredential]) {
             //IDパスワードが違うときこっちに来る

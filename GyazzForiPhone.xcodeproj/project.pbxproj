@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		970CD674E001424BA7CE26C1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1DBB50177945F689F9346F /* libPods.a */; };
-		A605E8F1172519DE006C5579 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A605E8F0172519DE006C5579 /* MobileCoreServices.framework */; };
-		A605E8F3172519E5006C5579 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A605E8F2172519E5006C5579 /* SystemConfiguration.framework */; };
 		A63543E916FD69B500C50ED0 /* page.html in Resources */ = {isa = PBXBuildFile; fileRef = A63543E816FD69B500C50ED0 /* page.html */; };
 		A63543EB16FD6B5500C50ED0 /* zepto.min.js in Resources */ = {isa = PBXBuildFile; fileRef = A63543EA16FD6B5500C50ED0 /* zepto.min.js */; };
 		A6496582171A2F6100D95608 /* GYZPageEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6496580171A2F6100D95608 /* GYZPageEditViewController.m */; };
@@ -94,7 +92,6 @@
 		A6F2732F171DB1CD004DAAD7 /* navbgipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6F2732E171DB1CD004DAAD7 /* navbgipad@2x.png */; };
 		A6F27331171DB2D7004DAAD7 /* tabbgipad_light@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6F27330171DB2D7004DAAD7 /* tabbgipad_light@2x.png */; };
 		A6F2736D171DB76F004DAAD7 /* tabselectionbgipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6F2736C171DB76F004DAAD7 /* tabselectionbgipad@2x.png */; };
-		A6F27377171DBA98004DAAD7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F27376171DBA98004DAAD7 /* libz.dylib */; };
 		A6FCAAA317EEF4D900B8D420 /* override.js in Resources */ = {isa = PBXBuildFile; fileRef = A6FCAAA117EED21100B8D420 /* override.js */; };
 /* End PBXBuildFile section */
 
@@ -196,6 +193,7 @@
 		A6A8CBB117EA530B003F4CCB /* addicon7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addicon7@2x.png"; sourceTree = "<group>"; };
 		A6A8CBFA17EA8F6D003F4CCB /* topallowicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topallowicon.png; sourceTree = "<group>"; };
 		A6A8CBFB17EA8F6D003F4CCB /* topallowicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "topallowicon@2x.png"; sourceTree = "<group>"; };
+		A6BB30761855FABF001C54AA /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A6E1AF23171E535E00A5B239 /* listicon_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = listicon_selected.png; sourceTree = "<group>"; };
 		A6E1AF24171E535E00A5B239 /* listicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = listicon.png; sourceTree = "<group>"; };
 		A6E1AF25171E535E00A5B239 /* navbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navbg.png; sourceTree = "<group>"; };
@@ -226,12 +224,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A605E8F3172519E5006C5579 /* SystemConfiguration.framework in Frameworks */,
-				A605E8F1172519DE006C5579 /* MobileCoreServices.framework in Frameworks */,
 				A68F3FA716F0A597007690E9 /* UIKit.framework in Frameworks */,
 				A68F3FA916F0A597007690E9 /* Foundation.framework in Frameworks */,
 				A68F3FAB16F0A597007690E9 /* CoreGraphics.framework in Frameworks */,
-				A6F27377171DBA98004DAAD7 /* libz.dylib in Frameworks */,
 				970CD674E001424BA7CE26C1 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,6 +319,7 @@
 		A68F3FA516F0A597007690E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A6BB30761855FABF001C54AA /* MessageUI.framework */,
 				A605E8F2172519E5006C5579 /* SystemConfiguration.framework */,
 				A605E8F0172519DE006C5579 /* MobileCoreServices.framework */,
 				A6F27376171DBA98004DAAD7 /* libz.dylib */,
@@ -727,10 +723,7 @@
 				GCC_PREFIX_HEADER = "GyazzForiPhone/GyazzForiPhone-Prefix.pch";
 				INFOPLIST_FILE = "GyazzForiPhone/GyazzForiPhone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/TestFlightSDK1.2.4\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "677BB204-F419-4248-93A0-16F2EA9AF384";
@@ -780,10 +773,7 @@
 				GCC_PREFIX_HEADER = "GyazzForiPhone/GyazzForiPhone-Prefix.pch";
 				INFOPLIST_FILE = "GyazzForiPhone/GyazzForiPhone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/TestFlightSDK1.2.4\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "135B1790-A117-48EA-A866-F86CB65EDE9C";
@@ -866,10 +856,7 @@
 				GCC_PREFIX_HEADER = "GyazzForiPhone/GyazzForiPhone-Prefix.pch";
 				INFOPLIST_FILE = "GyazzForiPhone/GyazzForiPhone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/TestFlightSDK1.2.4\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -891,10 +878,7 @@
 				GCC_PREFIX_HEADER = "GyazzForiPhone/GyazzForiPhone-Prefix.pch";
 				INFOPLIST_FILE = "GyazzForiPhone/GyazzForiPhone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/TestFlightSDK1.2.4\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0BAC473A-ACED-4BC3-876C-B9F88F403DEC</string>
+	<key>IDESourceControlProjectName</key>
+	<string>GyazzForiPhone</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CF5A625C-E794-41A0-B20E-FB704D8E24AA</key>
+		<string>ssh://github.com/keroxp/Gyazz-for-iPhone.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>GyazzForiPhone.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CF5A625C-E794-41A0-B20E-FB704D8E24AA</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/keroxp/Gyazz-for-iPhone.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CF5A625C-E794-41A0-B20E-FB704D8E24AA</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CF5A625C-E794-41A0-B20E-FB704D8E24AA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>GyazzForiPhone</string>
+		</dict>
+	</array>
+</dict>
+</plist>

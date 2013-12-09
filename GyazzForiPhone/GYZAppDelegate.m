@@ -22,7 +22,9 @@
     // TestFlightのインテグレーション
     if ([UIDevice currentDevice]) {
         // !!!: Use the next line only during beta
+#ifndef Release
         [TestFlight setDeviceIdentifier:[[[UIDevice currentDevice] identifierForVendor] UUIDString]];
+#endif
     }
     [TestFlight takeOff:@"cf53c776-22b6-4c28-93b9-0042682c558c"];
     

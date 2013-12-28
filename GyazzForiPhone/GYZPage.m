@@ -36,6 +36,20 @@
     return self;
 }
 
+- (id)initWithGyazz:(GYZGyazz *)gyazz JSONArray:(NSArray *)JSONArray
+{
+    if (self = [super init]) {
+        if (JSONArray.count < 4) {
+            return nil;
+        }
+        _gyazz = gyazz;
+        _title = JSONArray[0];
+        _modifiedDate = [NSDate dateWithTimeIntervalSince1970:[JSONArray[1] integerValue]];
+        _iconImageURL = [NSURL URLWithString:JSONArray[3]];
+    }
+    return self;
+}
+
 - (NSString *)absoluteURLPath
 {
     return [NSString stringWithFormat:@"%@/%@",self.gyazz.absoluteURLPath,self.title];

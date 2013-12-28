@@ -13,6 +13,9 @@
 		A61901A5186E54F900C74A0E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F3FA616F0A597007690E9 /* UIKit.framework */; };
 		A61901AB186E54F900C74A0E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A61901A9186E54F900C74A0E /* InfoPlist.strings */; };
 		A61901AD186E54F900C74A0E /* GyazzForiPhoneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A61901AC186E54F900C74A0E /* GyazzForiPhoneTests.m */; };
+		A61901B6186E555E00C74A0E /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = A619019C186E54E700C74A0E /* test.json */; };
+		A61901BD186E5A4800C74A0E /* GYZImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A61901BC186E5A4800C74A0E /* GYZImage.m */; };
+		A61901C0186E5F7100C74A0E /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = A61901BF186E5F7100C74A0E /* NSString+Hash.m */; };
 		A63543E916FD69B500C50ED0 /* page.html in Resources */ = {isa = PBXBuildFile; fileRef = A63543E816FD69B500C50ED0 /* page.html */; };
 		A63543EB16FD6B5500C50ED0 /* zepto.min.js in Resources */ = {isa = PBXBuildFile; fileRef = A63543EA16FD6B5500C50ED0 /* zepto.min.js */; };
 		A6496582171A2F6100D95608 /* GYZPageEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6496580171A2F6100D95608 /* GYZPageEditViewController.m */; };
@@ -123,6 +126,10 @@
 		A61901AA186E54F900C74A0E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A61901AC186E54F900C74A0E /* GyazzForiPhoneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GyazzForiPhoneTests.m; sourceTree = "<group>"; };
 		A61901AE186E54F900C74A0E /* GyazzForiPhoneTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GyazzForiPhoneTests-Prefix.pch"; sourceTree = "<group>"; };
+		A61901BB186E5A4800C74A0E /* GYZImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZImage.h; sourceTree = "<group>"; };
+		A61901BC186E5A4800C74A0E /* GYZImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZImage.m; sourceTree = "<group>"; };
+		A61901BE186E5F7100C74A0E /* NSString+Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hash.h"; sourceTree = "<group>"; };
+		A61901BF186E5F7100C74A0E /* NSString+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hash.m"; sourceTree = "<group>"; };
 		A63543E816FD69B500C50ED0 /* page.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = page.html; sourceTree = "<group>"; };
 		A63543EA16FD6B5500C50ED0 /* zepto.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = zepto.min.js; sourceTree = "<group>"; };
 		A649657F171A2F6100D95608 /* GYZPageEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZPageEditViewController.h; sourceTree = "<group>"; };
@@ -495,6 +502,8 @@
 				A68F3FF616F0B77E007690E9 /* GYZUserData.m */,
 				A68F3FB516F0A597007690E9 /* GYZAppDelegate.h */,
 				A68F3FB616F0A597007690E9 /* GYZAppDelegate.m */,
+				A61901BB186E5A4800C74A0E /* GYZImage.h */,
+				A61901BC186E5A4800C74A0E /* GYZImage.m */,
 			);
 			name = Singletons;
 			sourceTree = "<group>";
@@ -536,6 +545,8 @@
 		A68F400A16F0E091007690E9 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				A61901BE186E5F7100C74A0E /* NSString+Hash.h */,
+				A61901BF186E5F7100C74A0E /* NSString+Hash.m */,
 				A68F400716F0E073007690E9 /* NSMutableArray+ReArrage.h */,
 				A68F400816F0E073007690E9 /* NSMutableArray+ReArrage.m */,
 			);
@@ -623,6 +634,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A61901B6186E555E00C74A0E /* test.json in Resources */,
 				A61901AB186E54F900C74A0E /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -727,6 +739,7 @@
 				A68F3FB716F0A597007690E9 /* GYZAppDelegate.m in Sources */,
 				A68F3FD716F0A608007690E9 /* GYZListViewController.m in Sources */,
 				A6A8CBAB17EA4674003F4CCB /* GYZNavigationBar.m in Sources */,
+				A61901BD186E5A4800C74A0E /* GYZImage.m in Sources */,
 				A68F3FDA16F0A625007690E9 /* GYZWatchListViewController.m in Sources */,
 				A68F3FDD16F0A815007690E9 /* GYZGyazzListViewController.m in Sources */,
 				A68F3FE116F0A85D007690E9 /* GYZGyazzAddViewController.m in Sources */,
@@ -744,6 +757,7 @@
 				A6699BF9171BF2770013B8CE /* GYZNavigationStackViewController.m in Sources */,
 				A6699BFC171BF3590013B8CE /* GYZNavigationTitleView.m in Sources */,
 				A6699C0D171C4EEC0013B8CE /* GYZLicenseViewController.m in Sources */,
+				A61901C0186E5F7100C74A0E /* NSString+Hash.m in Sources */,
 				A6699C1A171C63C50013B8CE /* GYZBarButton.m in Sources */,
 				A6867A101723054E008CE02D /* GYZToolbar.m in Sources */,
 				A6867A1717231C5C008CE02D /* GYZWebModel.m in Sources */,
@@ -793,8 +807,10 @@
 /* Begin XCBuildConfiguration section */
 		A61901B2186E54F900C74A0E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 368692A77B7F4E3E9A69222B /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GyazzForiPhone.app/GyazzForiPhone";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -815,6 +831,18 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"${PODS_ROOT}/Headers",
+					"${PODS_ROOT}/Headers/AFNetworking",
+					"${PODS_ROOT}/Headers/BlocksKit",
+					"${PODS_ROOT}/Headers/SVProgressHUD",
+					"${PODS_ROOT}/Headers/SVWebViewController",
+					"${PODS_ROOT}/Headers/TestFlightSDK",
+					"${PODS_ROOT}/Headers/UDBarTrackballItem",
+					"${PODS_ROOT}/Headers/libffi",
+				);
 				INFOPLIST_FILE = "GyazzForiPhoneTests/GyazzForiPhoneTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -826,7 +854,8 @@
 		A61901B3186E54F900C74A0E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GyazzForiPhone.app/GyazzForiPhone";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -844,6 +873,18 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"${PODS_ROOT}/Headers",
+					"${PODS_ROOT}/Headers/AFNetworking",
+					"${PODS_ROOT}/Headers/BlocksKit",
+					"${PODS_ROOT}/Headers/SVProgressHUD",
+					"${PODS_ROOT}/Headers/SVWebViewController",
+					"${PODS_ROOT}/Headers/TestFlightSDK",
+					"${PODS_ROOT}/Headers/UDBarTrackballItem",
+					"${PODS_ROOT}/Headers/libffi",
+				);
 				INFOPLIST_FILE = "GyazzForiPhoneTests/GyazzForiPhoneTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -855,7 +896,8 @@
 		A61901B4186E54F900C74A0E /* ReleaseAppStore */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GyazzForiPhone.app/GyazzForiPhone";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -873,6 +915,18 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"${PODS_ROOT}/Headers",
+					"${PODS_ROOT}/Headers/AFNetworking",
+					"${PODS_ROOT}/Headers/BlocksKit",
+					"${PODS_ROOT}/Headers/SVProgressHUD",
+					"${PODS_ROOT}/Headers/SVWebViewController",
+					"${PODS_ROOT}/Headers/TestFlightSDK",
+					"${PODS_ROOT}/Headers/UDBarTrackballItem",
+					"${PODS_ROOT}/Headers/libffi",
+				);
 				INFOPLIST_FILE = "GyazzForiPhoneTests/GyazzForiPhoneTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -884,7 +938,8 @@
 		A61901B5186E54F900C74A0E /* ReleaseAdHoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GyazzForiPhone.app/GyazzForiPhone";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -902,6 +957,18 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"${PODS_ROOT}/Headers",
+					"${PODS_ROOT}/Headers/AFNetworking",
+					"${PODS_ROOT}/Headers/BlocksKit",
+					"${PODS_ROOT}/Headers/SVProgressHUD",
+					"${PODS_ROOT}/Headers/SVWebViewController",
+					"${PODS_ROOT}/Headers/TestFlightSDK",
+					"${PODS_ROOT}/Headers/UDBarTrackballItem",
+					"${PODS_ROOT}/Headers/libffi",
+				);
 				INFOPLIST_FILE = "GyazzForiPhoneTests/GyazzForiPhoneTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -929,6 +996,18 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/BlocksKit\"",
+					"\"${PODS_ROOT}/Headers/SVProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/SVWebViewController\"",
+					"\"${PODS_ROOT}/Headers/TestFlightSDK\"",
+					"\"${PODS_ROOT}/Headers/UDBarTrackballItem\"",
+					"\"${PODS_ROOT}/Headers/libffi\"",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "677BB204-F419-4248-93A0-16F2EA9AF384";
@@ -979,6 +1058,18 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/BlocksKit\"",
+					"\"${PODS_ROOT}/Headers/SVProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/SVWebViewController\"",
+					"\"${PODS_ROOT}/Headers/TestFlightSDK\"",
+					"\"${PODS_ROOT}/Headers/UDBarTrackballItem\"",
+					"\"${PODS_ROOT}/Headers/libffi\"",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "135B1790-A117-48EA-A866-F86CB65EDE9C";
@@ -1012,6 +1103,7 @@
 		};
 		A68F3FCF16F0A597007690E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 368692A77B7F4E3E9A69222B /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1036,6 +1128,18 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/BlocksKit\"",
+					"\"${PODS_ROOT}/Headers/SVProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/SVWebViewController\"",
+					"\"${PODS_ROOT}/Headers/TestFlightSDK\"",
+					"\"${PODS_ROOT}/Headers/UDBarTrackballItem\"",
+					"\"${PODS_ROOT}/Headers/libffi\"",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
@@ -1062,6 +1166,18 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/BlocksKit\"",
+					"\"${PODS_ROOT}/Headers/SVProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/SVWebViewController\"",
+					"\"${PODS_ROOT}/Headers/TestFlightSDK\"",
+					"\"${PODS_ROOT}/Headers/UDBarTrackballItem\"",
+					"\"${PODS_ROOT}/Headers/libffi\"",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
@@ -1127,6 +1243,7 @@
 				A61901B5186E54F900C74A0E /* ReleaseAdHoc */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 		A68F3F9E16F0A597007690E9 /* Build configuration list for PBXProject "GyazzForiPhone" */ = {
 			isa = XCConfigurationList;

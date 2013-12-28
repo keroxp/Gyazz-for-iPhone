@@ -16,12 +16,44 @@
 {
     NSMutableArray *ma = [NSMutableArray arrayWithCapacity:JSONArray.count];
     for (NSArray *page in JSONArray) {
-        NSString *title = [page objectAtIndex:0];
-        NSInteger unixdate = [[page objectAtIndex:1] integerValue];
-        GYZPage *p = [[self alloc] initWithGyazz:gyazz title:title modtime:unixdate];
+        GYZPage *p = [[self alloc] initWithGyazz:gyazz JSONArray:page];
         [ma addObject:p];
     }
     return ma;
+}
+
++ (NSArray *)parseJSON:(id)jsonobj
+{
+    NSString *jsonstr = nil;
+    if ([jsonobj isKindOfClass:[NSData class]]) {
+        jsonstr = [[NSString alloc] initWithData:jsonobj encoding:NSUTF8StringEncoding];
+    }else if([jsonobj isKindOfClass:[NSString class]]){
+        jsonstr = jsonobj;
+    }else{
+        return nil;
+    }
+    __block NSError *e = nil;
+    __block NSData *d = nil;
+    NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:@"(\\[.+\\]),*?$" options:0 error:nil];
+    NSMutableArray *data = @[].mutableCopy;    [jsonstr enumerateLinesUsingBlock:^(NSString *line, BOOL *stop) {
+        NSTextCheckingResult *result = [regexp firstMatchInString:line options:0 range:NSMakeRange(0, line.length)];
+        if (result.numberOfRanges > 0) {
+            NSRange r = [result rangeAtIndex:1];
+            NSString *match = [line substringWithRange:r];
+            d = [match dataUsingEncoding:NSUTF8StringEncoding];
+        }
+        if (d) {
+            id json = [NSJSONSerialization JSONObjectWithData:d options:0 error:&e];
+            if (!e) {
+                [data addObject:json];
+            }else{
+                NSLog(@"%@",e);
+            }
+        }
+        e = nil;
+        d = nil;
+    }];
+    return data;
 }
 
 #pragma mark - Public
@@ -45,7 +77,16 @@
         _gyazz = gyazz;
         _title = JSONArray[0];
         _modifiedDate = [NSDate dateWithTimeIntervalSince1970:[JSONArray[1] integerValue]];
-        _iconImageURL = [NSURL URLWithString:JSONArray[3]];
+        NSError *e = nil;
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"https?:\\/\\/.+?\\.(png|jpe?g|gif)" options:0 error:&e];
+        NSString *iconImageURLString = JSONArray[3];
+        NSRange result = [regex rangeOfFirstMatchInString:iconImageURLString options:0 range:NSMakeRange(0, iconImageURLString.length)];
+        if (result.location != NSNotFound) {
+            _iconImageURL = [NSURL URLWithString:iconImageURLString];
+        }else if(iconImageURLString.length > 0){
+            NSString *url = [NSString stringWithFormat:@"http://gyazo.com/%@.png",iconImageURLString];
+            _iconImageURL = [NSURL URLWithString:url];
+        }
     }
     return self;
 }

@@ -13,7 +13,7 @@
 #import <SVProgressHUD.h>
 #import "GYZGyazzListViewController.h"
 #import "GYZNavigationTitleView.h"
-
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 @interface GYZListViewController ()
 {
@@ -138,30 +138,8 @@
     __block __weak typeof (self) __self = self;
     // 2013/12/28
     // jsonの特定の行に不正な文字列が存在すると全部がparse errorになるので一行ずつparseする
-    __block NSError *e = nil;
-    __block NSData *d = nil;
-    NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:@"(\\[.+\\]),*?$" options:0 error:nil];
-    NSMutableArray *data = @[].mutableCopy;
     [_gyazz getPageListWithWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSString *jsonstr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        [jsonstr enumerateLinesUsingBlock:^(NSString *line, BOOL *stop) {
-            NSTextCheckingResult *result = [regexp firstMatchInString:line options:0 range:NSMakeRange(0, line.length)];
-            if (result.numberOfRanges > 0) {
-                NSRange r = [result rangeAtIndex:1];
-                NSString *match = [line substringWithRange:r];
-                d = [match dataUsingEncoding:NSUTF8StringEncoding];
-            }
-            if (d) {
-                id json = [NSJSONSerialization JSONObjectWithData:d options:0 error:&e];
-                if (!e) {
-                    [data addObject:json];
-                }else{
-                    NSLog(@"%@",e);
-                }
-            }
-            e = nil;
-            d = nil;
-        }];
+        NSArray *data = [GYZPage parseJSON:responseObject];
         NSArray *pages = [GYZPage pagesFromJSONArray:data ofGyazz:__self.gyazz];
         NSMutableArray *ma = [NSMutableArray arrayWithCapacity:10];
         NSDate *now = [NSDate date];
@@ -258,7 +236,9 @@
     }
 
     cell.textLabel.text = [page title];
-    
+    if (page.iconImageURL) {
+        [cell.imageView setImageWithURL:page.iconImageURL];
+    }
     // Configure the cell...
     
     return cell;

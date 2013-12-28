@@ -32,6 +32,7 @@
 
 /* JSONArrayからページリストを作る */
 + (NSArray*)pagesFromJSONArray:(NSArray*)JSONArray ofGyazz:(GYZGyazz*)gyazz;
++ (NSArray*)parseJSON:(id)jsonobj;
 
 /* コンストラクタ*/
 - (id)initWithGyazz:(GYZGyazz*)gyazz title:(NSString *)title modtime:(NSInteger)modtime;

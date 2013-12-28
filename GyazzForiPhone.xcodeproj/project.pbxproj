@@ -16,6 +16,7 @@
 		A61901B6186E555E00C74A0E /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = A619019C186E54E700C74A0E /* test.json */; };
 		A61901BD186E5A4800C74A0E /* GYZImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A61901BC186E5A4800C74A0E /* GYZImage.m */; };
 		A61901C0186E5F7100C74A0E /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = A61901BF186E5F7100C74A0E /* NSString+Hash.m */; };
+		A61901D6186E690700C74A0E /* GYZImageTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A61901D5186E690700C74A0E /* GYZImageTest.m */; };
 		A63543E916FD69B500C50ED0 /* page.html in Resources */ = {isa = PBXBuildFile; fileRef = A63543E816FD69B500C50ED0 /* page.html */; };
 		A63543EB16FD6B5500C50ED0 /* zepto.min.js in Resources */ = {isa = PBXBuildFile; fileRef = A63543EA16FD6B5500C50ED0 /* zepto.min.js */; };
 		A6496582171A2F6100D95608 /* GYZPageEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6496580171A2F6100D95608 /* GYZPageEditViewController.m */; };
@@ -130,6 +131,7 @@
 		A61901BC186E5A4800C74A0E /* GYZImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZImage.m; sourceTree = "<group>"; };
 		A61901BE186E5F7100C74A0E /* NSString+Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hash.h"; sourceTree = "<group>"; };
 		A61901BF186E5F7100C74A0E /* NSString+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hash.m"; sourceTree = "<group>"; };
+		A61901D5186E690700C74A0E /* GYZImageTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZImageTest.m; sourceTree = "<group>"; };
 		A63543E816FD69B500C50ED0 /* page.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = page.html; sourceTree = "<group>"; };
 		A63543EA16FD6B5500C50ED0 /* zepto.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = zepto.min.js; sourceTree = "<group>"; };
 		A649657F171A2F6100D95608 /* GYZPageEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZPageEditViewController.h; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				A61901AC186E54F900C74A0E /* GyazzForiPhoneTests.m */,
+				A61901D5186E690700C74A0E /* GYZImageTest.m */,
 				A61901A7186E54F900C74A0E /* Supporting Files */,
 			);
 			path = GyazzForiPhoneTests;
@@ -727,6 +730,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A61901D6186E690700C74A0E /* GYZImageTest.m in Sources */,
 				A61901AD186E54F900C74A0E /* GyazzForiPhoneTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

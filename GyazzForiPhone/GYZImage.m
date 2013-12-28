@@ -48,9 +48,9 @@ static NSOperationQueue *queue;
     AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:req];
     [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         UIImage *i = [[UIImage alloc] initWithData:responseObject];
-        completion(operation, i, nil);
         // キャッシュ
         [self archiveImage:i forURL:url atomically:YES];
+        completion(operation, i, nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         completion(operation,nil,error);
     }];
@@ -93,7 +93,6 @@ static NSOperationQueue *queue;
         NSError *e = nil;
         [fm createDirectoryAtPath:dp withIntermediateDirectories:NO attributes:nil error:&e];
     }
-    
     BOOL b = [data writeToFile:[self pathForImageURL:URL] atomically:atomically];
     return b;
 }
@@ -133,13 +132,6 @@ static NSOperationQueue *queue;
     }
 }
 
-- (NSString*)pathForImageURL:(NSURL*)url
-{
-    NSString *key = url.absoluteString.MD5Hash;
-    NSString *path = [NSString stringWithFormat:@"%@/%@/%@", [self imageCachesPath], [key substringToIndex:2], key];
-    return path;
-}
-
 - (UIImage *)imageForURL:(NSURL *)url
 {
     // インメモリキャッシュにあればそれを返す
@@ -168,6 +160,16 @@ static NSOperationQueue *queue;
     }
     return nil;
 }
+
+#pragma mark - Path
+
+- (NSString*)pathForImageURL:(NSURL*)url
+{
+    NSString *key = url.absoluteString.MD5Hash;
+    NSString *path = [NSString stringWithFormat:@"%@/%@/%@.png", [self imageCachesPath], [key substringToIndex:2], key];
+    return path;
+}
+
 
 - (NSString*)imageCachesPath
 {

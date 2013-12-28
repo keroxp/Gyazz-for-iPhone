@@ -26,3 +26,14 @@
 - (unsigned long long)imageCachesSize;
 
 @end
+
+@interface GYZImage (PathUtil)
+
+// キャッシュディレクトリ
+- (NSString*)archiveDirectoryPath;
+// 画像キャッシュのディレクトリ
+- (NSString*)imageCachesPath;
+// urlに対応するキャッシュファイルへのパス
+- (NSString*)pathForImageURL:(NSURL*)url;
+
+@end

@@ -28,6 +28,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A61901A0186E54F900C74A0E"
+               BuildableName = "GyazzForiPhoneTests.xctest"
+               BlueprintName = "GyazzForiPhoneTests"
+               ReferencedContainer = "container:GyazzForiPhone.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

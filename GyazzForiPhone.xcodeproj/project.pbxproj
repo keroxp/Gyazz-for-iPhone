@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		970CD674E001424BA7CE26C1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1DBB50177945F689F9346F /* libPods.a */; };
+		A61901A3186E54F900C74A0E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A61901A2186E54F900C74A0E /* XCTest.framework */; };
+		A61901A4186E54F900C74A0E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F3FA816F0A597007690E9 /* Foundation.framework */; };
+		A61901A5186E54F900C74A0E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68F3FA616F0A597007690E9 /* UIKit.framework */; };
+		A61901AB186E54F900C74A0E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A61901A9186E54F900C74A0E /* InfoPlist.strings */; };
+		A61901AD186E54F900C74A0E /* GyazzForiPhoneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A61901AC186E54F900C74A0E /* GyazzForiPhoneTests.m */; };
 		A63543E916FD69B500C50ED0 /* page.html in Resources */ = {isa = PBXBuildFile; fileRef = A63543E816FD69B500C50ED0 /* page.html */; };
 		A63543EB16FD6B5500C50ED0 /* zepto.min.js in Resources */ = {isa = PBXBuildFile; fileRef = A63543EA16FD6B5500C50ED0 /* zepto.min.js */; };
 		A6496582171A2F6100D95608 /* GYZPageEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6496580171A2F6100D95608 /* GYZPageEditViewController.m */; };
@@ -95,12 +100,29 @@
 		A6FCAAA317EEF4D900B8D420 /* override.js in Resources */ = {isa = PBXBuildFile; fileRef = A6FCAAA117EED21100B8D420 /* override.js */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A61901AF186E54F900C74A0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A68F3F9B16F0A597007690E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A68F3FA216F0A597007690E9;
+			remoteInfo = GyazzForiPhone;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		368692A77B7F4E3E9A69222B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		5C1DBB50177945F689F9346F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A605E8EF172512A5006C5579 /* GyazzForiPhone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GyazzForiPhone.entitlements; sourceTree = "<group>"; };
 		A605E8F0172519DE006C5579 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A605E8F2172519E5006C5579 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A619019C186E54E700C74A0E /* test.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
+		A61901A1186E54F900C74A0E /* GyazzForiPhoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GyazzForiPhoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A61901A2186E54F900C74A0E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		A61901A8186E54F900C74A0E /* GyazzForiPhoneTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GyazzForiPhoneTests-Info.plist"; sourceTree = "<group>"; };
+		A61901AA186E54F900C74A0E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A61901AC186E54F900C74A0E /* GyazzForiPhoneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GyazzForiPhoneTests.m; sourceTree = "<group>"; };
+		A61901AE186E54F900C74A0E /* GyazzForiPhoneTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GyazzForiPhoneTests-Prefix.pch"; sourceTree = "<group>"; };
 		A63543E816FD69B500C50ED0 /* page.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = page.html; sourceTree = "<group>"; };
 		A63543EA16FD6B5500C50ED0 /* zepto.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = zepto.min.js; sourceTree = "<group>"; };
 		A649657F171A2F6100D95608 /* GYZPageEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZPageEditViewController.h; sourceTree = "<group>"; };
@@ -220,6 +242,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A619019E186E54F900C74A0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A61901A3186E54F900C74A0E /* XCTest.framework in Frameworks */,
+				A61901A5186E54F900C74A0E /* UIKit.framework in Frameworks */,
+				A61901A4186E54F900C74A0E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A68F3FA016F0A597007690E9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -234,6 +266,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A61901A6186E54F900C74A0E /* GyazzForiPhoneTests */ = {
+			isa = PBXGroup;
+			children = (
+				A61901AC186E54F900C74A0E /* GyazzForiPhoneTests.m */,
+				A61901A7186E54F900C74A0E /* Supporting Files */,
+			);
+			path = GyazzForiPhoneTests;
+			sourceTree = "<group>";
+		};
+		A61901A7186E54F900C74A0E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A61901A8186E54F900C74A0E /* GyazzForiPhoneTests-Info.plist */,
+				A61901A9186E54F900C74A0E /* InfoPlist.strings */,
+				A61901AE186E54F900C74A0E /* GyazzForiPhoneTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		A6699C05171C4A190013B8CE /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,6 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				A68F3FAC16F0A597007690E9 /* GyazzForiPhone */,
+				A61901A6186E54F900C74A0E /* GyazzForiPhoneTests */,
 				A68F3FA516F0A597007690E9 /* Frameworks */,
 				A68F3FA416F0A597007690E9 /* Products */,
 				368692A77B7F4E3E9A69222B /* Pods.xcconfig */,
@@ -312,6 +364,7 @@
 			isa = PBXGroup;
 			children = (
 				A68F3FA316F0A597007690E9 /* GyazzForiPhone.app */,
+				A61901A1186E54F900C74A0E /* GyazzForiPhoneTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -327,6 +380,7 @@
 				A68F3FA816F0A597007690E9 /* Foundation.framework */,
 				A68F3FAA16F0A597007690E9 /* CoreGraphics.framework */,
 				5C1DBB50177945F689F9346F /* libPods.a */,
+				A61901A2186E54F900C74A0E /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -363,6 +417,7 @@
 		A68F3FD416F0A5E4007690E9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A619019C186E54E700C74A0E /* test.json */,
 				A6A8CBFA17EA8F6D003F4CCB /* topallowicon.png */,
 				A6A8CBFB17EA8F6D003F4CCB /* topallowicon@2x.png */,
 				A6A8CBB017EA530B003F4CCB /* addicon_selected7@2x.png */,
@@ -490,6 +545,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A61901A0186E54F900C74A0E /* GyazzForiPhoneTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A61901B1186E54F900C74A0E /* Build configuration list for PBXNativeTarget "GyazzForiPhoneTests" */;
+			buildPhases = (
+				A619019D186E54F900C74A0E /* Sources */,
+				A619019E186E54F900C74A0E /* Frameworks */,
+				A619019F186E54F900C74A0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A61901B0186E54F900C74A0E /* PBXTargetDependency */,
+			);
+			name = GyazzForiPhoneTests;
+			productName = GyazzForiPhoneTests;
+			productReference = A61901A1186E54F900C74A0E /* GyazzForiPhoneTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		A68F3FA216F0A597007690E9 /* GyazzForiPhone */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A68F3FD116F0A597007690E9 /* Build configuration list for PBXNativeTarget "GyazzForiPhone" */;
@@ -518,6 +591,9 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Masui Lab";
 				TargetAttributes = {
+					A61901A0186E54F900C74A0E = {
+						TestTargetID = A68F3FA216F0A597007690E9;
+					};
 					A68F3FA216F0A597007690E9 = {
 						DevelopmentTeam = 2M4NMV4P4Y;
 					};
@@ -537,11 +613,20 @@
 			projectRoot = "";
 			targets = (
 				A68F3FA216F0A597007690E9 /* GyazzForiPhone */,
+				A61901A0186E54F900C74A0E /* GyazzForiPhoneTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A619019F186E54F900C74A0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A61901AB186E54F900C74A0E /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A68F3FA116F0A597007690E9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -626,6 +711,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A619019D186E54F900C74A0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A61901AD186E54F900C74A0E /* GyazzForiPhoneTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A68F3F9F16F0A597007690E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -660,7 +753,23 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		A61901B0186E54F900C74A0E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A68F3FA216F0A597007690E9 /* GyazzForiPhone */;
+			targetProxy = A61901AF186E54F900C74A0E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		A61901A9186E54F900C74A0E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A61901AA186E54F900C74A0E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		A68F3FAF16F0A597007690E9 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -682,6 +791,125 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A61901B2186E54F900C74A0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GyazzForiPhone.app/GyazzForiPhone";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GyazzForiPhoneTests/GyazzForiPhoneTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "GyazzForiPhoneTests/GyazzForiPhoneTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		A61901B3186E54F900C74A0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GyazzForiPhone.app/GyazzForiPhone";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GyazzForiPhoneTests/GyazzForiPhoneTests-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "GyazzForiPhoneTests/GyazzForiPhoneTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		A61901B4186E54F900C74A0E /* ReleaseAppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GyazzForiPhone.app/GyazzForiPhone";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GyazzForiPhoneTests/GyazzForiPhoneTests-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "GyazzForiPhoneTests/GyazzForiPhoneTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = ReleaseAppStore;
+		};
+		A61901B5186E54F900C74A0E /* ReleaseAdHoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GyazzForiPhone.app/GyazzForiPhone";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GyazzForiPhoneTests/GyazzForiPhoneTests-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "GyazzForiPhoneTests/GyazzForiPhoneTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = ReleaseAdHoc;
+		};
 		A6699C1B171C68270013B8CE /* ReleaseAdHoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -890,6 +1118,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A61901B1186E54F900C74A0E /* Build configuration list for PBXNativeTarget "GyazzForiPhoneTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A61901B2186E54F900C74A0E /* Debug */,
+				A61901B3186E54F900C74A0E /* Release */,
+				A61901B4186E54F900C74A0E /* ReleaseAppStore */,
+				A61901B5186E54F900C74A0E /* ReleaseAdHoc */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		A68F3F9E16F0A597007690E9 /* Build configuration list for PBXProject "GyazzForiPhone" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

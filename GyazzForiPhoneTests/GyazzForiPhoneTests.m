@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "GYZPage.h"
 
 @interface GyazzForiPhoneTests : XCTestCase
 
@@ -28,7 +29,18 @@
 
 - (void)testExample
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"json"];
+    NSString *jsonstr = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    NSArray *jsonarr = [GYZPage parseJSON:jsonstr];
+    NSArray *pages = [GYZPage pagesFromJSONArray:jsonarr ofGyazz:nil];
+    [pages enumerateObjectsUsingBlock:^(GYZPage *obj, NSUInteger idx, BOOL *stop) {
+        XCTAssert(obj, );
+        XCTAssert([obj isKindOfClass:[GYZPage class]], );
+        XCTAssert([obj title], );
+        XCTAssert([obj modifiedDate], );
+//        XCTAssert([obj iconImageURL], );
+    }];
+    
 }
 
 @end

@@ -31,7 +31,7 @@
 {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"json"];
     NSString *jsonstr = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-    NSArray *jsonarr = [GYZPage parseJSON:jsonstr];
+    NSArray *jsonarr = [NSJSONSerialization JSONObjectWithData:[jsonstr dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
     NSArray *pages = [GYZPage pagesFromJSONArray:jsonarr ofGyazz:nil];
     [pages enumerateObjectsUsingBlock:^(GYZPage *obj, NSUInteger idx, BOOL *stop) {
         XCTAssert(obj, );

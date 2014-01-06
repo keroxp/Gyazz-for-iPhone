@@ -72,6 +72,8 @@
 		A68F3FFA16F0CA86007690E9 /* GYZTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FF916F0CA86007690E9 /* GYZTableViewController.m */; };
 		A68F3FFF16F0CC4A007690E9 /* GYZTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F3FFE16F0CC4A007690E9 /* GYZTextFieldCell.m */; };
 		A68F400916F0E074007690E9 /* NSMutableArray+ReArrage.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F400816F0E073007690E9 /* NSMutableArray+ReArrage.m */; };
+		A6A25BA618745A61006D3030 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A25BA518745A61006D3030 /* ImageIO.framework */; };
+		A6A25BA8187463DA006D3030 /* ph@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A25BA7187463DA006D3030 /* ph@2x.png */; };
 		A6A8CBA617EA3681003F4CCB /* navbg7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A8CBA517EA3681003F4CCB /* navbg7@2x.png */; };
 		A6A8CBAB17EA4674003F4CCB /* GYZNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A8CBAA17EA4674003F4CCB /* GYZNavigationBar.m */; };
 		A6A8CBAD17EA4E16003F4CCB /* checkicon7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A8CBAC17EA4E16003F4CCB /* checkicon7@2x.png */; };
@@ -215,6 +217,8 @@
 		A68F3FFE16F0CC4A007690E9 /* GYZTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZTextFieldCell.m; sourceTree = "<group>"; };
 		A68F400716F0E073007690E9 /* NSMutableArray+ReArrage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+ReArrage.h"; sourceTree = "<group>"; };
 		A68F400816F0E073007690E9 /* NSMutableArray+ReArrage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+ReArrage.m"; sourceTree = "<group>"; };
+		A6A25BA518745A61006D3030 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		A6A25BA7187463DA006D3030 /* ph@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ph@2x.png"; sourceTree = "<group>"; };
 		A6A8CBA517EA3681003F4CCB /* navbg7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbg7@2x.png"; sourceTree = "<group>"; };
 		A6A8CBA917EA4674003F4CCB /* GYZNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYZNavigationBar.h; sourceTree = "<group>"; };
 		A6A8CBAA17EA4674003F4CCB /* GYZNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYZNavigationBar.m; sourceTree = "<group>"; };
@@ -265,6 +269,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6A25BA618745A61006D3030 /* ImageIO.framework in Frameworks */,
 				A68F3FA716F0A597007690E9 /* UIKit.framework in Frameworks */,
 				A68F3FA916F0A597007690E9 /* Foundation.framework in Frameworks */,
 				A68F3FAB16F0A597007690E9 /* CoreGraphics.framework in Frameworks */,
@@ -382,6 +387,7 @@
 		A68F3FA516F0A597007690E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A6A25BA518745A61006D3030 /* ImageIO.framework */,
 				A6BB30761855FABF001C54AA /* MessageUI.framework */,
 				A605E8F2172519E5006C5579 /* SystemConfiguration.framework */,
 				A605E8F0172519DE006C5579 /* MobileCoreServices.framework */,
@@ -427,6 +433,7 @@
 		A68F3FD416F0A5E4007690E9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A6A25BA7187463DA006D3030 /* ph@2x.png */,
 				A619019C186E54E700C74A0E /* test.json */,
 				A6A8CBFA17EA8F6D003F4CCB /* topallowicon.png */,
 				A6A8CBFB17EA8F6D003F4CCB /* topallowicon@2x.png */,
@@ -620,6 +627,7 @@
 			knownRegions = (
 				en,
 				ja,
+				Base,
 			);
 			mainGroup = A68F3F9A16F0A597007690E9;
 			productRefGroup = A68F3FA416F0A597007690E9 /* Products */;
@@ -703,6 +711,7 @@
 				A6867A9D17241605008CE02D /* inputundoicon@2x.png in Resources */,
 				A6867AA2172419D9008CE02D /* whitebg@2x.png in Resources */,
 				A6A8CBB217EA530B003F4CCB /* addicon_selected7@2x.png in Resources */,
+				A6A25BA8187463DA006D3030 /* ph@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,6 +14,9 @@
 #import "GYZGyazzListViewController.h"
 #import "GYZNavigationTitleView.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
+#import "GYZImage.h"
+#import <QuartzCore/QuartzCore.h>
+#import "NSString+Hash.h"
 
 @interface GYZListViewController ()
 {
@@ -29,9 +32,11 @@
     NSMutableArray *_filterdContents;
     /* title */
     UIButton *_titleButton;
+    /* */
 }
 
 @property () GYZGyazz *gyazz;
+@property (nonatomic) NSMutableDictionary *operationsInProgress;
 
 - (void)refreshList:(UIRefreshControl*)sender;
 
@@ -60,6 +65,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     _filterdContents = [NSMutableArray array];
     _sectionNames = @[@"5分以内",@"15分以内",@"30分以内",@"1時間以内",@"2時間以内",@"6時間以内",@"12時間以内",@"1日以内",@"3日以内",@"4日以前"];
+    _operationsInProgress = [NSMutableDictionary new];
     
     UIRefreshControl *rc = [[UIRefreshControl alloc] init];
     [rc addTarget:self action:@selector(refreshList:) forControlEvents:UIControlEventValueChanged];
@@ -74,6 +80,22 @@
     } forControlEvents:UIControlEventTouchUpInside];
     [self.navigationItem setTitleView:title];
     _titleButton = title;
+    
+#ifdef DEBUG
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction handler:^(id sender) {
+       // キャッシュ全削除
+        [[GYZImage sharedInstance] removeAllImageArchivesWithCompletion:^(NSError *e) {
+            if (!e) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [UIAlertView showAlertViewWithTitle:@"clean finished" message:nil cancelButtonTitle:@"OK" otherButtonTitles:nil handler:NULL];
+                });
+            }else{
+                TFLog(@"%@",e);
+            }
+        }];
+    }];
+    [self.navigationItem setRightBarButtonItem:item];
+#endif
     
 }
 
@@ -139,7 +161,8 @@
     // 2013/12/28
     // jsonの特定の行に不正な文字列が存在すると全部がparse errorになるので一行ずつparseする
     [_gyazz getPageListWithWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSArray *data = [GYZPage parseJSON:responseObject];
+        NSError *e = nil;
+        NSArray *data = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:&e];
         NSArray *pages = [GYZPage pagesFromJSONArray:data ofGyazz:__self.gyazz];
         NSMutableArray *ma = [NSMutableArray arrayWithCapacity:10];
         NSDate *now = [NSDate date];
@@ -196,6 +219,22 @@
     }
 }
 
+- (GYZPage*)pageForTableView:(UITableView*)tableView atIndexPath:(NSIndexPath*)indexPath
+{
+    GYZPage *p = nil;
+    if (tableView == self.tableView) {
+        p = _pageListDividedByModififedDate[indexPath.section][indexPath.row];
+    }else if (tableView == self.searchDisplayController.searchResultsTableView){
+        p = _filterdContents[indexPath.row];
+    }
+    return p;
+}
+
+- (UITableView*)activeTableView
+{
+    return (self.searchDisplayController.isActive) ? self.searchDisplayController.searchResultsTableView : self.tableView;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -228,19 +267,24 @@
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    GYZPage *page = nil;
-    if (tableView == self.tableView) {
-        page = [[_pageListDividedByModififedDate objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    }else{
-        page = [_filterdContents objectAtIndex:indexPath.row];
-    }
-
+    GYZPage *page = [self pageForTableView:tableView atIndexPath:indexPath];
     cell.textLabel.text = [page title];
     if (page.iconImageURL) {
-        [cell.imageView setImageWithURL:page.iconImageURL];
+        UIImage *i = [[GYZImage sharedInstance] imageForURL:page.iconImageURL];
+        if (i){
+            // キャッシュが存在すればそれを貼りつける
+            cell.imageView.image = i;
+        }else{
+            // ドラッグ中でなければダウンロードを始める
+            if (self.tableView.dragging == NO && self.tableView.decelerating == NO){
+                [self startDownloadWithURL:page.iconImageURL forIndexPath:indexPath];
+            }
+            cell.imageView.image = [UIImage imageNamed:@"ph"];
+        }
+    }else{
+        cell.imageView.image = [UIImage imageNamed:@"ph"];
     }
     // Configure the cell...
-    
     return cell;
 }
 
@@ -260,13 +304,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
-    GYZPage *page = nil;
-    if (tableView == self.tableView) {
-        page = [[_pageListDividedByModififedDate objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    }else{
-        page = [_filterdContents objectAtIndex:indexPath.row];
-    }
-
+    GYZPage *page = [self pageForTableView:tableView atIndexPath:indexPath];
     GYZPageViewController *pvc = [GYZPageViewController pageViewControllerWithPage:page enableCheckButton:YES];
 //    [pvc setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:pvc animated:YES];
@@ -294,6 +332,75 @@
         return YES;
     }
     return NO;
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self loadImagesForOnscreenRows];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (!decelerate) {
+        [self loadImagesForOnscreenRows];
+    }
+}
+
+#pragma mark - Lazy Image Download
+
+- (void)startDownloadWithURL:(NSURL *)URL forIndexPath:(NSIndexPath *)indexPath
+{
+    __block __weak typeof (self) __self = self;
+    AFHTTPRequestOperation *op = [[GYZImage sharedInstance] downloadImageWithURL:URL completion:^(AFHTTPRequestOperation *operation, UIImage *image, NSError *e) {
+        if (!e && image) {
+            // アスペクト比を維持したままリサイズ
+            CGFloat w = image.size.width;
+            CGFloat h = image.size.height;
+            CGRect r = CGRectZero;
+            if (w >= h) {
+                r = CGRectMake(0, 0, 88.0f*w/h, 88.0f);
+            }else{
+                r = CGRectMake(0, 0, 88.0f, 88.0f*h/w);
+            }
+            UIGraphicsBeginImageContext(r.size);
+            [image drawInRect:r];
+            UIImage* resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            // 中心にcrop
+            CGFloat wh = MIN(resizedImage.size.width, resizedImage.size.height);
+            CGSize crop = CGSizeMake(wh,wh);
+            CGFloat x = (resizedImage.size.width - crop.width) / 2.0f;
+            CGFloat y = (resizedImage.size.height - crop.height) / 2.0f;
+            CGRect cropped = CGRectMake(x, y, crop.width, crop.height);
+            CGImageRef croppedRef = CGImageCreateWithImageInRect(resizedImage.CGImage, cropped);
+            UIImage *croppedImage = [UIImage imageWithCGImage:croppedRef];
+            CGImageRelease(croppedRef);
+            // 進捗から削除
+            [__self.operationsInProgress removeObjectForKey:indexPath];
+            // 画像をアサイン
+            if ([[__self.tableView indexPathsForVisibleRows] containsObject:indexPath]) {
+                UITableViewCell *cell = [__self.tableView cellForRowAtIndexPath:indexPath];
+                [cell.imageView setImage:croppedImage];
+            }
+            // キャッシュに登録
+            [[GYZImage sharedInstance] archiveImage:croppedImage forURL:URL atomically:YES];
+        }
+    }];
+    [self.operationsInProgress setObject:op forKey:indexPath];
+}
+
+- (void)loadImagesForOnscreenRows
+{
+    UITableView *tableView = [self activeTableView];
+    NSArray *visiblePaths = [tableView indexPathsForVisibleRows];
+    for (NSIndexPath *indexPath in visiblePaths){
+        GYZPage *p = [self pageForTableView:tableView atIndexPath:indexPath];
+        if (![[GYZImage sharedInstance] imageForURL:p.iconImageURL]){
+            [self startDownloadWithURL:p.iconImageURL forIndexPath:indexPath];
+        }
+    }
 }
 
 @end

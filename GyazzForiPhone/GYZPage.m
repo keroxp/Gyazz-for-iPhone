@@ -22,40 +22,6 @@
     return ma;
 }
 
-+ (NSArray *)parseJSON:(id)jsonobj
-{
-    NSString *jsonstr = nil;
-    if ([jsonobj isKindOfClass:[NSData class]]) {
-        jsonstr = [[NSString alloc] initWithData:jsonobj encoding:NSUTF8StringEncoding];
-    }else if([jsonobj isKindOfClass:[NSString class]]){
-        jsonstr = jsonobj;
-    }else{
-        return nil;
-    }
-    __block NSError *e = nil;
-    __block NSData *d = nil;
-    NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:@"(\\[.+\\]),*?$" options:0 error:nil];
-    NSMutableArray *data = @[].mutableCopy;    [jsonstr enumerateLinesUsingBlock:^(NSString *line, BOOL *stop) {
-        NSTextCheckingResult *result = [regexp firstMatchInString:line options:0 range:NSMakeRange(0, line.length)];
-        if (result.numberOfRanges > 0) {
-            NSRange r = [result rangeAtIndex:1];
-            NSString *match = [line substringWithRange:r];
-            d = [match dataUsingEncoding:NSUTF8StringEncoding];
-        }
-        if (d) {
-            id json = [NSJSONSerialization JSONObjectWithData:d options:0 error:&e];
-            if (!e) {
-                [data addObject:json];
-            }else{
-                NSLog(@"%@",e);
-            }
-        }
-        e = nil;
-        d = nil;
-    }];
-    return data;
-}
-
 #pragma mark - Public
 
 - (id)initWithGyazz:(GYZGyazz *)gyazz title:(NSString *)title modtime:(NSInteger)modtime
@@ -80,12 +46,14 @@
         NSError *e = nil;
         NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"https?:\\/\\/.+?\\.(png|jpe?g|gif)" options:0 error:&e];
         NSString *iconImageURLString = JSONArray[3];
-        NSRange result = [regex rangeOfFirstMatchInString:iconImageURLString options:0 range:NSMakeRange(0, iconImageURLString.length)];
-        if (result.location != NSNotFound) {
-            _iconImageURL = [NSURL URLWithString:iconImageURLString];
-        }else if(iconImageURLString.length > 0){
-            NSString *url = [NSString stringWithFormat:@"http://gyazo.com/%@.png",iconImageURLString];
-            _iconImageURL = [NSURL URLWithString:url];
+        if (iconImageURLString && ![iconImageURLString isEqual:[NSNull null]]){
+            NSRange result = [regex rangeOfFirstMatchInString:iconImageURLString options:0 range:NSMakeRange(0, iconImageURLString.length)];
+            if (result.location != NSNotFound) {
+                _iconImageURL = [NSURL URLWithString:iconImageURLString];
+            }else if(iconImageURLString.length > 0){
+                NSString *url = [NSString stringWithFormat:@"http://gyazo.com/%@.png",iconImageURLString];
+                _iconImageURL = [NSURL URLWithString:url];
+            }
         }
     }
     return self;

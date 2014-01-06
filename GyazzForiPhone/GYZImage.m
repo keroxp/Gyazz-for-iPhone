@@ -11,6 +11,8 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fts.h>
+#import <QuartzCore/QuartzCore.h>
+#import <ImageIO/ImageIO.h>
 
 static NSCache *imageCache;
 static GYZImage *shared;
@@ -26,35 +28,45 @@ static NSOperationQueue *queue;
             shared = [[self alloc] init];
             queue = [[NSOperationQueue alloc] init];
             imageCache = [[NSCache alloc] init];
-            imageCache.countLimit = 200;
+            imageCache.countLimit = 10;
         });
     }
     return shared;
 }
 
-- (void)downloadImageWithURL:(NSURL *)url completion:(void (^)(AFHTTPRequestOperation *, UIImage *, NSError *))completion
+- (AFHTTPRequestOperation*)downloadImageWithURL:(NSURL *)url completion:(void (^)(AFHTTPRequestOperation *, UIImage *, NSError *))completion
 {
     if (!completion) {
-        return;
+        return nil;
     }
     // キャッシュがあればすぐに返す
     UIImage *i = [self imageForURL:url];
     if (i) {
         completion(nil,i,nil);
-        return;
+        return nil;
     }
     // download
     NSURLRequest *req =  [NSURLRequest requestWithURL:url];
     AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:req];
     [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        UIImage *i = [[UIImage alloc] initWithData:responseObject];
+        UIImage *i = nil;
+        if ([url.absoluteString rangeOfString:@".gif"].location != NSNotFound) {
+            // GIF画像の場合最初のフレームを取り出す
+            CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)responseObject, NULL);
+            CGImageRef ref = CGImageSourceCreateImageAtIndex(source, 1, NULL);
+            i = [UIImage imageWithCGImage:ref];
+            CGImageRelease(ref);
+        }else{
+            i = [[UIImage alloc] initWithData:responseObject];
+        }
         // キャッシュ
-        [self archiveImage:i forURL:url atomically:YES];
+//        [self archiveImage:i forURL:url atomically:YES];
         completion(operation, i, nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         completion(operation,nil,error);
     }];
     [queue addOperation:op];
+    return op;
 }
 
 - (unsigned long long)imageCachesSize
@@ -82,7 +94,7 @@ static NSOperationQueue *queue;
 - (BOOL)archiveImage:(UIImage *)image forURL:(NSURL *)URL atomically:(BOOL)atomically
 {
     // メモリにキャッシュ
-    [imageCache setObject:imageCache forKey:URL];
+    [imageCache setObject:image forKey:URL];
     // ディスクに書き込み
     NSData *data = UIImagePNGRepresentation(image);
     NSFileManager *fm = [NSFileManager defaultManager];
@@ -107,6 +119,7 @@ static NSOperationQueue *queue;
 
 - (void)removeAllImageArchivesWithCompletion:(void (^)(NSError *))completion
 {
+    [imageCache removeAllObjects];
     NSFileManager* fm = [NSFileManager defaultManager];
     NSString *path = [self imageCachesPath];
     NSDirectoryEnumerator* en = [fm enumeratorAtPath:path];

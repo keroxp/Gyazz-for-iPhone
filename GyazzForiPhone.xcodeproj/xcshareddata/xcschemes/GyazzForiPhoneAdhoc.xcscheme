@@ -38,6 +38,16 @@
                ReferencedContainer = "container:GyazzForiPhone.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A6369FA11871B39C00DC307B"
+               BuildableName = "GyazzTestSuiteTests.xctest"
+               BlueprintName = "GyazzTestSuiteTests"
+               ReferencedContainer = "container:GyazzForiPhone.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

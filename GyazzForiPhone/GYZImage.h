@@ -13,7 +13,7 @@
 // shared instance
 + (instancetype)sharedInstance;
 // 画像をダウンロードしてキャッシュ
-- (void)downloadImageWithURL:(NSURL*)url completion:(void (^)(AFHTTPRequestOperation* operation, UIImage *data, NSError *e))completion;
+- (AFHTTPRequestOperation*)downloadImageWithURL:(NSURL*)url completion:(void (^)(AFHTTPRequestOperation* operation, UIImage *image, NSError *e))completion;
 // 画像をキャッシュから読み込み
 - (UIImage*)imageForURL:(NSURL*)url;
 // 画像を保存

@@ -191,10 +191,11 @@
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         //        $(@"%@",str);
-        NSString *o = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"override" ofType:@"css"] encoding:NSUTF8StringEncoding error:nil];
-        NSString *jspath = [[NSBundle mainBundle] pathForResource:@"override" ofType:@"js"];
-        NSString *overridestyle = [NSString stringWithFormat:@"<style>%@</style><script type=\"text/javascript\" src=\"%@\"></script></head>",o,jspath];
-        [__self.webView loadHTMLString:[str stringByReplacingOccurrencesOfString:@"</head>" withString:overridestyle] baseURL:[NSURL URLWithString:__self.page.absoluteURLPath]];
+        [__self.webView loadHTMLString:str baseURL:__self.page.gyazz.absoluteURL];
+//        NSString *o = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"override" ofType:@"css"] encoding:NSUTF8StringEncoding error:nil];
+//        NSString *jspath = [[NSBundle mainBundle] pathForResource:@"override" ofType:@"js"];
+//        NSString *overridestyle = [NSString stringWithFormat:@"<style>%@</style><script type=\"text/javascript\" src=\"%@\"></script></head>",o,jspath];
+//        [__self.webView loadHTMLString:[str stringByReplacingOccurrencesOfString:@"</head>" withString:overridestyle] baseURL:__self.page.gyazz.absoluteURL];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [sender endRefreshing];
@@ -364,15 +365,16 @@
             // URLをデコード
             NSString *urlstr = [request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             // 同じGyazzの中への遷移か？
-            if ([urlstr rangeOfString:self.page.gyazz.absoluteURLPath].location != NSNotFound) {
+            NSString *path = self.page.gyazz.absoluteURLPath;
+            if ([_URLToMove.absoluteString rangeOfString:path options:0 range:NSMakeRange(0, _URLToMove.absoluteString.length)].location != NSNotFound) {
                 // ページのタイトルを取得
-                NSString *pat = [NSString stringWithFormat:@"%@/(.+)",self.page.gyazz.absoluteURLPath];
+                NSString *pat = [NSString stringWithFormat:@"%@/(.+)",self.page.gyazz.name];
                 NSRegularExpression *reg = [NSRegularExpression regularExpressionWithPattern:pat options:0 error:nil];
-                NSTextCheckingResult *tr = [reg firstMatchInString:urlstr
+                NSTextCheckingResult *tr = [reg firstMatchInString:_URLToMove.path
                                                            options:0
-                                                             range:NSMakeRange(0,urlstr.length)];
+                                                             range:NSMakeRange(0,_URLToMove.path.length)];
                 NSRange r = [tr rangeAtIndex:1];
-                NSString *title = [urlstr substringWithRange:r];;
+                NSString *title = [_URLToMove.path substringWithRange:r];;
                 // ナビゲーションを進める
                 GYZPage *page = [[GYZPage alloc] initWithGyazz:self.page.gyazz title:title modtime:0];
                 GYZPageViewController *pvc = [GYZPageViewController pageViewControllerWithPage:page enableCheckButton:YES];

@@ -124,9 +124,8 @@
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSString *title = NSLocalizedString(@"エラー", );
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:title message:error.localizedDescription];
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            [av show];
+            [UIAlertView showAlertViewWithTitle:title message:error.localizedDescription cancelButtonTitle:@"OK" otherButtonTitles:nil handler:NULL];
         }];
     }];
 }

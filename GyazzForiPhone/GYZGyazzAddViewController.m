@@ -103,8 +103,7 @@
     GYZGyazz *newGyazz = [[GYZGyazz alloc] initWithName:tcell.textField.text];
     __block GYZGyazz *__newGyazz = newGyazz;
     __block __weak typeof (self) __self = self;
-    NSString *url = [[newGyazz absoluteURLPath] stringByAppendingPathComponent:@"__access"];
-    [newGyazz accessToURL:url success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [newGyazz getPageListWithWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *jsonstr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         $(@"%@",jsonstr);
         if (!jsonstr || jsonstr.length < 10) {
